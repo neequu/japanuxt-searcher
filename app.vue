@@ -8,6 +8,7 @@ useHead({
 
 <template>
   <VitePwaManifest />
+  <NuxtLoadingIndicator />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -21,7 +22,7 @@ html, body , #__nuxt{
 }
 
 html.dark {
-  background: #222;
+  background: #242424;
   color: white;
 }
 </style>
