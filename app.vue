@@ -20,7 +20,6 @@ html, body , #__nuxt{
   margin: 0;
   padding: 0;
   color-scheme: light dark;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 html.dark {
