@@ -65,7 +65,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Roboto: true,
+      'Nunito Sans': true,
     },
   },
 
