@@ -1,4 +1,5 @@
 <template>
+  <TheHeader />
   <main>
     <slot />
   </main>

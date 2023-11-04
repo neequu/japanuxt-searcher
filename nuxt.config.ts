@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
+    '@nuxtjs/google-fonts',
   ],
 
   experimental: {
@@ -17,6 +18,7 @@ export default defineNuxtConfig({
     inlineSSRStyles: false,
     renderJsonPayloads: true,
     typedPages: true,
+    componentIslands: true,
   },
 
   css: [
@@ -36,7 +38,6 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: false,
       routes: ['/'],
-      ignore: ['/hi'],
     },
   },
 
@@ -61,4 +62,11 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+
+  googleFonts: {
+    families: {
+      Roboto: true,
+    },
+  },
+
 })
