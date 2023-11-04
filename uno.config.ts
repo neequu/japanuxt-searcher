@@ -11,14 +11,18 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
+    ['link', 'text-accent py-3 px-6 border-b border-transparent text-2xl font-500 transition hover:border-blueGray'],
     ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
   ],
   theme: {
     colors: {
       accent: '#4b8dff',
     },
+    boxShadow: {
+      accent: 'inset 3px 3px 5px #4b8dff, inset -3px -3px 5px #4b8dff',
+    },
   },
+
   presets: [
     presetUno(),
     presetAttributify(),
