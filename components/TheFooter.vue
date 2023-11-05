@@ -4,7 +4,7 @@
 
 <template>
   <footer class="mx-auto flex justify-end px-4 pb-2 container">
-    <NuxtLink to="/about" class="border-b border-transparent px-6 py-3 text-2xl font-500 transition hover:border-blueGray">
+    <NuxtLink to="/about" class="border-b border-transparent px-6 py-3 text-2xl transition hover:border-blueGray">
       About
     </NuxtLink>
   </footer>
