@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
-    '@nuxtjs/google-fonts',
   ],
 
   experimental: {
@@ -61,12 +60,6 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true,
-  },
-
-  googleFonts: {
-    families: {
-      'Nunito Sans': true,
-    },
   },
 
 })

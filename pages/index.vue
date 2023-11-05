@@ -26,10 +26,13 @@
   </section>
   <section class="grid mt-28 gap-6">
     <p class="text-4xl font-500">
-      Consider upgrading your account! | (jk!) ヽ(✿ﾟ▽ﾟ)ノ
+      Consider upgrading your account! ヽ(✿ﾟ▽ﾟ)ノ
     </p>
     <p class="text-2xl">
-      This website is currently being developed by a single person in his spare time. That person is me. I've already put thousands of hours of work into it, and I intend to put thousands more. If you find it useful I'd appreciate it if you could support me on Patreon!
+      This website is a clone (kinda) of jpdb.io. Used as a demonstration of skills with nuxt3 and other tools. Click the link below to check out Stripe functionality. You will be redirected to the checkout page. You can also checkout the about link in the footer.
     </p>
+    <NuxtLink class="w-fit border border-accent rounded-xl px-10 py-4 text-2xl font-500 text-accent transition-300 hover:shadow-accent" to="/learn">
+      Start Paying
+    </NuxtLink>
   </section>
 </template>
