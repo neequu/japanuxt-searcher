@@ -5,7 +5,7 @@
   <div>
     <Suspense>
       <template #default>
-        <SearchResults :query="$route.query" />
+        <SearchResults :query="($route.query.q || '').toString()" />
       </template>
       <template #fallback>
         loading...

@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import type { LocationQuery } from '#vue-router'
-
-const props = defineProps<{
-  query: LocationQuery
+const { query } = defineProps<{
+  query: string
 }>()
-const res = await $fetch('https://jsonplaceholder.typicode.com/todos/' + `${props.query.q}`)
+// const res = await $fetch('https://jsonplaceholder.typicode.com/todos/' + `${props.query.q}`)
+const results = await searchDictionary(query)
 </script>
 
 <template>
-  <div>
-    {{ res }}
-  </div>
+  <pre>
+    {{ results.data }}
+  </pre>
 </template>
 
 <style lang="scss" scoped>
