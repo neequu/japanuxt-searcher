@@ -4,13 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@iconify-json/tdesign':
+    specifier: ^1.1.0
+    version: 1.1.0
+
 devDependencies:
   '@antfu/eslint-config':
     specifier: ^1.0.0-beta.27
     version: 1.0.0-beta.27(eslint@8.51.0)(typescript@5.2.2)(vitest@0.34.6)
-  '@iconify-json/carbon':
-    specifier: ^1.1.21
-    version: 1.1.21
   '@iconify-json/twemoji':
     specifier: ^1.1.12
     version: 1.1.12
@@ -1992,11 +1994,11 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify-json/carbon@1.1.21:
-    resolution: {integrity: sha512-bK2cMVM4noBU+FGlay433flpXLRzQu0ED095iAnoO6ka3yb4uz0lvb8acpN5gthyGLJ89C4HpfIbQZLQnMKQww==}
+  /@iconify-json/tdesign@1.1.0:
+    resolution: {integrity: sha512-yb50t3dK4lwMU4T5M5wAQU21K5UAwm2f8A4gdvR2G9oC3enRSX3QFMlSoBp/JdnL0OeT1vAvB+JgQQk2oWwKYg==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: true
+    dev: false
 
   /@iconify-json/twemoji@1.1.12:
     resolution: {integrity: sha512-8F3z+0+NYO/qeCiyjeWJ9ozkBvPmXsK+4pkQynUuILyXDIi8ddBHb1DJ6O2Qp5M23LzaA/Gkg8/8CQwgGslGmQ==}
@@ -2006,7 +2008,6 @@ packages:
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils@2.1.10:
     resolution: {integrity: sha512-0/+5hxjzCZ9RoYpqxnOzbnpQyMdZRuHcMxPJeuX+x/aZkAAD/N4TajDjAPT7LpX+M0bfLExj/p0bbDkUfp0lrg==}
