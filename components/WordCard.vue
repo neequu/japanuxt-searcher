@@ -7,34 +7,37 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex">
+  <article class="flex items-start border border-neutral-6 rounded-xl p-8">
     <div>
-      <ruby class="cursor-default text-5xl write-vertical-left">
-        {{ item.slug }}<rt>{{ item.japanese[0].reading }}</rt>
+      <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] items-start gap-x-2px whitespace-normal break-anywhere text-5xl line-height-[1]">
+        {{ item.japanese[0].word }}<rt class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
       </ruby>
-      <p v-if="item.jlpt.length">
-        {{ item.jlpt[0] }}
-        <span v-if="item.is_common">Common word</span>
-      </p>
     </div>
     <div>
       <h2>Meanings</h2>
-      <div v-for="part in item.senses[0].parts_of_speech" :key="part">
-        {{ part }}
-      </div>
-      <div v-for="tag in item.tags" :key="tag">
-        {{ tag }}
-      </div>
+      <p>{{ item.senses[0].parts_of_speech.join(', ') }}</p>
+      <p>{{ item.senses[0].tags.join(', ') }}</p>
       <div v-for="(sense, idx) in item.senses" :key="idx">
         <div class="flex gap-1">
           <span>{{ idx + 1 }}.</span> <p>{{ sense.english_definitions.join('; ') }}</p>
         </div>
-        <div v-for="tag in sense.tags" :key="tag">
-          {{ tag }}
-        </div>
       </div>
     </div>
-  </div>
+    <div class="ml-auto flex flex-col gap-1">
+      <p v-if="item.jlpt.length">
+        {{ item.jlpt[1] ?? item.jlpt[0] }}
+      </p>
+      <p v-if="item.is_common">
+        common word
+      </p>
+    </div>
+  </article>
+
+  <!-- IDK
+
+  <div v-for="thing in item">
+    {{ thing }}
+  </div> -->
 </template>
 
 <style lang="scss" scoped>

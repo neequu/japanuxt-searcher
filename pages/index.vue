@@ -1,10 +1,10 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'search-form-layout',
+})
 </script>
 
 <template>
-  <section class="mt-2">
-    <HeroForm />
-  </section>
   <section class="flex items-center justify-evenly py-3">
     <NuxtLink class="link" to="/quiz">
       Quiz

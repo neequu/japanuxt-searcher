@@ -1,19 +1,15 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'search-form-layout',
+})
 </script>
 
 <template>
-  <div>
-    <Suspense>
-      <template #default>
-        <SearchResults :query="($route.query.q || '').toString()" />
-      </template>
+  <section>
+    <SearchResults :query="($route.query.q || '').toString()" :lazy="true">
       <template #fallback>
         loading...
       </template>
-    </Suspense>
-  </div>
+    </SearchResults>
+  </section>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
