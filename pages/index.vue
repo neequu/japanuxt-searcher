@@ -5,14 +5,14 @@
   <section class="mt-2">
     <HeroForm />
   </section>
-  <div class="flex items-center justify-evenly py-3">
+  <section class="flex items-center justify-evenly py-3">
     <NuxtLink class="link" to="/quiz">
       Quiz
     </NuxtLink>
     <NuxtLink class="link" to="/quiz">
       Quiz
     </NuxtLink>
-  </div>
+  </section>
   <section class="grid mt-8 gap-6">
     <p class="text-4xl">
       Welcome back!
