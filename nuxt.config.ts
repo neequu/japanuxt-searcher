@@ -1,7 +1,14 @@
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 export default defineNuxtConfig({
+  routeRules: {
+    '/**': isDev ? {} : { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
+    '/api/**': { cors: true },
+    '/api/tmdb/**': { swr: 3600 },
+  },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',

@@ -1,30 +1,45 @@
 <script setup lang="ts">
-import type { JapaneseWord } from '~/types'
-
 const { query } = defineProps<{
   query: string
 }>()
-const items = ref<JapaneseWord[]>([])
-const count = ref<undefined | number>()
-async function fetch(page: number) {
-  if (!query)
-    return
-  const { data: results } = await searchDictionary(query, page)
-  items.value.push(...results)
-  count.value = items.value.length ?? count.value
+// const page = ref(1)
+// const items = ref([])
+// async function fetch() {
+// const res = await searchDictionary(query, page.value)
+// items.value.push(...res)
+// }
+const items = await searchDictionary(query)
+// watch(
+// () => page.value,
+// () => fetch(),
+// )
+// await fetch()
+const tailEl = ref<HTMLDivElement>()
+if (process.client) {
+  console.log(tailEl.value)
+  // loadingNext()
+  useIntervalFn(() => {
+    // if (!tailEl.value || isLoading.value)
+    if (!tailEl.value)
+      return
+    // return
+    // if (props.count != null && props.items.length >= props.count)
+    // return
+    const { top } = tailEl.value.getBoundingClientRect()
+    const delta = top - window.innerHeight
+    if (delta < 400)
+      console.log('yo yo yo yo ')
+      // loadingNext()
+  }, 500)
 }
-// const results = { data: [{ slug: '家', is_common: true, tags: [], jlpt: ['jlpt-n5'], japanese: [{ word: '家', reading: 'いえ' }], senses: [{ english_definitions: ['house', 'residence', 'dwelling'], parts_of_speech: ['Noun'], links: [], tags: [], restrictions: [], see_also: [], antonyms: [], source: [], info: [] }, { english_definitions: ['family', 'household'], parts_of_speech: ['Noun'], links: [], tags: [], restrictions: [], see_also: [], antonyms: [], source: [], info: [] }, { english_definitions: ['lineage', 'family name'], parts_of_speech: ['Noun'], links: [], tags: [], restrictions: [], see_also: [], antonyms: [], source: [], info: [] }], attribution: { jmdict: true, jmnedict: false, dbpedia: false } }] }
 </script>
 
 <template>
-  <p v-if="count" class="mb-5 flex justify-end text-neutral-5">
-    {{ items.length }} results on this page
+  <p class="mb-5 flex justify-end text-neutral-5">
+    {{ items?.length }} results on this page
   </p>
-  <div v-if="items.length" class="grid gap-10">
+  <div v-if="items?.length" class="grid gap-10">
     <WordCard v-for="res in items" :key="res.slug" :item="res" />
   </div>
+  <div ref="tailEl" />
 </template>
-
-<style lang="scss" scoped>
-
-</style>

@@ -6,10 +6,6 @@ definePageMeta({
 
 <template>
   <section class="mt-10">
-    <SearchResults :query="($route.query.q || '').toString()" :lazy="true">
-      <template #fallback>
-        loading...
-      </template>
-    </SearchResults>
+    <SearchResults :query="($route.query.q || '').toString()" />
   </section>
 </template>
