@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 const route = useRoute()
 const query = ref(route.query.q)
 
@@ -15,4 +15,4 @@ const vFocus = {
 
 <style lang="scss" scoped>
 
-</style>
+</style> -->

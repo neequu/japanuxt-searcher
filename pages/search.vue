@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { JapaneseWord } from '~/types'
 
-definePageMeta({
-  layout: 'search-form-layout',
-})
 const route = useRoute()
 const query = ref((route.query.q || '').toString())
 const items = ref<JapaneseWord[]>([])
@@ -37,9 +34,12 @@ async function fetch(page: number) {
 </script>
 
 <template>
+  <section class="mt-2">
+    <form @submit.prevent="">
+      <input id="search" v-model="query" type="text" name="search" class="w-full border border-neutral-600 rounded-xl bg-transparent p-4 text-2xl text-#aaa outline-none focus:border-accent placeholder:text-2xl placeholder:font-300 placeholder:text-neutral-5 focus:outline-0.25" placeholder="Enter a word, kanji or jlpt tag" autocomplete="off" autocorrect="off" spellcheck="false" lang="ja">
+    </form>
+  </section>
   <section class="mt-10 flex flex-1 flex-col">
-    <!-- {{ items.length }} -->
-    <!-- {{ count }} -->
     <SearchResults v-if="query" :items="items" :fetch="fetch" :count="count" />
     <p v-else>
       Please enter something
