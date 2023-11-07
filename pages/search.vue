@@ -9,6 +9,8 @@ const count = ref<undefined | number>()
 const hasMoreItems = ref(true)
 
 function search() {
+  if (!query.value.trim())
+    return
   router.replace({ query: { q: query.value } })
   count.value = undefined
   items.value = []
@@ -44,13 +46,10 @@ useHead({
       <input id="search" v-model="query" type="text" name="search" class="w-full border border-neutral-600 rounded-xl bg-transparent p-4 text-2xl text-#aaa outline-none focus:border-accent placeholder:text-2xl placeholder:font-300 placeholder:text-neutral-5 focus:outline-0.25" placeholder="Enter a word, kanji or jlpt tag" autocomplete="off" autocorrect="off" spellcheck="false" lang="ja">
     </form>
   </section>
-  <!-- <p class="mb-5 flex justify-end text-neutral-5">
-    {{ count }} results on this page
-  </p> -->
-  <div v-if="count === 0">
-    no results
-  </div>
-  <section v-else class="mt-10 flex flex-1 flex-col">
-    <AutoLoadGrid :items="items" :fetch="fetch" :count="count" />
+  <section class="mt-10 flex flex-1 flex-col">
+    <div v-if="count === 0" class="text-2xl">
+      No results found.
+    </div>
+    <AutoLoadGrid v-else :items="items" :fetch="fetch" :count="count" />
   </section>
 </template>
