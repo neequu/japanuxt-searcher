@@ -16,7 +16,8 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      accent: '#4b8dff',
+      // accent: '#4b8dff',
+      accent: '#dd7ac7',
     },
     boxShadow: {
       accent: 'inset 3px 3px 5px #4b8dff, inset -3px -3px 5px #4b8dff',

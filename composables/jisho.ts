@@ -21,7 +21,9 @@ export function searchDictionary(query: string, page = 1): Promise<JapaneseWord[
   if (!query)
     return []
   const hash = ohash([query, page])
-  if (!cache.has(hash)) {
+  const noCache = !cache.has(hash)
+
+  if (noCache) {
     cache.set(
       hash,
       _makeRequest(query, page)

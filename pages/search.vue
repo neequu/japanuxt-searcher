@@ -14,8 +14,8 @@ async function fetch(page: number) {
   if (!hasMoreItems.value)
     return
 
-  if (page === 1)
-    items.value = []
+  // if (page === 1)
+  // items.value = []
 
   const data = await searchDictionary(query.value, page)
   if (data.length === 0)
@@ -26,21 +26,23 @@ async function fetch(page: number) {
   count.value = items.value.length
 }
 
-watch(
-  () => route.query.q,
-  () => {
-    items.value = []
-    query.value = (route.query.q || '').toString()
-    fetch(1)
-  },
-)
+// watch(
+//   () => route.query.q,
+//   () => {
+//     items.value = []
+//     query.value = (route.query.q || '').toString()
+//     fetch(1)
+//   },
+// )
 </script>
 
 <template>
-  <section class="mt-10">
-    <div v-if="!items.length">
-      loading...
-    </div>
-    <SearchResults :items="items" :fetch="fetch" :count="count" />
+  <section class="mt-10 flex flex-1 flex-col">
+    <!-- {{ items.length }} -->
+    <!-- {{ count }} -->
+    <SearchResults v-if="query" :items="items" :fetch="fetch" :count="count" />
+    <p v-else>
+      Please enter something
+    </p>
   </section>
 </template>

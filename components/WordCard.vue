@@ -5,9 +5,9 @@ const props = defineProps<{
   item: JapaneseWord
 }>()
 
-const partsOfSpeech = computed(() => props.item.senses[0].parts_of_speech)
-const tags = computed(() => props.item.senses[0].tags)
-const jlpt = computed(() => props.item?.jlpt.map(t => t.split('-').join(' ')))
+const partsOfSpeech = props.item.senses[0].parts_of_speech
+const tags = props.item.senses[0].tags
+// const jlpt = props.item?.jlpt.map(t => t.split('-').join(' '))
 </script>
 
 <template>
@@ -33,9 +33,13 @@ const jlpt = computed(() => props.item?.jlpt.map(t => t.split('-').join(' ')))
         </div>
       </div>
     </div>
-    <div class="ml-auto flex flex-col gap-1 text-center">
-      {{ jlpt.join(', ') }}
-      <p v-if="item.is_common">
+    <div class="ml-auto flex flex-col gap-2 text-center line-height-[1] text-white">
+      <p v-if="item.jlpt.length" class="rounded-sm bg-accent bg-opacity-80 py-1 shadow">
+        <NuxtLink to="/search">
+          {{ item.jlpt[item.jlpt.length - 1] }}
+        </NuxtLink>
+      </p>
+      <p v-if="item.is_common" class="">
         common word
       </p>
     </div>
