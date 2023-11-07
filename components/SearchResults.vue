@@ -1,45 +1,58 @@
 <script setup lang="ts">
-const { query } = defineProps<{
-  query: string
+import type { JapaneseWord } from '~/types'
+
+const props = defineProps<{
+  items: JapaneseWord[]
+  fetch: (page: number) => Promise<void>
+  count?: number
 }>()
-// const page = ref(1)
-// const items = ref([])
-// async function fetch() {
-// const res = await searchDictionary(query, page.value)
-// items.value.push(...res)
-// }
-const items = await searchDictionary(query)
-// watch(
-// () => page.value,
-// () => fetch(),
-// )
-// await fetch()
+
 const tailEl = ref<HTMLDivElement>()
+
+let page = 0
+const isLoading = ref(false)
+
+async function loadingNext() {
+  if (isLoading.value)
+    return
+  isLoading.value = true
+  try {
+    page += 1
+    await props.fetch(page)
+  }
+  finally {
+    isLoading.value = false
+  }
+}
+
 if (process.client) {
-  console.log(tailEl.value)
-  // loadingNext()
+  loadingNext()
   useIntervalFn(() => {
-    // if (!tailEl.value || isLoading.value)
-    if (!tailEl.value)
+    if (!tailEl.value || isLoading.value)
       return
-    // return
     // if (props.count != null && props.items.length >= props.count)
-    // return
+      // return
     const { top } = tailEl.value.getBoundingClientRect()
     const delta = top - window.innerHeight
     if (delta < 400)
-      console.log('yo yo yo yo ')
-      // loadingNext()
+      loadingNext()
   }, 500)
+}
+else {
+  await loadingNext()
 }
 </script>
 
 <template>
+  <!-- <div v-if="items && items.length"> -->
   <p class="mb-5 flex justify-end text-neutral-5">
-    {{ items?.length }} results on this page
+    {{ count }} results on this page
   </p>
-  <div v-if="items?.length" class="grid gap-10">
-    <WordCard v-for="res in items" :key="res.slug" :item="res" />
+  <!-- </div> -->
+  <div class="grid gap-10">
+    <WordCard v-for="(item, idx) in items" :key="idx" :item="item" />
   </div>
+
   <div ref="tailEl" />
+  <!-- <ScrollBottom /> -->
 </template>

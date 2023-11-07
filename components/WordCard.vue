@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { JapaneseWord } from '~/types'
 
-defineProps<{
+const props = defineProps<{
   item: JapaneseWord
 }>()
+
+const partsOfSpeech = computed(() => props.item.senses[0].parts_of_speech)
+const tags = computed(() => props.item.senses[0].tags)
+const jlpt = computed(() => props.item?.jlpt.map(t => t.split('-').join(' ')))
 </script>
 
 <template>
@@ -17,10 +21,10 @@ defineProps<{
           Meanings
         </h2>
         <p>
-          {{ item.senses[0].parts_of_speech.join(', ') }}
-        </p>
-        <p>
-          {{ item.senses[0].tags.join(', ') }}
+          {{ partsOfSpeech.join(', ') }}
+          <span v-if="tags.length">
+            {{ tags.join(', ') }}
+          </span>
         </p>
       </div>
       <div v-for="(sense, idx) in item.senses" :key="idx">
@@ -30,9 +34,7 @@ defineProps<{
       </div>
     </div>
     <div class="ml-auto flex flex-col gap-1 text-center">
-      <p v-if="item.jlpt.length">
-        {{ item.jlpt[1] ?? item.jlpt[0] }}
-      </p>
+      {{ jlpt.join(', ') }}
       <p v-if="item.is_common">
         common word
       </p>
