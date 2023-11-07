@@ -42,11 +42,9 @@ else {
 </script>
 
 <template>
-  <WordGrid>
-    <WordCardSkeleton />
-    <WordCardSkeleton />
+  <WordGrid v-if="!items?.length">
+    <WordCardSkeleton v-for="(_, idx) in 10" :key="idx" />
   </WordGrid>
-  <p v-if="!items?.length" />
   <WordGrid v-else>
     <WordCard
       v-for="(item, idx) in items"
