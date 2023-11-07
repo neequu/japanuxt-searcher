@@ -11,7 +11,7 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    ['link', 'text-accent py-3 px-6 border-b border-transparent text-2xl transition hover:border-blueGray'],
+    ['link', 'text-accent py-3 px-6 border-b border-transparent text-2xl transition hover:border-blueGray!'],
   ],
   theme: {
     colors: {

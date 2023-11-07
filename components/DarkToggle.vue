@@ -15,7 +15,7 @@ function toggleDark() {
 </script>
 
 <template>
-  <button class="pl-6 !outline-none" @click="toggleDark">
+  <button class="group pl-6 !outline-none" @click="toggleDark">
     <div class="i-tdesign-sunny dark:i-tdesign-moon text-2xl" />
   </button>
 </template>

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event): Promise<any> => {
   try {
     return await $fetch(JISHO_API_URL, {
       query: {
-        keyword: query.q,
+        keyword: query.query,
         page: query.page,
       },
     })

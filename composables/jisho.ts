@@ -7,26 +7,23 @@ const cache = new LRUCache<string, any>({
   ttl: 2000 * 60 * 60, // 2 hour
 })
 
-async function _makeRequest(query: string, page: number) {
-  const { data } = await $fetch('/api/jisho/jisho', {
-    query: {
-      q: query,
-      page,
-    },
+async function _fetchData(url: string, params: Record<string, string | number | undefined> = {}) {
+  // todo: type this
+  const { data } = await $fetch(url, {
+    params,
   })
   return data
 }
 
-export function searchDictionary(query: string, page: number): Promise<JapaneseWord[]> | [] {
-  if (!query)
-    return []
-  const hash = ohash([query, page])
+export function fetchData(url: string, params: Record<string, string | number | undefined> = {}): Promise<JapaneseWord[]> | [] {
+  const temp = Object.values(params)
+  const hash = ohash([...temp])
   const noCache = !cache.has(hash)
 
   if (noCache) {
     cache.set(
       hash,
-      _makeRequest(query, page)
+      _fetchData(url, params)
         .catch((e) => {
           cache.delete(hash)
           throw e
@@ -34,4 +31,8 @@ export function searchDictionary(query: string, page: number): Promise<JapaneseW
     )
   }
   return cache.get(hash)!
+}
+
+export function searchDictionary(query: string, page: number): Promise<JapaneseWord[]> | [] {
+  return fetchData('/api/jisho/jisho', { query, page })
 }
