@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div />
+  <div class="h-32 animate-pulse border rounded-xl bg-dark" />
 </template>
 
 <style lang="scss" scoped>

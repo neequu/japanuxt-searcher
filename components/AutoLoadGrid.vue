@@ -16,8 +16,8 @@ async function loadingNext() {
   if (isLoading.value)
     return
   isLoading.value = true
-  page += 1
   try {
+    page += 1
     await props.fetch(page)
   }
   finally {
@@ -28,7 +28,7 @@ async function loadingNext() {
 if (process.client) {
   loadingNext()
   useIntervalFn(() => {
-    if (!tailEl.value || isLoading.value || page < 2)
+    if (!tailEl.value || isLoading.value)
       return
     const { top } = tailEl.value.getBoundingClientRect()
     const delta = top - window.innerHeight
@@ -42,15 +42,17 @@ else {
 </script>
 
 <template>
-  <div v-if="isLoading" class="flex-1 border">
-    loading...
-  </div>
-  <p class="mb-5 flex justify-end text-neutral-5">
-    {{ count }} results on this page
-  </p>
-  <div class="grid gap-10">
-    <WordCard v-for="(item, idx) in items" :key="idx" :item="item" />
-  </div>
-
+  <WordGrid>
+    <WordCardSkeleton />
+    <WordCardSkeleton />
+  </WordGrid>
+  <p v-if="!items?.length" />
+  <WordGrid v-else>
+    <WordCard
+      v-for="(item, idx) in items"
+      :key="idx"
+      :item="item"
+    />
+  </WordGrid>
   <div ref="tailEl" />
 </template>

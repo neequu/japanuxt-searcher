@@ -12,7 +12,7 @@ const tags = props.item.senses[0].tags
 
 <template>
   <article class="flex items-start border border-neutral-6 rounded-xl px-10 py-6">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-100px items-start gap-x-2px whitespace-normal break-anywhere text-5xl line-height-[1]">
+    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]">
       {{ item.japanese[0].word ?? item.slug }}<rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
     </ruby>
     <div>

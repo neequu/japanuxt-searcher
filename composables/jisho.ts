@@ -17,7 +17,7 @@ async function _makeRequest(query: string, page: number) {
   return data
 }
 
-export function searchDictionary(query: string, page = 1): Promise<JapaneseWord[]> | [] {
+export function searchDictionary(query: string, page: number): Promise<JapaneseWord[]> | [] {
   if (!query)
     return []
   const hash = ohash([query, page])
