@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'strip-layout',
+})
 const user = useSupabaseUser()
 watchEffect(() => {
   if (user.value)
@@ -7,5 +10,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>Waiting for login...</div>
+  <div class="h-full w-full flex items-center justify-center">
+    <div class="i-carbon:circle-dash animate-spin text-4xl" />
+  </div>
 </template>
