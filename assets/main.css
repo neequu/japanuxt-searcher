@@ -1,0 +1,13 @@
+::-webkit-scrollbar {
+  @apply bg-dark-7 w-10px h-6px;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-xl transition bg-dark-9;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-dark-9 bg-opacity-70;
+}
+::-webkit-scrollbar-track {
+  @apply rounded-xl bg-transparent;
+}
+

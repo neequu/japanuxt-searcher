@@ -1,9 +1,13 @@
 <script setup lang="ts">
-const query = ref('')
+import { onKeyDown } from '@vueuse/core'
 
+const query = ref('')
 const vFocus = {
   mounted: (el: HTMLElement) => el.focus(),
 }
+onKeyDown('/', (e) => {
+  console.log(e)
+})
 </script>
 
 <template>
@@ -13,10 +17,10 @@ const vFocus = {
     </form>
   </section>
   <section class="flex items-center justify-evenly py-3">
-    <NuxtLink class="link" to="/quiz">
+    <NuxtLink class="border-b border-transparent outline-none transition focus-visible:border-blueGray link" to="/quiz">
       Quiz
     </NuxtLink>
-    <NuxtLink class="link" to="/quiz">
+    <NuxtLink class="border-b border-transparent outline-none transition focus-visible:border-blueGray link" to="/quiz">
       Quiz
     </NuxtLink>
   </section>
@@ -27,7 +31,7 @@ const vFocus = {
     <p class="text-2xl">
       You have 15 due vocabulary and 60 new vocabulary available for review.
     </p>
-    <NuxtLink class="w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent transition-300 hover:shadow-accent" to="/learn">
+    <NuxtLink class="w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent outline-none transition-300 focus-visible:underline hover:shadow-accent" to="/learn">
       Start Learning
     </NuxtLink>
   </section>
@@ -38,7 +42,7 @@ const vFocus = {
     <p class="text-2xl">
       This website is a clone (kinda) of jpdb.io. Used as a demonstration of skills with nuxt3 and other tools. Click the link below to check out Stripe functionality. You will be redirected to the checkout page. You can also have a look at the about link in the footer 👀.
     </p>
-    <NuxtLink class="w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent transition-300 hover:shadow-accent" to="/learn">
+    <NuxtLink class="w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent outline-none transition-300 focus-visible:underline hover:shadow-accent" to="/learn">
       Start Paying
     </NuxtLink>
   </section>
