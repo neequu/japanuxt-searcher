@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
   ],
   supabase: {
+    redirect: false,
     redirectOptions: {
       login: '/sign-in',
       callback: '/confirm',

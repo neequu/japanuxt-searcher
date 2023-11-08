@@ -1,5 +1,6 @@
 <script setup lang="ts">
-
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 </script>
 
 <template>
@@ -11,22 +12,25 @@
     </NuxtLink>
     <nav class="flex items-center">
       <NuxtLink v-slot="{ isActive }" to="/learn" class="group outline-none">
-        <div :class="isActive && 'border-blueGray' " class="link group-focus-visible:border-blueGray">
+        <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
           Learn
         </div>
       </NuxtLink>
       <NuxtLink v-slot="{ isActive }" to="/decks" class="group outline-none">
-        <div :class="isActive && 'border-blueGray' " class="link group-focus-visible:border-blueGray">
+        <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
           Decks
         </div>
       </NuxtLink>
       <NuxtLink v-slot="{ isActive }" to="/stats" class="group outline-none">
-        <div :class="isActive && 'border-blueGray' " class="link group-focus-visible:border-blueGray">
+        <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
           Stats
         </div>
       </NuxtLink>
-      <NuxtLink v-slot="{ isActive }" to="/sign-in" class="group outline-none">
-        <div :class="isActive && 'border-blueGray' " class="link group-focus-visible:border-blueGray">
+      <button v-if="user" type="button" class="outline-none focus-visible:border-blueGray link" @click="supabase.auth.signOut()">
+        Logout
+      </button>
+      <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">
+        <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
           Sign In
         </div>
       </NuxtLink>
