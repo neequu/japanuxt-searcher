@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
-    '~~/assets/main.css',
+    '~/assets/main.css',
   ],
 
   colorMode: {
