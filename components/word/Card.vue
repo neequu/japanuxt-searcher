@@ -11,18 +11,18 @@ const tags = props.item.senses[0].tags
 </script>
 
 <template>
-  <article class="flex items-start border border-neutral-6 rounded-xl px-10 py-6">
+  <article class="flex items-start border border-neutral-6 rounded-xl px-10 py-6 text-xl">
     <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]">
       {{ item.japanese[0].word ?? item.slug }}<rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
     </ruby>
     <div>
-      <div class="mb-3 text-neutral-5">
+      <div class="mb-3 text-base text-neutral-5">
         <h2>
           Meanings
         </h2>
-        <p>
+        <p class="text-xl font-600">
           {{ partsOfSpeech.join(', ') }}
-          <span v-if="tags.length">
+          <span v-if="tags.length" class="text-base font-400 italic">
             {{ tags.join(', ') }}
           </span>
         </p>
@@ -39,7 +39,7 @@ const tags = props.item.senses[0].tags
           {{ item.jlpt[item.jlpt.length - 1] }}
         </NuxtLink>
       </p>
-      <p v-if="item.is_common" class="">
+      <p v-if="item.is_common">
         common word
       </p>
     </div>

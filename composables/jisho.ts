@@ -4,18 +4,17 @@ import type { JapaneseWord } from '~/types'
 
 const cache = new LRUCache<string, any>({
   max: 500,
-  ttl: 2000 * 60 * 60, // 2 hour
+  ttl: 8000 * 60 * 60, // 8 hours
 })
 
 async function _fetchData(url: string, params: Record<string, string | number | undefined> = {}) {
-  // todo: type this
-  const { data } = await $fetch(url, {
+  const { data }: { data: any } = await $fetch(url, {
     params,
   })
   return data
 }
 
-export function fetchData(url: string, params: Record<string, string | number | undefined> = {}): Promise<JapaneseWord[]> | [] {
+export function fetchData(url: string, params: Record<string, string | number | undefined> = {}): Promise<any> {
   const temp = Object.values(params)
   const hash = ohash([...temp])
   const noCache = !cache.has(hash)

@@ -12,10 +12,17 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
+    '@nuxtjs/google-fonts',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
   ],
+
+  googleFonts: {
+    families: {
+      'Nunito+Sans': [300, 400, 500, 600, 700],
+    },
+  },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest

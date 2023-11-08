@@ -30,13 +30,15 @@ export default defineConfig({
       scale: 1.2,
     }),
     presetTypography(),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
-    }),
+    // presetWebFonts({
+    //   // use axios with an https proxy
+    //   customFetch: (url: string) => axios.get(url, { httpsAgent: new ProxyAgent('https://localhost:7890') }).then(it => it.data),
+    //   provider: 'google',
+    //   fonts: {
+    //     sans: '',
+    //     mono: ['Fira Code', 'Fira Mono:400,700'],
+    //   },
+    // }),
   ],
   transformers: [
     transformerDirectives(),

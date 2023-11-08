@@ -25,8 +25,9 @@ async function loadingNext() {
   }
 }
 
+loadingNext()
+
 if (process.client) {
-  loadingNext()
   useIntervalFn(() => {
     if (!tailEl.value || isLoading.value)
       return
@@ -35,9 +36,6 @@ if (process.client) {
     if (delta < 400)
       loadingNext()
   }, 500)
-}
-else {
-  await loadingNext()
 }
 </script>
 
