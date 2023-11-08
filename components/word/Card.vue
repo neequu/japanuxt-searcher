@@ -7,7 +7,7 @@ const props = defineProps<{
 
 const partsOfSpeech = props.item.senses[0].parts_of_speech
 const tags = props.item.senses[0].tags
-// const jlpt = props.item?.jlpt.map(t => t.split('-').join(' '))
+const jlpt = props.item.jlpt[props.item.jlpt.length - 1]
 </script>
 
 <template>
@@ -34,11 +34,9 @@ const tags = props.item.senses[0].tags
       </div>
     </div>
     <div class="ml-auto flex flex-col gap-2 text-center line-height-[1] text-white">
-      <p v-if="item.jlpt.length" class="rounded-sm bg-accent bg-opacity-80 py-1 shadow">
-        <NuxtLink to="/search">
-          {{ item.jlpt[item.jlpt.length - 1] }}
-        </NuxtLink>
-      </p>
+      <NuxtLink v-if="item.jlpt.length" :to="`/decks/${jlpt}`" class="rounded-sm bg-neutral-8 bg-opacity-40 p-2 transition hover:bg-opacity-80">
+        {{ jlpt }}
+      </NuxtLink>
       <p v-if="item.is_common">
         common word
       </p>

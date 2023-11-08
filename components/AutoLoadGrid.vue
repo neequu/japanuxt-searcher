@@ -33,14 +33,14 @@ if (process.client) {
       return
     const { top } = tailEl.value.getBoundingClientRect()
     const delta = top - window.innerHeight
-    if (delta < 400)
+    if (delta < 200)
       loadingNext()
   }, 500)
 }
 </script>
 
 <template>
-  <WordGrid v-if="!items?.length">
+  <WordGrid v-if="!items?.length && isLoading">
     <WordCardSkeleton v-for="(_, idx) in 10" :key="idx" />
   </WordGrid>
   <WordGrid v-else>

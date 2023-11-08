@@ -3,8 +3,10 @@ import type { JapaneseWord } from '~/types'
 
 const route = useRoute()
 const router = useRouter()
+
 const query = ref((route.query.q || '').toString())
-const currentSearch = ref(query)
+const currentSearch = ref(query.value)
+
 const items = ref<JapaneseWord[]>([])
 const count = ref<undefined | number>()
 const hasMoreItems = ref(true)
@@ -16,8 +18,7 @@ function search() {
   router.replace({ query: { q: query.value } })
   count.value = undefined
   items.value = []
-
-  fetch()
+  hasMoreItems.value = true
 }
 
 async function fetch(page = 1) {
@@ -42,6 +43,7 @@ useHead({
 </script>
 
 <template>
+  {{ currentSearch }}
   <section class="mt-2">
     <form @submit.prevent="search">
       <input id="search" v-model="query" type="text" name="search" class="w-full border border-neutral-600 rounded-xl bg-transparent p-4 text-2xl text-#aaa outline-none focus:border-accent placeholder:text-2xl placeholder:text-neutral-5 focus:outline-0.25" placeholder="Enter a word, kanji or jlpt tag" autocomplete="off" autocorrect="off" spellcheck="false" lang="ja">
@@ -51,7 +53,7 @@ useHead({
     <div v-if="count === 0" class="text-2xl">
       No results found.
     </div>
-    <AutoLoadGrid :items="items" :fetch="fetch" :count="count" />
+    <AutoLoadGrid :key="currentSearch" :items="items" :fetch="fetch" :count="count" />
     <!-- <AutoLoadGrid v-else :items="items" :fetch="fetch" :count="count" /> -->
   </section>
 </template>
