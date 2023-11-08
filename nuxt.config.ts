@@ -16,14 +16,20 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
+    '@nuxtjs/supabase',
   ],
-
+  supabase: {
+    redirectOptions: {
+      login: '/sign-in',
+      callback: '/confirm',
+      exclude: ['/search', '/', '/about'],
+    },
+  },
   googleFonts: {
     families: {
       'Nunito+Sans': [300, 400, 500, 600, 700],
     },
   },
-
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
