@@ -22,7 +22,7 @@ function handleError() {
         Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
       </div>
       <pre v-if="isDev">{{ error }}</pre>
-      <button n-link border rounded px4 py1 @click="handleError">
+      <button aria-label="reset error" type="button" @click="handleError">
         Go Back
       </button>
     </div>

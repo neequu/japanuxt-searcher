@@ -31,7 +31,7 @@ async function signOut() {
           Stats
         </div>
       </NuxtLink>
-      <button v-if="user" type="button" class="outline-none focus-visible:border-blueGray link" @click="signOut">
+      <button v-if="user" aria-label="log out" type="button" class="outline-none focus-visible:border-blueGray link" @click="signOut">
         Logout
       </button>
       <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">

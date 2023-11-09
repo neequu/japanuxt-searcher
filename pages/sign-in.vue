@@ -22,7 +22,7 @@ watchEffect(() => {
 
 <template>
   <div>
-    <button type="button" @click="signInWithOAuth">
+    <button aria-label="sign in with github" type="button" @click="signInWithOAuth">
       github
     </button>
     {{ user }}

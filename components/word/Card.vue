@@ -63,7 +63,8 @@ function changeAdded() {
         <NuxtLink :to="`/decks/${mainWord}`" class="border-b border-transparent outline-none outline-none transition focus-visible:border-blueGray hover:border-accent!">
           See Examples
         </NuxtLink>
-        <button type="button" class="border-b border-transparent text-2xl outline-none focus-visible:border-blueGray" @click="changeAdded">
+        <!-- todo: add dynamic label and hover -->
+        <button aria-label="" type="button" class="border-b border-transparent text-2xl outline-none focus-visible:border-blueGray" @click="changeAdded">
           <div :class="bookmarkClass" />
         </button>
       </div>
