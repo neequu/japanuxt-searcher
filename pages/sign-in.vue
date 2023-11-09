@@ -21,11 +21,12 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>
-    <button aria-label="sign in with github" type="button" @click="signInWithOAuth">
-      github
+  <div class="grid h-full place-content-center">
+    <button aria-label="sign in with github" type="button" class="flex items-end gap-2 border-b border-transparent text-3xl outline-none transition-300 focus-visible:border-blueGray hover:border-blueGray" @click="signInWithOAuth">
+      <div class="i-tdesign:logo-github-filled text-4xl" />
+      Sign In With Github
     </button>
-    {{ user }}
+
     <div v-if="error">
       there was an error
     </div>
