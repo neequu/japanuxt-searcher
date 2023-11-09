@@ -19,7 +19,7 @@ html, body , #__nuxt{
   height: 100vh;
   margin: 0;
   padding: 0;
-  color-scheme: light dark;
+  color-scheme: dark light;
   font-family: 'Nunito Sans';
 }
 

@@ -16,6 +16,6 @@ function toggleDark() {
 
 <template>
   <button aria-label="change theme" type="button" class="group group ml-6 !outline-none" @click="toggleDark">
-    <div class="i-tdesign-sunny dark:i-tdesign-moon text-2xl transition group-focus-visible:rotate-380 hover:rotate-360" />
+    <div class="i-tdesign-sunny dark:i-tdesign-moon text-2xl transition-300 group-focus-visible:rotate-380 hover:rotate-230" />
   </button>
 </template>

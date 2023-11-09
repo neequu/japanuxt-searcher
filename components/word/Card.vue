@@ -44,10 +44,13 @@ function changeAdded() {
           </span>
         </p>
       </div>
-      <div v-for="(sense, idx) in item.senses" :key="idx">
+      <div v-for="(sense, idx) in item.senses" :key="idx" class="flex gap-4">
         <div class="flex gap-1">
-          <span>{{ idx + 1 }}.</span> <p>{{ sense.english_definitions.join('; ') }}</p>
+          <p>{{ idx + 1 }}.</p> <p>{{ sense.english_definitions.join('; ') }}</p>
         </div>
+        <p class="italic text-neutral-5">
+          {{ sense.tags.join('') }}
+        </p>
       </div>
     </div>
     <div class="ml-auto flex flex-col justify-between">
