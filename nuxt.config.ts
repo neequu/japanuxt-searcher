@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
@@ -5,7 +6,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 export default defineNuxtConfig({
   routeRules: {
-    '/**': isDev ? {} : { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
+    '/**': isDev ? {} : { cache: { swr: true, maxAge: 1200, staleMaxAge: 600, headersOnly: true } },
     '/api/**': { cors: true },
     '/api/tmdb/**': { swr: 3600 },
   },
@@ -23,6 +24,14 @@ export default defineNuxtConfig({
       login: '/sign-in',
       callback: '/confirm',
       exclude: ['/search', '/', '/about'],
+    },
+  },
+  vite: {
+    vue: {
+      script: {
+        defineModel: true,
+        propsDestructure: true,
+      },
     },
   },
   googleFonts: {

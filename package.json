@@ -33,5 +33,9 @@
     "pinia": "^2.1.7",
     "typescript": "^5.2.2",
     "vue-tsc": "^1.8.19"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^2.1.11",
+    "stripe": "^14.3.0"
   }
 }

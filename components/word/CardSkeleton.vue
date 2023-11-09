@@ -9,9 +9,15 @@
       <div class="mb-3 h-3 w-20 bg-dark" />
       <div class="h-3 w-20 bg-dark" />
     </div>
-    <div class="ml-auto">
-      <div class="mb-3 h-3 w-20 bg-dark" />
-      <div class="h-3 w-20 bg-dark" />
+    <div class="ml-auto flex flex-col justify-between">
+      <div>
+        <div class="mb-3 h-3 w-20 bg-dark" />
+        <div class="h-3 w-20 bg-dark" />
+      </div>
+      <div>
+        <div class="mb-3 h-3 w-20 bg-dark" />
+        <div class="h-3 w-20 bg-dark" />
+      </div>
     </div>
   </div>
 </template>

@@ -1,22 +1,13 @@
 <script setup lang="ts">
-import { onKeyDown } from '@vueuse/core'
-
 const query = ref('')
-const input = ref<HTMLInputElement>()
-const vFocus = {
-  mounted: (el: HTMLElement) => el.focus(),
+function search() {
+  navigateTo(`/search?q=${query.value}`)
 }
-onKeyDown('/', (e) => {
-  e.preventDefault()
-  input.value?.focus()
-})
 </script>
 
 <template>
   <section class="mt-2">
-    <form @submit.prevent="$router.push(`/search?q=${query}`)">
-      <input id="hero-search" ref="input" v-model="query" v-focus type="text" name="search" class="w-full border border-neutral-600 rounded-xl bg-transparent p-4 text-2xl text-#aaa outline-none focus:border-accent placeholder:text-2xl placeholder:text-neutral-5 focus:outline-0.25" placeholder="Enter a word, kanji or jlpt tag" autocomplete="off" autocorrect="off" spellcheck="false" lang="ja">
-    </form>
+    <SearchForm v-model="query" :on-submit="search" />
   </section>
   <section class="flex items-center justify-evenly py-3">
     <NuxtLink class="border-b border-transparent outline-none transition focus-visible:border-blueGray link" to="/quiz">
