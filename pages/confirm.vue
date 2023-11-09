@@ -6,11 +6,13 @@ const user = useSupabaseUser()
 watchEffect(() => {
   if (user.value)
     navigateTo('/')
+  // else
+  //   navigateTo('/sign-in')
 })
 </script>
 
 <template>
-  <div class="h-full w-full flex items-center justify-center">
-    <div class="i-carbon:circle-dash animate-spin text-4xl" />
+  <div class="grid h-full w-full place-content-center text-white">
+    <div class="i-tdesign:loading animate-spin text-7xl" />
   </div>
 </template>

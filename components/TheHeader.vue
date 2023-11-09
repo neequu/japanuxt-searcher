@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
+
+async function signOut() {
+  await supabase.auth.signOut()
+  navigateTo('/')
+}
 </script>
 
 <template>
@@ -26,7 +31,7 @@ const user = useSupabaseUser()
           Stats
         </div>
       </NuxtLink>
-      <button v-if="user" type="button" class="outline-none focus-visible:border-blueGray link" @click="supabase.auth.signOut()">
+      <button v-if="user" type="button" class="outline-none focus-visible:border-blueGray link" @click="signOut">
         Logout
       </button>
       <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">

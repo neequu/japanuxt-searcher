@@ -25,6 +25,7 @@ watchEffect(() => {
     <button type="button" @click="signInWithOAuth">
       github
     </button>
+    {{ user }}
     <div v-if="error">
       there was an error
     </div>

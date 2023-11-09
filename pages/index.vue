@@ -42,8 +42,9 @@ onKeyDown('/', (e) => {
     <p class="text-2xl">
       This website is a clone (kinda) of jpdb.io. Used as a demonstration of skills with nuxt3 and other tools. Click the link below to check out Stripe functionality. You will be redirected to the checkout page. You can also have a look at the about link in the footer 👀.
     </p>
-    <NuxtLink class="w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent outline-none transition-300 focus-visible:underline hover:shadow-accent" to="/learn">
+    <NuxtLink class="w-fit flex gap-2 border border-accent rounded-xl px-10 py-4 text-2xl text-accent outline-none transition-300 focus-visible:underline hover:shadow-accent" to="/learn">
       Start Paying
+      <div class="i-tdesign:money" />
     </NuxtLink>
   </section>
 </template>
