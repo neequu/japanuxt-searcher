@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { saveWord } from '~/composables/supabase'
 import type { JapaneseWord } from '~/types'
 
 const props = defineProps<{
@@ -28,7 +29,7 @@ function changeAdded() {
 
 <template>
   <article class="flex border border-neutral-6 rounded-xl px-8 py-6 text-xl">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]">
+    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]" @click="saveWord">
       {{ mainWord }}
       <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
     </ruby>
