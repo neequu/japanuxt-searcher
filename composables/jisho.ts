@@ -32,6 +32,6 @@ export function fetchData(url: string, params: Record<string, string | number | 
   return cache.get(hash)!
 }
 
-export function searchDictionary(query: string, page: number): Promise<JapaneseWord[]> | [] {
+export function searchDictionary(query: string, page = 1): Promise<JapaneseWord[]> | [] {
   return fetchData('/api/jisho/jisho', { query, page })
 }

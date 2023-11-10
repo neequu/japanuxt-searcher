@@ -18,8 +18,8 @@ export interface JapaneseWord {
     },
   ]
   attribution: {
-    jmdict: boolean
-    jmnedict: boolean
-    dbpedia: boolean
+    jmdict: boolean | string
+    jmnedict: boolean | string
+    dbpedia: boolean | string
   }
 }

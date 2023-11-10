@@ -2,10 +2,12 @@
 // const added = ref(false)
 const bookmarkClass = ref('i-tdesign:bookmark-add')
 const route = useRoute()
-const { word } = route.params
+const { word: wordParam } = route.params
 
+const data = await Promise.all([searchDictionary(wordParam)])
+const word = data[0]
 function addWord() {
-  saveWord(word)
+  // saveWord(word)
   // if (added.value) {
   //   bookmarkClass.value = 'i-tdesign:bookmark-add'
   //   added.value = false
@@ -22,8 +24,27 @@ function addWord() {
 
 <template>
   <!-- todo: add dynamic label and hover -->
-  {{ word }}
-  <button type="button" class="border-b border-transparent text-2xl outline-none focus-visible:border-blueGray" @click="addWord">
-    <div :class="bookmarkClass" />
-  </button>
+  <WordCardTemplate :item="word" :main-word="wordParam">
+    <template #additional>
+      <div class="mt-10">
+        <h3 class="mb-1 text-neutral-5">
+          Additional information
+        </h3>
+        <span class="">{{ word.tags.join(', ') }}</span>
+        <!-- <a :href=""></a> -->
+        <div>
+          <p v-for="(value, key) in word.attribution" :key="key">
+            <template v-if="value && value.toString().startsWith('http')">
+              <a class="text-accent underline underline-dotted" :href="value.toString()" target="_blank">Learn more on {{ key }}</a>
+            </template>
+          </p>
+        </div>
+      </div>
+    </template>
+    <template #aside>
+      <button type="button" class="border-b border-transparent text-3xl text-accent outline-none focus-visible:border-blueGray" @click="addWord">
+        <div :class="bookmarkClass" />
+      </button>
+    </template>
+  </WordCardTemplate>
 </template>
