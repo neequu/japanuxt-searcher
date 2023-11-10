@@ -23,7 +23,6 @@ function addWord() {
 <template>
   <!-- todo: add dynamic label and hover -->
   {{ word }}
-
   <button type="button" class="border-b border-transparent text-2xl outline-none focus-visible:border-blueGray" @click="addWord">
     <div :class="bookmarkClass" />
   </button>

@@ -46,7 +46,7 @@ useHead({
   <section class="mt-2">
     <SearchForm v-model="query " :on-submit="search" />
   </section>
-  <section class="mt-10">
+  <section class="mt-10 pb-10">
     <div v-if="count === 0" class="text-2xl">
       No results found.
     </div>

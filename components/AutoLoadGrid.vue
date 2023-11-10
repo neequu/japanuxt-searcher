@@ -51,4 +51,11 @@ if (process.client) {
     />
   </WordGrid>
   <div ref="tailEl" />
+  <p v-if="count" class="mt-5 text-right text-xl">
+    Total results: {{ count }}
+  </p>
+  <!-- todo replace with another icon -->
+  <div v-else class="grid mt-5 place-content-center">
+    <div class="i-tdesign:loading animate-spin text-4xl" />
+  </div>
 </template>

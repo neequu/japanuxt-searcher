@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/sign-in',
       callback: '/confirm',
-      exclude: ['/search', '/', '/about'],
+      exclude: ['/search', '/', '/about', 'words/**'],
     },
   },
   vite: {

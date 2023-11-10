@@ -20,7 +20,7 @@ function handleError() {
     <div text-xl op50>
       Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
     </div>
-    <!-- <pre v-if="isDev">{{ error }}</pre> -->
+    <pre v-if="isDev">{{ error }}</pre>
     <button aria-label="reset error" type="button" @click="handleError">
       Go Back
     </button>
