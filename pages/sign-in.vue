@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const supabase = useSupabaseClient()
+import type { Database } from '~/supabase'
+
+const supabase = useSupabaseClient<Database>()
 const user = useSupabaseUser()
 const error = ref<unknown>()
 async function signInWithOAuth() {

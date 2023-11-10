@@ -6,7 +6,6 @@ export default eventHandler(async (event) => {
     const user = await serverSupabaseUser(event)
     if (!user)
       throw new Error('not auth')
-
     const supabase = await serverSupabaseClient<Database>(event)
     const body = await readBody(event)
 

@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    examples
+    <NuxtImg src="/vite.png" />
   </div>
 </template>
 

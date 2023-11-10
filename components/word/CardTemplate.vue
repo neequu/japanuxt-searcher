@@ -9,7 +9,7 @@ const jlpt = props.item.jlpt[props.item.jlpt.length - 1] || ''
 </script>
 
 <template>
-  <article class="flex border border-neutral-6 rounded-xl px-8 py-6 text-xl">
+  <article class="flex gap-4 border border-neutral-6 rounded-xl px-10 py-8 text-xl">
     <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]">
       {{ mainWord }}
       <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>

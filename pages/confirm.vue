@@ -4,10 +4,9 @@ definePageMeta({
 })
 const user = useSupabaseUser()
 watchEffect(() => {
+  // todo: fix if not signed in
   if (user.value)
     navigateTo('/')
-  // else
-  //   navigateTo('/sign-in')
 })
 </script>
 
