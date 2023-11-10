@@ -5,7 +5,7 @@ const props = defineProps<{
   item: JapaneseWord
   mainWord: string
 }>()
-const jlpt = props.item.jlpt[props.item.jlpt.length - 1]
+const jlpt = props.item.jlpt[props.item.jlpt.length - 1] || ''
 </script>
 
 <template>
@@ -35,7 +35,7 @@ const jlpt = props.item.jlpt[props.item.jlpt.length - 1]
     </div>
     <div class="ml-auto flex flex-col items-center justify-between">
       <div class="flex flex-col gap-2 text-center text-base line-height-[1] text-white">
-        <NuxtLink v-if="item.jlpt.length" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
+        <NuxtLink v-if="jlpt.length" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
           {{ jlpt }}
         </NuxtLink>
         <p v-if="item.is_common">
