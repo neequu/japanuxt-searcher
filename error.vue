@@ -13,18 +13,16 @@ function handleError() {
 </script>
 
 <template>
-  <NuxtLayout>
-    <div flex="~ col" h-screen items-center justify-center gap4 text-center>
-      <div text-3xl>
-        {{ is404 ? 'This page could not be found' : 'An error occurred' }}
-      </div>
-      <div text-xl op50>
-        Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
-      </div>
-      <pre v-if="isDev">{{ error }}</pre>
-      <button aria-label="reset error" type="button" @click="handleError">
-        Go Back
-      </button>
+  <div class="grid h-screen place-content-center text-center">
+    <div text-3xl>
+      {{ is404 ? 'This page could not be found' : 'An error occurred' }}
     </div>
-  </NuxtLayout>
+    <div text-xl op50>
+      Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
+    </div>
+    <!-- <pre v-if="isDev">{{ error }}</pre> -->
+    <button aria-label="reset error" type="button" @click="handleError">
+      Go Back
+    </button>
+  </div>
 </template>

@@ -1,3 +1,10 @@
-export async function saveWord() {
-  return await $fetch('/api/supabase/save-word')
+export async function saveWord(word: string) {
+  try {
+    return await $fetch('/api/supabase/save-word', {
+      method: 'post',
+      body: { word },
+    })
+  }
+  catch (e) {
+  }
 }
