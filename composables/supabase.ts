@@ -7,7 +7,7 @@ const cache = new LRUCache<string, any>({
 })
 
 function _fetchData(url: string, params?: any) {
-  return $fetch(url, { headers: useRequestHeaders(['cookie']), params })
+  return $fetch(url, { params })
 }
 
 export function fetchData(url: string, params?: any): Promise<any> {
@@ -23,7 +23,7 @@ export function fetchData(url: string, params?: any): Promise<any> {
         }),
     )
   }
-  return cache.get(hash)!
+  return cache.get(hash)
 }
 
 export async function findWord(word: string) {
@@ -31,5 +31,5 @@ export async function findWord(word: string) {
 }
 
 export async function saveWord(word: string) {
-  return fetchData(`/api/supabase/user-words/${word}`, { method: 'post' })
+  return $fetch(`/api/supabase/user-words/${word}`, { method: 'post' })
 }

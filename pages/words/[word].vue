@@ -7,11 +7,16 @@ const [savedWord, word] = await Promise.all([findWord(wordParam), searchDictiona
 const isAdded = ref(savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
+const remove = () => isAdded.value = false
+
 const throttledSave = useDebounceFn(
-  isAdded.value
-    ? async () => await saveWord(wordParam)
-    : async () => await saveWord(wordParam)
-  , 10000,
+  async () => await saveWord(wordParam),
+  1000,
+)
+
+const throttledRemove = useDebounceFn(
+  remove,
+  1000,
 )
 
 function addWord() {
@@ -19,7 +24,6 @@ function addWord() {
   // remove word
   if (isAdded.value) {
     activeClass.value = `i-tdesign:bookmark-add`
-    isAdded.value = false
   }
   // add word
   else {
@@ -27,10 +31,9 @@ function addWord() {
     setTimeout(() => {
       activeClass.value = `i-tdesign:bookmark-minus`
     }, 440)
-    isAdded.value = true
   }
-
-  throttledSave()
+  !isAdded.value ? throttledSave() : throttledRemove()
+  isAdded.value = !isAdded.value
 }
 </script>
 
