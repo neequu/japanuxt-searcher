@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const route = useRoute()
-const { word: wordParam } = route.params
+const wordParam = route.params.word
 
-const [savedWord, data] = await Promise.all([findWord(wordParam), searchDictionary(wordParam)])
+const [savedWord, word] = await Promise.all([findWord(wordParam), searchDictionarySingle(wordParam)])
 
-const word = data?.[0]
+console.log('wordpage ', word)
 
 const isAdded = ref(savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
@@ -17,6 +17,7 @@ const throttledSave = useDebounceFn(
 )
 
 function addWord() {
+  // todo: add toast
   // remove word
   if (isAdded.value) {
     activeClass.value = `i-tdesign:bookmark-add`
@@ -36,6 +37,7 @@ function addWord() {
 </script>
 
 <template>
+  {{ savedWord }}
   <h1 class="my-8.5 text-center text-4xl">
     Information for {{ wordParam }}
   </h1>
@@ -51,14 +53,14 @@ function addWord() {
           <div>
             <p v-for="(value, key) in word.attribution" :key="key">
               <template v-if="value && value.toString().startsWith('http')">
-                <a class="text-accent underline underline-dotted" :href="value.toString()" target="_blank">Learn more on {{ key }}</a>
+                <a class="border-b border-b-transparent text-accent transition hover:border-accent" :href="value.toString()" target="_blank">Learn more on {{ key }}</a>
               </template>
             </p>
           </div>
         </div>
       </template>
       <template #aside>
-        <button type="button" class="border-b border-transparent text-3xl text-accent outline-none focus-visible:border-blueGray" @click="addWord">
+        <button type="button" class="border-b border-transparent text-3xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray" @click="addWord">
           <div :class="activeClass" />
         </button>
       </template>

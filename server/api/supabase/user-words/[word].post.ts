@@ -8,11 +8,15 @@ export default eventHandler(async (event) => {
       throw new Error('not auth')
 
     const supabase = await serverSupabaseClient<Database>(event)
-    const body = await readBody(event)
+    const word = getRouterParam(event, 'word')
+    if (!word)
+      return
+      // throw new Error('no params')
+    const decodedWord = decodeURIComponent(word)
 
     const { error } = await supabase.from('user_words').insert({
       user_id: user?.id,
-      word: body.word,
+      word: decodedWord,
     })
     if (error)
       throw new Error(error.message)

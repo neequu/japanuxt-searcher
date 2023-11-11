@@ -24,7 +24,7 @@ function search() {
 async function fetch(page: number) {
   if (!hasMoreItems.value)
     return
-  const data = await searchDictionary(query.value, page)
+  const data = await searchDictionary(query.value, page, false)
 
   if (data.length === 0)
     hasMoreItems.value = false

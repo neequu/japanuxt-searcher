@@ -1,6 +1,6 @@
 export async function findWord(word: string) {
   try {
-    return await $fetch(`/api/supabase/get-word/${word}`, {
+    return await $fetch(`/api/supabase/user-words/${word}`, {
       headers: useRequestHeaders(['cookie']),
     })
   }
@@ -10,10 +10,9 @@ export async function findWord(word: string) {
 
 export async function saveWord(word: string) {
   try {
-    return await $fetch('/api/supabase/save-word', {
+    return await $fetch(`/api/supabase/user-words/${word}`, {
       method: 'post',
       headers: useRequestHeaders(['cookie']),
-      body: { word },
     })
   }
   catch (e) {
