@@ -1,20 +1,35 @@
+import { LRUCache } from 'lru-cache'
+import { hash as ohash } from 'ohash'
+
+const cache = new LRUCache<string, any>({
+  max: 500,
+  ttl: 8000 * 60 * 60, // 8 hours
+})
+
+function _fetchData(url: string, params?: any) {
+  return $fetch(url, { headers: useRequestHeaders(['cookie']), params })
+}
+
+export function fetchData(url: string, params?: any): Promise<any> {
+  const hash = ohash([url])
+  const noCache = !cache.has(hash)
+  if (noCache) {
+    cache.set(
+      hash,
+      _fetchData(url, params)
+        .catch((e) => {
+          cache.delete(hash)
+          throw e
+        }),
+    )
+  }
+  return cache.get(hash)!
+}
+
 export async function findWord(word: string) {
-  try {
-    return await $fetch(`/api/supabase/user-words/${word}`, {
-      headers: useRequestHeaders(['cookie']),
-    })
-  }
-  catch (e) {
-  }
+  return fetchData(`/api/supabase/user-words/${word}`)
 }
 
 export async function saveWord(word: string) {
-  try {
-    return await $fetch(`/api/supabase/user-words/${word}`, {
-      method: 'post',
-      headers: useRequestHeaders(['cookie']),
-    })
-  }
-  catch (e) {
-  }
+  return fetchData(`/api/supabase/user-words/${word}`, { method: 'post' })
 }

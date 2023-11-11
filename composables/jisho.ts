@@ -31,6 +31,6 @@ export function searchDictionary(query: string, page = 1): Promise<JapaneseWord[
   return fetchData('/api/jisho/words', { query, page })
 }
 
-export function searchDictionarySingle(query: string, page = 1): Promise<JapaneseWord[]> {
+export function searchDictionarySingle(query: string, page = 1): Promise<JapaneseWord> {
   return fetchData('/api/jisho/word', { query, page })
 }

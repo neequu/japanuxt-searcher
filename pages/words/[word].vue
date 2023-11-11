@@ -1,10 +1,8 @@
 <script setup lang="ts">
-const route = useRoute()
+const route = useRoute('words-word')
 const wordParam = route.params.word
 
 const [savedWord, word] = await Promise.all([findWord(wordParam), searchDictionarySingle(wordParam)])
-
-console.log('wordpage ', word)
 
 const isAdded = ref(savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)

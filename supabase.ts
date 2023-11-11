@@ -24,12 +24,12 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "customers_id_fkey"
-            columns: ["id"]
+            foreignKeyName: 'customers_id_fkey'
+            columns: ['id']
             isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
         ]
       }
       prices: {
@@ -38,12 +38,12 @@ export interface Database {
           currency: string | null
           description: string | null
           id: string
-          interval: Database["public"]["Enums"]["pricing_plan_interval"] | null
+          interval: Database['public']['Enums']['pricing_plan_interval'] | null
           interval_count: number | null
           metadata: Json | null
           product_id: string | null
           trial_period_days: number | null
-          type: Database["public"]["Enums"]["pricing_type"] | null
+          type: Database['public']['Enums']['pricing_type'] | null
           unit_amount: number | null
         }
         Insert: {
@@ -51,12 +51,12 @@ export interface Database {
           currency?: string | null
           description?: string | null
           id: string
-          interval?: Database["public"]["Enums"]["pricing_plan_interval"] | null
+          interval?: Database['public']['Enums']['pricing_plan_interval'] | null
           interval_count?: number | null
           metadata?: Json | null
           product_id?: string | null
           trial_period_days?: number | null
-          type?: Database["public"]["Enums"]["pricing_type"] | null
+          type?: Database['public']['Enums']['pricing_type'] | null
           unit_amount?: number | null
         }
         Update: {
@@ -64,22 +64,22 @@ export interface Database {
           currency?: string | null
           description?: string | null
           id?: string
-          interval?: Database["public"]["Enums"]["pricing_plan_interval"] | null
+          interval?: Database['public']['Enums']['pricing_plan_interval'] | null
           interval_count?: number | null
           metadata?: Json | null
           product_id?: string | null
           trial_period_days?: number | null
-          type?: Database["public"]["Enums"]["pricing_type"] | null
+          type?: Database['public']['Enums']['pricing_type'] | null
           unit_amount?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "prices_product_id_fkey"
-            columns: ["product_id"]
+            foreignKeyName: 'prices_product_id_fkey'
+            columns: ['product_id']
             isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'products'
+            referencedColumns: ['id']
+          },
         ]
       }
       products: {
@@ -122,7 +122,7 @@ export interface Database {
           metadata: Json | null
           price_id: string | null
           quantity: number | null
-          status: Database["public"]["Enums"]["subscription_status"] | null
+          status: Database['public']['Enums']['subscription_status'] | null
           trial_end: string | null
           trial_start: string | null
           user_id: string
@@ -139,7 +139,7 @@ export interface Database {
           metadata?: Json | null
           price_id?: string | null
           quantity?: number | null
-          status?: Database["public"]["Enums"]["subscription_status"] | null
+          status?: Database['public']['Enums']['subscription_status'] | null
           trial_end?: string | null
           trial_start?: string | null
           user_id: string
@@ -156,26 +156,26 @@ export interface Database {
           metadata?: Json | null
           price_id?: string | null
           quantity?: number | null
-          status?: Database["public"]["Enums"]["subscription_status"] | null
+          status?: Database['public']['Enums']['subscription_status'] | null
           trial_end?: string | null
           trial_start?: string | null
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "subscriptions_price_id_fkey"
-            columns: ["price_id"]
+            foreignKeyName: 'subscriptions_price_id_fkey'
+            columns: ['price_id']
             isOneToOne: false
-            referencedRelation: "prices"
-            referencedColumns: ["id"]
+            referencedRelation: 'prices'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'subscriptions_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
         ]
       }
       user_words: {
@@ -183,7 +183,7 @@ export interface Database {
           created_at: string
           last_reviewed: string | null
           learning: boolean
-          "next_review_date ": string | null
+          'next_review_date ': string | null
           reviews: Json[] | null
           strength: number
           user_id: string
@@ -193,7 +193,7 @@ export interface Database {
           created_at?: string
           last_reviewed?: string | null
           learning?: boolean
-          "next_review_date "?: string | null
+          'next_review_date '?: string | null
           reviews?: Json[] | null
           strength?: number
           user_id: string
@@ -203,7 +203,7 @@ export interface Database {
           created_at?: string
           last_reviewed?: string | null
           learning?: boolean
-          "next_review_date "?: string | null
+          'next_review_date '?: string | null
           reviews?: Json[] | null
           strength?: number
           user_id?: string
@@ -211,12 +211,12 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "user_words_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'user_words_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
         ]
       }
       users: {
@@ -243,12 +243,12 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "users_id_fkey"
-            columns: ["id"]
+            foreignKeyName: 'users_id_fkey'
+            columns: ['id']
             isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
         ]
       }
     }
@@ -259,16 +259,16 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      pricing_plan_interval: "day" | "week" | "month" | "year"
-      pricing_type: "one_time" | "recurring"
+      pricing_plan_interval: 'day' | 'week' | 'month' | 'year'
+      pricing_type: 'one_time' | 'recurring'
       subscription_status:
-        | "trialing"
-        | "active"
-        | "canceled"
-        | "incomplete"
-        | "incomplete_expired"
-        | "past_due"
-        | "unpaid"
+      | 'trialing'
+      | 'active'
+      | 'canceled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'past_due'
+      | 'unpaid'
     }
     CompositeTypes: {
       [_ in never]: never

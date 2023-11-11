@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxtjs/supabase',
-    "@nuxt/image"
+    '@nuxt/image',
   ],
   supabase: {
     redirectOptions: {
