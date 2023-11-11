@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
   try {
-    const data: JapaneseWord[] = await $fetch(`/api/jisho/words`, {
+    const data: any = await $fetch(`/api/jisho/words`, {
       query: {
         query: query.query,
         page: 1,

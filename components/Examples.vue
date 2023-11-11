@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <NuxtImg src="/vite.png" />
+    <NuxtImg format="webp" width="400" src="/vite.png" />
   </div>
 </template>
 

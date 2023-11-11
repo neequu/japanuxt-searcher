@@ -30,7 +30,7 @@ function addWord() {
     activeClass.value = `i-tdesign:bookmark-checked`
     setTimeout(() => {
       activeClass.value = `i-tdesign:bookmark-minus`
-    }, 440)
+    }, 1500)
   }
   !isAdded.value ? throttledSave() : throttledRemove()
   isAdded.value = !isAdded.value

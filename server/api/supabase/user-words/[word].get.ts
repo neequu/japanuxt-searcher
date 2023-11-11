@@ -11,8 +11,7 @@ export default eventHandler(async (event) => {
     const supabase = await serverSupabaseClient<Database>(event)
     const word = getRouterParam(event, 'word')
     if (!word)
-      return
-      // throw new Error('no params')
+      throw new Error('no params')
     const decodedWord = decodeURIComponent(word)
 
     const { data: wordData, error } = await supabase.from('user_words')
