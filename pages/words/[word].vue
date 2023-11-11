@@ -1,24 +1,37 @@
 <script setup lang="ts">
-// const added = ref(false)
-const bookmarkClass = ref('i-tdesign:bookmark-add')
 const route = useRoute()
 const { word: wordParam } = route.params
 
-const data = await searchDictionary(wordParam)
-const word = data[0]
+const [savedWord, data] = await Promise.all([findWord(wordParam), searchDictionary(wordParam)])
+
+const word = data?.[0]
+
+const isAdded = ref(savedWord?.learning)
+const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
+
+const throttledSave = useDebounceFn(
+  isAdded.value
+    ? async () => await saveWord(wordParam)
+    : async () => await saveWord(wordParam)
+  , 10000,
+)
+
 function addWord() {
-  saveWord(wordParam)
-  // if (added.value) {
-  //   bookmarkClass.value = 'i-tdesign:bookmark-add'
-  //   added.value = false
-  // }
-  // else {
-  //   bookmarkClass.value = 'i-tdesign:bookmark-checked'
-  //   setTimeout(() => {
-  //     bookmarkClass.value = 'i-tdesign:bookmark-minus'
-  //   }, 440)
-  //   added.value = true
-  // }
+  // remove word
+  if (isAdded.value) {
+    activeClass.value = `i-tdesign:bookmark-add`
+    isAdded.value = false
+  }
+  // add word
+  else {
+    activeClass.value = `i-tdesign:bookmark-checked`
+    setTimeout(() => {
+      activeClass.value = `i-tdesign:bookmark-minus`
+    }, 440)
+    isAdded.value = true
+  }
+
+  throttledSave()
 }
 </script>
 
@@ -46,7 +59,7 @@ function addWord() {
       </template>
       <template #aside>
         <button type="button" class="border-b border-transparent text-3xl text-accent outline-none focus-visible:border-blueGray" @click="addWord">
-          <div :class="bookmarkClass" />
+          <div :class="activeClass" />
         </button>
       </template>
     </WordCardTemplate>

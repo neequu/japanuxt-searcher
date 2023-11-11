@@ -18,7 +18,6 @@ export function fetchData(url: string, params: Record<string, string | number | 
   const temp = Object.values(params)
   const hash = ohash([...temp])
   const noCache = !cache.has(hash)
-
   if (noCache) {
     cache.set(
       hash,
@@ -32,6 +31,6 @@ export function fetchData(url: string, params: Record<string, string | number | 
   return cache.get(hash)!
 }
 
-export function searchDictionary(query: string, page = 1): Promise<JapaneseWord[]> | [] {
+export function searchDictionary(query: string, page = 1): Promise<JapaneseWord[]> {
   return fetchData('/api/jisho/jisho', { query, page })
 }
