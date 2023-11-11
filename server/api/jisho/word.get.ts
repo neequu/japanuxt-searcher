@@ -1,6 +1,6 @@
 import type { JapaneseWord } from '~/types'
 
-export default defineEventHandler(async (event): Promise<any> => {
+export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
   try {
