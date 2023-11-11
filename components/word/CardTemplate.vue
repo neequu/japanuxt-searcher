@@ -6,12 +6,19 @@ const props = defineProps<{
   mainWord: string
 }>()
 const jlpt = props.item.jlpt[props.item.jlpt.length - 1] || ''
+
+const { copy, copied, isSupported } = useClipboard()
 </script>
 
 <template>
   <article class="flex gap-4 border border-neutral-6 rounded-xl px-10 py-8 text-xl">
     <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]">
-      {{ mainWord }}
+      <div class="flex flex-col items-center gap-5">
+        {{ mainWord }}
+        <button v-if="isSupported" type="button" class="text-2xl outline-none" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
+          <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
+        </button>
+      </div>
       <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
     </ruby>
     <div class="pb-8">
