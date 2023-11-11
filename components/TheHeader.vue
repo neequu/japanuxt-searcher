@@ -17,7 +17,7 @@ async function signOut() {
         nequjp<span class="ml-2 font-size-50% tracking-tight">clone</span>
       </h1>
     </NuxtLink>
-    <nav class="flex items-center">
+    <nav class="hidden items-center md:flex">
       <NuxtLink v-slot="{ isActive }" to="/learn" class="group outline-none">
         <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
           Learn

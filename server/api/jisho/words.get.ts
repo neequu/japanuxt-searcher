@@ -1,5 +1,3 @@
-import type { JapaneseWord } from '~/types'
-
 const JISHO_API_URL = 'https://jisho.org/api/v1/search/words'
 
 export default defineEventHandler(async (event) => {
