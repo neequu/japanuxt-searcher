@@ -4,7 +4,7 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
-  // presetWebFonts,
+  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -30,15 +30,12 @@ export default defineConfig({
       scale: 1.2,
     }),
     presetTypography(),
-    // presetWebFonts({
-    //   // use axios with an https proxy
-    //   customFetch: (url: string) => axios.get(url, { httpsAgent: new ProxyAgent('https://localhost:7890') }).then(it => it.data),
-    //   provider: 'google',
-    //   fonts: {
-    //     sans: '',
-    //     mono: ['Fira Code', 'Fira Mono:400,700'],
-    //   },
-    // }),
+    presetWebFonts({
+      provider: 'google',
+      fonts: {
+        mono: ['Nunito Sans'],
+      },
+    }),
   ],
   transformers: [
     transformerDirectives(),
