@@ -20,7 +20,7 @@ html, body , #__nuxt{
   margin: 0;
   padding: 0;
   color-scheme: dark light;
-  font-family: 'Nunito Sans';
+  font-family: 'Nunito Sans', Helvetica, sans-serif;
 }
 
 html.dark {

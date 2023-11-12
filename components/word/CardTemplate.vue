@@ -26,7 +26,7 @@ const { copy, copied, isSupported } = useClipboard()
         Meanings
       </h2>
       <div v-for="(sense, idx) in item.senses" :key="idx" class="">
-        <div class="text-xl font-600 text-neutral-5">
+        <div class="text-xl font-700 text-neutral-5">
           <p v-if="sense.parts_of_speech.join(', ') !== item.senses[idx && idx - 1].parts_of_speech.join(', ') || idx === 0" class="my-1">
             {{ sense.parts_of_speech.join(', ') }}
           </p>

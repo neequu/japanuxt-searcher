@@ -13,7 +13,7 @@ async function signOut() {
 <template>
   <header class="mx-auto flex items-center justify-between px-4 py-3 container">
     <NuxtLink to="/" class="border-b border-transparent outline-none transition focus-visible:border-blueGray">
-      <h1 class="text-4xl font-800 leading-[1] tracking-tighter">
+      <h1 class="text-4xl font-700 leading-[1] tracking-tighter">
         nequjp<span class="ml-2 font-size-50% tracking-tight">clone</span>
       </h1>
     </NuxtLink>

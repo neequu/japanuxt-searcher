@@ -30,12 +30,12 @@ export default defineConfig({
       scale: 1.2,
     }),
     presetTypography(),
-    presetWebFonts({
-      provider: 'google',
-      fonts: {
-        mono: ['Nunito Sans'],
-      },
-    }),
+    // presetWebFonts({
+    //   provider: 'google',
+    //   fonts: {
+    //     mono: ['Nunito Sans'],
+    //   },
+    // }),
   ],
   transformers: [
     transformerDirectives(),
