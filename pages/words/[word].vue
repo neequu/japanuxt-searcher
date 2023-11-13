@@ -49,17 +49,14 @@ async function stripeInit() {
 </script>
 
 <template>
-  <button @click="stripeInit">
-    click
-  </button>
-  <h1 class="my-8.5 text-center text-4xl">
+  <h1 class="my-4 text-center text-2xl md:my-8.5 md:text-4xl">
     Information for {{ wordParam }}
   </h1>
-  <section class="mt-10">
+  <section class="my-6 md:mt-10">
     <WordCardTemplate :item="word" :main-word="wordParam">
       <template #additional>
-        <div class="mt-10">
-          <h3 class="mb-1 text-neutral-5">
+        <div class="mt-6 md:mt-10">
+          <h3 class="text-neutral-5 md:mb-1">
             Additional information
           </h3>
           <span class="">{{ word.tags.join(', ') }}</span>
@@ -74,13 +71,13 @@ async function stripeInit() {
       </template>
       <template #aside>
         <!-- todo: add toast -->
-        <button type="button" class="border-b border-transparent text-3xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray" @click="addWord">
+        <button type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-3xl" @click="addWord">
           <div :class="activeClass" />
         </button>
       </template>
     </WordCardTemplate>
   </section>
-  <section class="mt-10">
+  <section class="mt-6 md:mt-10">
     <Examples />
   </section>
 </template>

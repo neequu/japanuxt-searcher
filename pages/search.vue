@@ -46,8 +46,8 @@ useHead({
   <section class="mt-2">
     <SearchForm v-model="query " :on-submit="search" />
   </section>
-  <section class="mt-10 pb-10">
-    <div v-if="count === 0" class="text-2xl">
+  <section class="my-6 md:my-10">
+    <div v-if="count === 0" class="md:text-2xl sm:text-lg">
       No results found.
     </div>
     <AutoLoadGrid :key="currentSearch" :items="items" :fetch="fetch" :count="count" />

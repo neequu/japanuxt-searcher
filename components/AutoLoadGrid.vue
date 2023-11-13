@@ -53,9 +53,9 @@ if (process.client) {
   <div ref="tailEl" />
   <!-- todo replace with another icon -->
   <div v-if="isLoading" class="grid mt-5 place-content-center">
-    <div class="i-tdesign:loading animate-spin text-4xl" />
+    <div class="i-tdesign:loading animate-spin text-2xl md:text-4xl" />
   </div>
-  <p v-else-if="count" class="mt-5 text-right text-xl">
+  <p v-else-if="count" class="mt-5 text-right text-lg md:text-xl">
     Total results: {{ count }}
   </p>
 </template>

@@ -21,6 +21,13 @@ export default defineConfig({
     boxShadow: {
       accent: 'inset 2px 2px 5px #4b8dff, inset -2px -2px 5px #4b8dff',
     },
+    // breakpoints: {
+    //   'sm': '640px',
+    //   'md': '768px',
+    //   'lg': '1024px',
+    //   'xl': '1280px',
+    //   '2xl': '1536px',
+    // },
   },
 
   presets: [

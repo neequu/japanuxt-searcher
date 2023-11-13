@@ -10,22 +10,22 @@ const { copy, copied } = useClipboard()
 </script>
 
 <template>
-  <article class="flex gap-4 border border-neutral-6 rounded-xl px-10 py-8 text-xl">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-25 items-start gap-x-1 whitespace-normal break-anywhere text-5xl line-height-[1]">
-      <div class="flex flex-col items-center gap-5">
+  <article class="grid grid-cols-[min-content_1fr] border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row sm:px-5 sm:py-8 sm:text-xl">
+    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl line-height-[1] sm:w-25 sm:text-5xl">
+      <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
-        <button type="button" class="text-2xl outline-none transition hover:scale-105" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
+        <button type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
           <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
         </button>
       </div>
       <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
     </ruby>
-    <div class="pb-8">
-      <h2 class="mb-2 text-base text-neutral-5">
+    <div class="pb-8 pl-4 md:pl-0">
+      <h2 class="text-base text-neutral-5 sm:mb-2">
         Meanings
       </h2>
-      <div v-for="(sense, idx) in item.senses" :key="idx" class="">
-        <div class="text-xl font-700 text-neutral-5">
+      <div v-for="(sense, idx) in item.senses" :key="idx">
+        <div class="font-700 text-neutral-5 sm:text-xl">
           <p v-if="sense.parts_of_speech.join(', ') !== item.senses[idx && idx - 1].parts_of_speech.join(', ') || idx === 0" class="my-1">
             {{ sense.parts_of_speech.join(', ') }}
           </p>
@@ -39,8 +39,8 @@ const { copy, copied } = useClipboard()
       </div>
       <slot name="additional" />
     </div>
-    <div class="ml-auto flex flex-col items-center justify-between">
-      <div class="flex flex-col gap-2 text-center text-base line-height-[1] text-white">
+    <div class="col-span-2 ml-auto flex flex-col justify-between sm:items-center">
+      <div class="hidden text-base line-height-[1] text-white sm:flex sm:flex-col sm:items-center sm:items-stretch sm:gap-2 sm:text-center">
         <NuxtLink v-if="jlpt.length" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
           {{ jlpt }}
         </NuxtLink>
