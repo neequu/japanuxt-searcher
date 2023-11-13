@@ -9,7 +9,7 @@ function search() {
   <section class="mt-2">
     <SearchForm v-model="query" :on-submit="search" />
   </section>
-  <section class="flex items-center justify-evenly py-3">
+  <section class="flex flex-wrap items-center justify-evenly py-2 md:py-3">
     <NuxtLink class="border-b border-transparent outline-none transition focus-visible:border-blueGray link" to="/quiz">
       Quiz
     </NuxtLink>
@@ -17,28 +17,31 @@ function search() {
       Leaderboard
     </NuxtLink>
   </section>
-  <section class="grid mt-8 gap-6">
-    <p class="text-4xl">
+  <section class="grid mt-4 gap-3 md:mt-8 md:gap-6">
+    <p class="text-xl md:text-4xl">
       Welcome back!
     </p>
-    <p class="text-2xl">
+    <p class="md:text-2xl">
       You have 15 due vocabulary and 60 new vocabulary available for review.
     </p>
-    <NuxtLink class="group w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent outline-none transition-300 hover:shadow-accent" to="/learn">
-      <div class="border-b border-transparent transition-300 group-focus-visible:border-blueGray">
+    <NuxtLink class="group mx-auto w-fit border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/learn">
+      <div class="border-b border-transparent text-center transition-300 group-focus-visible:border-blueGray">
         Start Learning
       </div>
     </NuxtLink>
   </section>
-  <section class="grid mt-28 gap-6">
-    <p class="text-4xl">
+  <section class="grid mt-14 gap-3 md:mt-28 md:gap-6">
+    <p class="text-xl md:text-4xl">
       Consider upgrading your account! ヽ(✿ﾟ▽ﾟ)ノ
     </p>
-    <p class="text-2xl">
-      This website is a clone (kinda) of jpdb.io. Used as a demonstration of skills with nuxt3 and other tools. Click the link below to check out Stripe functionality. You will be redirected to the checkout page. You can also have a look at the about link in the footer 👀.
+    <p class="md:text-2xl">
+      This website is a clone (kinda) of jpdb.io. Used as a demonstration of skills with nuxt3 and other tools. Click the link below to check out Stripe functionality.
     </p>
-    <NuxtLink class="group w-fit border border-accent rounded-xl px-10 py-4 text-2xl text-accent outline-none transition-300 hover:shadow-accent" to="/learn">
-      <div class="flex gap-2 border-b border-transparent group-focus-visible:border-blueGray">
+    <p class="md:text-2xl">
+      You can click on a button below to check out stripe functionality and test buying a subscription.
+    </p>
+    <NuxtLink class="group mx-auto w-fit border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/learn">
+      <div class="flex gap-2 border-b border-transparent text-center group-focus-visible:border-blueGray">
         Start Paying
         <div class="i-tdesign:money" />
       </div>

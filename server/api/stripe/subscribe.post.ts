@@ -1,16 +1,18 @@
 import Stripe from 'stripe'
 import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 
-const config = useRuntimeConfig()
-const stripe = new Stripe(config.private.stripeSecretKey)
-const baseURL = config.public.baseURL
+// const baseURL = config.public.baseURL
 const priceKey = 'price_1OC2EXIPqGxQGtrU8304lx5o'
 
 export default defineEventHandler(async (event) => {
   const user = await serverSupabaseUser(event)
-
   if (!user)
     throw new Error('not auth')
+  return
+  // const config = useRuntimeConfig(event)
+  // if (!config.private.stripeSecretKey)
+  throw new Error('stripe key not set')
+  // const stripe = new Stripe(config.private.stripeSecretKey)
 
   const body = await readBody(event)
   const reqUrl = decodeURIComponent(body.reqUrl)
@@ -34,5 +36,6 @@ export default defineEventHandler(async (event) => {
     return { url: session.url, user }
   }
   catch (e: any) {
+    console.log(e.message)
   }
 })

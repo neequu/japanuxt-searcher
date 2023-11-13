@@ -36,7 +36,7 @@ function addWord() {
   isAdded.value = !isAdded.value
 }
 async function stripeInit() {
-  const config = useRuntimeConfig()
+  // const config = useRuntimeConfig()
   // const stripe = Stripe(config.public.stripePubKey)
 
   const { data } = useFetch(`/api/stripe/subscribe`, {

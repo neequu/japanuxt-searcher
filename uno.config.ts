@@ -11,7 +11,7 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    ['link', 'text-accent py-3 px-6 border-b border-transparent text-2xl transition hover:border-blueGray!'],
+    ['link', 'text-accent md:py-3 md:px-6 py-2 px-3 border-b border-transparent  sm:text-lg md:text-2xl transition hover:border-blueGray!'],
   ],
   theme: {
     colors: {
@@ -19,7 +19,7 @@ export default defineConfig({
       // accent: '#fc7abc',
     },
     boxShadow: {
-      accent: 'inset 3px 3px 5px #4b8dff, inset -3px -3px 5px #4b8dff',
+      accent: 'inset 2px 2px 5px #4b8dff, inset -2px -2px 5px #4b8dff',
     },
   },
 
