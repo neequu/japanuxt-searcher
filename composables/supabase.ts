@@ -1,12 +1,13 @@
 import { LRUCache } from 'lru-cache'
 import { hash as ohash } from 'ohash'
+import type { Database } from '~/supabase'
 
 const cache = new LRUCache<string, any>({
   max: 500,
   ttl: 8000 * 60 * 60, // 8 hours
 })
 
-function _fetchDB(url: string, params?: any) {
+async function _fetchDB(url: string, params?: any) {
   return $fetch(url, { params })
 }
 
@@ -26,9 +27,9 @@ export function fetchDB(url: string, params?: any): Promise<any> {
   return cache.get(hash)
 }
 
-export async function findWord(word: string) {
-  return fetchDB(`/api/supabase/user-words/${word}`)
-}
+// export async function findWord(word: string): Promise<Database['public']['Tables']['user_words']['Row'] | null> {
+//   return $fetch(`/api/supabase/user-words/${word}`)
+// }
 
 export async function saveWord(word: string) {
   return $fetch(`/api/supabase/user-words/${word}`, { method: 'post' })

@@ -183,7 +183,7 @@ export interface Database {
           created_at: string
           last_reviewed: string | null
           learning: boolean
-          'next_review_date ': string | null
+          next_review_date: string | null
           reviews: Json[] | null
           strength: number
           user_id: string
@@ -193,7 +193,7 @@ export interface Database {
           created_at?: string
           last_reviewed?: string | null
           learning?: boolean
-          'next_review_date '?: string | null
+          next_review_date?: string | null
           reviews?: Json[] | null
           strength?: number
           user_id: string
@@ -203,7 +203,7 @@ export interface Database {
           created_at?: string
           last_reviewed?: string | null
           learning?: boolean
-          'next_review_date '?: string | null
+          next_review_date?: string | null
           reviews?: Json[] | null
           strength?: number
           user_id?: string
