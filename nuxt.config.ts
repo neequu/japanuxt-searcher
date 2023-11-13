@@ -13,7 +13,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
-    // '@nuxtjs/google-fonts',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
@@ -35,11 +34,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  // googleFonts: {
-  //   families: {
-  //     'Nunito+Sans': [300, 400, 500, 600, 700],
-  //   },
-  // },
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
@@ -91,6 +85,15 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true,
+  },
+
+  runtimeConfig: {
+    private: {
+      stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    },
+    public: {
+      appDomain: process.env.APP_DOMAIN,
+    },
   },
 
 })

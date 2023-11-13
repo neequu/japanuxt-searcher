@@ -14,10 +14,12 @@ export default eventHandler(async (event) => {
 
     const decodedWord = decodeURIComponent(word)
 
-    const { error } = await supabase.from('user_words').insert({
-      user_id: user?.id,
-      word: decodedWord,
-    })
+    const { error } = await supabase
+      .from('user_words')
+      .delete()
+      .eq('user_id', user?.id)
+      .eq('word', decodedWord)
+
     if (error)
       throw new Error(error.message)
   }

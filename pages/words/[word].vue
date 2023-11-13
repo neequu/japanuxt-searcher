@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const route = useRoute('words-word')
 const wordParam = route.params.word
-
 const [savedWord, word] = await Promise.all([findWord(wordParam), searchDictionarySingle(wordParam)])
 
 const isAdded = ref(savedWord?.learning)
@@ -38,12 +37,10 @@ function addWord() {
 </script>
 
 <template>
-  {{ savedWord }}
   <h1 class="my-8.5 text-center text-4xl">
     Information for {{ wordParam }}
   </h1>
   <section class="mt-10">
-    <!-- todo: add dynamic label and hover -->
     <WordCardTemplate :item="word" :main-word="wordParam">
       <template #additional>
         <div class="mt-10">
@@ -60,6 +57,7 @@ function addWord() {
           </div>
         </div>
       </template>
+
       <template #aside>
         <button type="button" class="border-b border-transparent text-3xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray" @click="addWord">
           <div :class="activeClass" />
