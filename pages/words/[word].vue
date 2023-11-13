@@ -1,16 +1,13 @@
 <script setup lang="ts">
+import Stripe from 'stripe'
+
 const route = useRoute('words-word')
 const wordParam = route.params.word
-// const [word, savedWord] = await Promise.all([searchDictionarySingle(wordParam), findWord(wordParam)])
-// const savedWord = await findWord(wordParam)
-// const { data: savedWord } = await useFetch(`/api/supabase/user-words/${wordParam}`)
-// const word = await searchDictionarySingle(wordParam)
+
 const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), useFetch(`/api/supabase/user-words/${wordParam}`)])
 
 const isAdded = ref(savedWord.value?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
-
-const remove = () => isAdded.value = false
 
 const throttledSave = useDebounceFn(
   async () => await saveWord(wordParam),
@@ -18,7 +15,7 @@ const throttledSave = useDebounceFn(
 )
 
 const throttledRemove = useDebounceFn(
-  remove,
+  async () => await deleteWord(wordParam),
   1000,
 )
 
@@ -38,9 +35,23 @@ function addWord() {
   !isAdded.value ? throttledSave() : throttledRemove()
   isAdded.value = !isAdded.value
 }
+async function stripeInit() {
+  const config = useRuntimeConfig()
+  // const stripe = Stripe(config.public.stripePubKey)
+
+  const { data } = useFetch(`/api/stripe/subscribe`, {
+    method: 'post',
+    body: {
+      reqUrl: route.fullPath,
+    },
+  })
+}
 </script>
 
 <template>
+  <button @click="stripeInit">
+    click
+  </button>
   <h1 class="my-8.5 text-center text-4xl">
     Information for {{ wordParam }}
   </h1>
@@ -62,11 +73,10 @@ function addWord() {
         </div>
       </template>
       <template #aside>
-        <!-- <ClientOnly> -->
+        <!-- todo: add toast -->
         <button type="button" class="border-b border-transparent text-3xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray" @click="addWord">
           <div :class="activeClass" />
         </button>
-        <!-- </ClientOnly> -->
       </template>
     </WordCardTemplate>
   </section>

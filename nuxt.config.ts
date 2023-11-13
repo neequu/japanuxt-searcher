@@ -88,11 +88,12 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    public: {
+      stripePubKey: process.env.STRIPE_PUBLISHABLE_KEY,
+      baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    },
     private: {
       stripeSecretKey: process.env.STRIPE_SECRET_KEY,
-    },
-    public: {
-      appDomain: process.env.APP_DOMAIN,
     },
   },
 
