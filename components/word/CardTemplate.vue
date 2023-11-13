@@ -10,7 +10,7 @@ const { copy, copied } = useClipboard()
 </script>
 
 <template>
-  <article class="grid grid-cols-[min-content_1fr] border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row sm:px-5 sm:py-8 sm:text-xl">
+  <article class="grid grid-cols-[min-content_1fr] border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row md:px-10 sm:px-5 sm:py-8 sm:text-xl">
     <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl line-height-[1] sm:w-25 sm:text-5xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
