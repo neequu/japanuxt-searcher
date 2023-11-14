@@ -88,10 +88,14 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  // runtimeConfig: {
-  //   private: {
-  //     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
-  //   },
-  // },
+  runtimeConfig: {
+    public: {
+      stripePubKey: process.env.NUXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      baseURL: process.env.NUXT_PUBLIC_BASEURL,
+    },
+    private: {
+      stripeSecretKey: process.env.NUXT_STRIPE_SECRET_KEY,
+    },
+  },
 
 })

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import Stripe from 'stripe'
-
 const route = useRoute('words-word')
-const wordParam = route.params.word
+const wordParam = decodeURIComponent(route.params.word)
+
+useHead({
+  title: computed(() => `${route.query.q} - japanese meaning · nequjp`),
+})
 
 const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), useFetch(`/api/supabase/user-words/${wordParam}`)])
 
@@ -35,17 +37,10 @@ function addWord() {
   !isAdded.value ? throttledSave() : throttledRemove()
   isAdded.value = !isAdded.value
 }
-async function stripeInit() {
-  // const config = useRuntimeConfig()
-  // const stripe = Stripe(config.public.stripePubKey)
 
-  const { data } = useFetch(`/api/stripe/subscribe`, {
-    method: 'post',
-    body: {
-      reqUrl: route.fullPath,
-    },
-  })
-}
+useHead({
+  title: `${wordParam} - details and examples · nequjp`,
+})
 </script>
 
 <template>

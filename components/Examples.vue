@@ -1,5 +1,15 @@
 <script setup lang="ts">
+// const supabase = useSupabaseClient()
 
+async function subscribe() {
+  const data = await $fetch(`/api/stripe/subscribe`, {
+    method: 'post',
+  })
+
+  await navigateTo(data.url, {
+    external: true,
+  })
+}
 </script>
 
 <template>
@@ -10,7 +20,9 @@
       <div class="grid mx-auto h-full place-content-center text-center text-lg md:text-xl">
         <div class="i-tdesign:lock-on mx-auto" />
         <!-- todo: add stripe link -->
-        <p>Pay to see examples</p>
+        <button class="" @click="subscribe">
+          Pay to see examples
+        </button>
       </div>
     </div>
   </div>
