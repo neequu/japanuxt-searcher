@@ -1,18 +1,11 @@
 <script setup lang="ts">
-import type { Database } from '~/supabase'
-
 const query = ref('')
 function search() {
   navigateTo(`/search?q=${query.value}`)
 }
-
-const supabase = useSupabaseClient<Database>()
-const user = useSupabaseUser()
-const { data: isSubscribed } = user.value ? await supabase.from('subscriptions').select().eq('user_id', user.value.id) : false
 </script>
 
 <template>
-  {{ isSubscribed }}
   <section class="mt-2">
     <SearchForm v-model="query" :on-submit="search" />
   </section>
