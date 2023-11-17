@@ -6,7 +6,8 @@ useHead({
   title: computed(() => `${route.query.q} - japanese meaning · nequjp`),
 })
 
-const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), useFetch(`/api/supabase/user-words/${wordParam}`)])
+// const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), useFetch(`/api/supabase/user-words/${wordParam}`)])
+const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), findWord(wordParam)])
 
 const isAdded = ref(savedWord.value?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
@@ -41,6 +42,8 @@ function addWord() {
 useHead({
   title: `${wordParam} - details and examples · nequjp`,
 })
+
+const showExamples = ref(false)
 </script>
 
 <template>
@@ -72,7 +75,10 @@ useHead({
       </template>
     </WordCardTemplate>
   </section>
-  <section class="mt-6 md:mt-10">
+  <button @click="showExamples = !showExamples">
+    show examples
+  </button>
+  <section v-if="showExamples" class="mt-6 md:mt-10">
     <Examples />
   </section>
 </template>
