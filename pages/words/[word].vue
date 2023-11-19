@@ -79,6 +79,6 @@ const showExamples = ref(false)
     show examples
   </button>
   <section v-if="showExamples" class="mt-6 md:mt-10">
-    <Examples />
+    <Examples :word="wordParam" />
   </section>
 </template>
