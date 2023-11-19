@@ -5,6 +5,7 @@ const props = defineProps<{
   items: JapaneseWord[]
   fetch: (page: number) => Promise<void>
   count?: number
+  hasMoreItems: boolean
 }>()
 
 const tailEl = ref<HTMLDivElement>()
@@ -29,7 +30,7 @@ loadingNext()
 
 if (process.client) {
   useIntervalFn(() => {
-    if (!tailEl.value || isLoading.value)
+    if (!tailEl.value || isLoading.value || !props.hasMoreItems)
       return
     const { top } = tailEl.value.getBoundingClientRect()
     const delta = top - window.innerHeight
@@ -40,10 +41,11 @@ if (process.client) {
 </script>
 
 <template>
-  <WordGrid v-if="!items?.length && isLoading">
+  <!-- <WordGrid v-if="!items?.length && isLoading"> -->
+  <WordGrid v-if="true">
     <WordCardSkeleton v-for="(_, idx) in 10" :key="idx" />
   </WordGrid>
-  <WordGrid v-else>
+  <WordGrid>
     <WordCard
       v-for="(item, idx) in items"
       :key="idx"
@@ -55,7 +57,7 @@ if (process.client) {
   <div v-if="isLoading" class="grid mt-5 place-content-center">
     <div class="i-tdesign:loading animate-spin text-2xl md:text-4xl" />
   </div>
-  <p v-else-if="count" class="mt-5 text-right text-lg md:text-xl">
+  <p v-else-if="count" class="mt-5 text-right md:text-xl">
     Total results: {{ count }}
   </p>
 </template>

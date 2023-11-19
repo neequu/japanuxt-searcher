@@ -13,8 +13,9 @@ async function subscribe() {
     external: true,
   })
 }
+const STEP = 10
 const isSubscribed = ref(true)
-const currentStep = ref(10)
+const currentStep = ref(STEP)
 
 const results = ref<Example>()
 const visibleExamples = ref<Example['examples']>([])
@@ -42,7 +43,7 @@ const filteredExamples = computed(() => {
 watch(filteredExamples, () => {
   if (!filteredExamples.value)
     return
-  currentStep.value = 10
+  currentStep.value = STEP
   visibleExamples.value = filteredExamples.value.slice(0, currentStep.value)
 })
 
@@ -62,7 +63,7 @@ if (process.client) {
 function loadMore() {
   // todo: add limit
   console.log('edn')
-  const newStep = currentStep.value + 10
+  const newStep = currentStep.value + STEP
   if (!filteredExamples.value || filteredExamples.value.length < newStep)
     return
   visibleExamples.value.push(...filteredExamples.value.slice(currentStep.value, newStep))

@@ -1,20 +1,20 @@
 <template>
-  <div class="min-h-50 flex animate-pulse gap-6 border border-neutral-6 rounded-xl rounded-xl px-10 py-6">
-    <div class="flex gap-3">
-      <div class="h-21 w-20 bg-dark" />
+  <article class="grid grid-cols-[min-content_1fr] animate-pulse gap-5 border border-neutral-6 rounded-xl px-5 py-4 sm:flex md:px-10 sm:px-5 sm:py-8">
+    <div class="h-full w-20 bg-dark sm:h-2/3" />
+    <div class="h-25 w-9/10 sm:h-50 sm:w-2/3">
+      <div class="mb-3 h-3 w-full bg-dark" />
+      <div class="mb-3 hidden h-3 w-4/5 bg-dark sm:block" />
+      <div class="mb-3 h-3 w-full bg-dark" />
+      <div class="mb-3 h-3 w-full bg-dark" />
+      <div class="mb-3 h-3 w-4/5 bg-dark" />
+      <div class="h-3 w-2/3 bg-dark" />
     </div>
-    <div>
-      <div class="mb-3 h-3 w-20 bg-dark" />
-      <div class="mb-3 h-3 w-20 bg-dark" />
-      <div class="mb-3 h-3 w-20 bg-dark" />
-      <div class="h-3 w-20 bg-dark" />
-    </div>
-    <div class="ml-auto flex flex-col justify-between">
-      <div>
+    <div class="col-span-2 ml-auto mt-5 flex flex-col items-end justify-end justify-between sm:mt-0">
+      <div class="hidden sm:block">
         <div class="mb-3 h-3 w-20 bg-dark" />
-        <div class="h-3 w-20 bg-dark" />
+        <div class="mb-3 h-3 w-20 bg-dark" />
       </div>
-      <div class="h-3 w-20 bg-dark" />
+      <div class="mb-3 h-3 w-20 bg-dark" />
     </div>
-  </div>
+  </article>
 </template>

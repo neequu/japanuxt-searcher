@@ -50,6 +50,6 @@ useHead({
     <div v-if="count === 0" class="md:text-2xl sm:text-lg">
       No results found.
     </div>
-    <AutoLoadGrid :key="currentSearch" :items="items" :fetch="fetch" :count="count" />
+    <AutoLoadGrid :key="currentSearch" :has-more-items="hasMoreItems" :items="items" :fetch="fetch" :count="count" />
   </section>
 </template>
