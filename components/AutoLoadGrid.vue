@@ -41,11 +41,10 @@ if (process.client) {
 </script>
 
 <template>
-  <!-- <WordGrid v-if="!items?.length && isLoading"> -->
-  <WordGrid v-if="true">
+  <WordGrid v-if="!items?.length && isLoading">
     <WordCardSkeleton v-for="(_, idx) in 10" :key="idx" />
   </WordGrid>
-  <WordGrid>
+  <WordGrid v-else>
     <WordCard
       v-for="(item, idx) in items"
       :key="idx"
