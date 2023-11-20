@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxtjs/supabase',
     '@nuxt/image',
+    'nuxt-particles',
   ],
   supabase: {
     redirectOptions: {

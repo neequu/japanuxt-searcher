@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import type { Container } from 'tsparticles-engine'
 import type { Database } from '~/supabase'
+import { options } from '~/constants'
 
 const supabase = useSupabaseClient<Database>()
 const user = useSupabaseUser()
@@ -20,11 +22,22 @@ watchEffect(() => {
   if (user.value)
     navigateTo('/')
 })
+
+function onLoad(container: Container) {
+  container.pause()
+  setTimeout(() => container.play(), 2000)
+}
 </script>
 
 <template>
+  <NuxtParticles
+    id="tsparticles"
+    url="/options.json"
+    :options="{ fullScreen: { enable: false, zIndex: -1 } }"
+    @load="onLoad"
+  />
   <div class="grid h-full place-content-center">
-    <button aria-label="sign in with github" type="button" class="flex items-center gap-2 border-b border-transparent text-xl outline-none transition-300 focus-visible:border-blueGray hover:border-blueGray md:text-3xl" @click="signInWithOAuth">
+    <button aria-label="sign in with github" type="button" class="z-10 flex items-center gap-2 border-b border-transparent text-xl outline-none transition-300 focus-visible:border-blueGray hover:border-blueGray md:text-3xl" @click="signInWithOAuth">
       <div class="i-tdesign:logo-github-filled text-xl md:text-4xl" />
       Sign In With Github
     </button>

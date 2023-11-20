@@ -22,7 +22,7 @@ const visible = ref(false)
           nequjp<span class="ml-2 font-size-50% tracking-tight">clone</span>
         </h1>
       </NuxtLink>
-      <button type="button" class="outline-none sm:hidden" @click="visible = !visible">
+      <button aria-label="menu" type="button" class="outline-none sm:hidden" @click="visible = !visible">
         <div :class="visible ? 'i-tdesign:close' : 'i-tdesign:view-list'" />
       </button>
     </div>
@@ -44,7 +44,7 @@ const visible = ref(false)
             Stats
           </div>
         </NuxtLink>
-        <button v-if="user" aria-label="log out" type="button" class="linkRed outline-none focus-visible:border-blueGray" @click="signOut">
+        <button v-if="user" aria-label="sign out of account" type="button" class="linkRed outline-none focus-visible:border-blueGray" @click="signOut">
           Logout
         </button>
         <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">

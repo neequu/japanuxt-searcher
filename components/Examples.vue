@@ -77,7 +77,7 @@ function loadMore() {
 </script>
 
 <template>
-  <button @click="() => { getData();isSubscribed = true }">
+  <button aria-label="subscribe" type="button" @click="() => { getData();isSubscribed = true }">
     subscribe
   </button>
   <div v-if="!isSubscribed" class="relative overflow-hidden rounded">
@@ -87,7 +87,7 @@ function loadMore() {
       <div class="grid mx-auto h-full place-content-center text-center text-lg md:text-xl">
         <div class="i-tdesign:lock-on mx-auto" />
         <!-- todo: add stripe link -->
-        <button class="" @click="subscribe">
+        <button aria-label="pay" type="button" @click="subscribe">
           Pay to see examples
         </button>
       </div>
@@ -96,11 +96,11 @@ function loadMore() {
   <template v-else>
     <div v-if="results">
       <div class="flex flex-col flex-wrap items-center justify-center border border-neutral-6 rounded-xl p-2 sm:flex-row sm:p-5">
-        <button :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
+        <button aria-label="all results" type="button" :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
           <p>All</p>
           <span>({{ Object.values(results.category_count).reduce((a, b) => a + b, 0) }})</span>
         </button>
-        <button v-for="(k, cat) in results.category_count" :key="cat" @click="activeTab = cat">
+        <button v-for="(k, cat) in results.category_count" :key="cat" :aria-label="`$show only ${cat}`" type="button" @click="activeTab = cat">
           <div v-if="k > 0" :class="{ 'text-accent': activeTab === cat }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!">
             <p class="capitalize">
               {{ cat }}
@@ -151,7 +151,7 @@ function loadMore() {
           <!-- <p class="text-2xl">{{ example.word_list.join('') }}</p> -->
           <div>
             <p class="mb-2 text-lg sm:text-2xl">
-              <button class="translate-y-1/5 transition hover:text-white" @click="playAudio(example.sound_url)">
+              <button class="translate-y-1/5 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
                 <div class="i-tdesign:play-circle-filled" />
               </button>
               {{ example.sentence }}

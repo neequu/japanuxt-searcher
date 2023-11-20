@@ -69,7 +69,7 @@ useHead({
       </template>
       <template #aside>
         <!-- todo: add toast -->
-        <button type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-3xl" @click="addWord">
+        <button aria-label="save word" type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-3xl" @click="addWord">
           <div :class="activeClass" />
         </button>
       </template>

@@ -14,7 +14,7 @@ const { copy, copied } = useClipboard()
     <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl line-height-[1] sm:w-25 sm:text-5xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
-        <button type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
+        <button aria-label="copy text" type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
           <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
         </button>
       </div>
