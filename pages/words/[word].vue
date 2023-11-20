@@ -43,7 +43,7 @@ useHead({
   title: `${wordParam} - details and examples · nequjp`,
 })
 
-const showExamples = ref(false)
+// const showExamples = ref(false)
 </script>
 
 <template>
@@ -75,10 +75,9 @@ const showExamples = ref(false)
       </template>
     </WordCardTemplate>
   </section>
-  <button @click="showExamples = !showExamples">
-    show examples
-  </button>
-  <section v-if="showExamples" class="mt-6 md:mt-10">
+  <!-- <button @click="showExamples = !showExamples">show examples</button> -->
+  <!-- <section v-if="showExamples" class="mt-6 md:mt-10"> -->
+  <section class="mt-6 md:mt-10">
     <Examples :word="wordParam" />
   </section>
 </template>

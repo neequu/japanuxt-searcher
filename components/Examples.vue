@@ -17,6 +17,8 @@ const STEP = 10
 const isSubscribed = ref(true)
 const currentStep = ref(STEP)
 
+const hasMoreItems = ref(true)
+
 const results = ref<Example>()
 const visibleExamples = ref<Example['examples']>([])
 async function getData() {
@@ -45,6 +47,7 @@ watch(filteredExamples, () => {
     return
   currentStep.value = STEP
   visibleExamples.value = filteredExamples.value.slice(0, currentStep.value)
+  hasMoreItems.value = true
 })
 
 const blurredTranslations = ref(true)
@@ -55,17 +58,19 @@ if (process.client) {
       return
     const { top } = tailEl.value.getBoundingClientRect()
     const delta = top - window.innerHeight
-    if (delta < 200)
+    if (delta < 700)
       loadMore()
   }, 500)
 }
 
 function loadMore() {
-  // todo: add limit
-  console.log('edn')
-  const newStep = currentStep.value + STEP
-  if (!filteredExamples.value || filteredExamples.value.length < newStep)
+  if (!filteredExamples.value || !hasMoreItems.value)
     return
+
+  const newStep = currentStep.value + STEP
+  if (filteredExamples.value.length <= newStep)
+    hasMoreItems.value = false
+
   visibleExamples.value.push(...filteredExamples.value.slice(currentStep.value, newStep))
   currentStep.value = newStep
 }
@@ -90,18 +95,18 @@ function loadMore() {
   </div>
   <template v-else>
     <div v-if="results">
-      <div class="flex items-center justify-center border border-neutral-6 rounded-xl p-5">
+      <div class="flex flex-col flex-wrap items-center justify-center border border-neutral-6 rounded-xl p-2 sm:flex-row sm:p-5">
         <button :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
           <p>All</p>
           <span>({{ Object.values(results.category_count).reduce((a, b) => a + b, 0) }})</span>
         </button>
-        <button v-for="(k, cat) in results.category_count" :key="cat" :class="{ 'text-accent': activeTab === cat }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = cat">
-          <template v-if="k > 0">
+        <button v-for="(k, cat) in results.category_count" :key="cat" @click="activeTab = cat">
+          <div v-if="k > 0" :class="{ 'text-accent': activeTab === cat }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!">
             <p class="capitalize">
               {{ cat }}
             </p>
             <span>({{ k }})</span>
-          </template>
+          </div>
         </button>
       </div>
       <div class="mt-4 flex items-center justify-end">
@@ -140,29 +145,29 @@ function loadMore() {
           Blurred translations
         </label>
       </div>
-      <article v-for="(example, idx) in visibleExamples" :key="idx" class="my-4 flex gap-4 border border-neutral-6 rounded-xl p-5">
-        <NuxtImg v-if="example.image_url" width="320" height="175" class="rounded-md object-cover shadow" format="webp" :src="example.image_url" />
-        <div class="flex flex-col justify-between">
+      <article v-for="(example, idx) in visibleExamples" :key="idx" class="my-4 flex flex-col gap-4 border border-neutral-6 rounded-xl p-5 md:flex-row">
+        <NuxtImg v-if="example.image_url" width="320" height="170" class="rounded-md object-cover shadow" format="webp" :src="example.image_url" />
+        <div class="flex flex-1 flex-col justify-between justify-between gap-6 sm:flex-row">
           <!-- <p class="text-2xl">{{ example.word_list.join('') }}</p> -->
           <div>
-            <div class="mb-2 flex items-center gap-4">
-              <p class="text-2xl">
-                {{ example.sentence }}
-              </p>
-              <button class="text-2xl transition hover:text-white" @click="playAudio(example.sound_url)">
+            <p class="mb-2 text-lg sm:text-2xl">
+              <button class="translate-y-1/5 transition hover:text-white" @click="playAudio(example.sound_url)">
                 <div class="i-tdesign:play-circle-filled" />
               </button>
-            </div>
-            <p :class="{ 'blur-sm hover:blur-none transition': blurredTranslations }">
+              {{ example.sentence }}
+            </p>
+            <p class="text-sm sm:text-base" :class="{ 'blur-sm hover:blur-none transition': blurredTranslations }">
               {{ example.translation }}
             </p>
           </div>
-          <p>&copy; <span class="font-italic">{{ example.deck_name }}</span></p>
+          <p class="text-right text-sm font-italic text-white sm:text-base">
+            {{ example.deck_name }}
+          </p>
         </div>
       </article>
       <div ref="tailEl" />
     </div>
-    <div v-else class="i-tdesign:loading animate-spin text-7xl" />
+    <div v-else class="i-tdesign:loading mx-auto animate-spin text-3xl md:text-7xl" />
   </template>
 </template>
 

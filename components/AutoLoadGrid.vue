@@ -34,7 +34,7 @@ if (process.client) {
       return
     const { top } = tailEl.value.getBoundingClientRect()
     const delta = top - window.innerHeight
-    if (delta < 200)
+    if (delta < 300)
       loadingNext()
   }, 500)
 }
