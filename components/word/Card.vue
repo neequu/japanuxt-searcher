@@ -10,7 +10,7 @@ const mainWord = computed(() => props.item.japanese[0].word ?? props.item.slug)
 <template>
   <WordCardTemplate :item="item" :main-word="mainWord">
     <template #aside>
-      <NuxtLink :to="`/words/${mainWord}`" class="border-b border-transparent text-center text-accent outline-none outline-none transition focus-visible:border-blueGray hover:border-accent!">
+      <NuxtLink :to="`/words/${mainWord}`" class="border-b border-transparent text-center text-accent outline-none transition focus-visible:border-blueGray hover:border-accent!">
         See&nbsp;More
       </NuxtLink>
     </template>

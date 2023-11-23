@@ -2,10 +2,10 @@
 import type { Database } from '~/supabase'
 
 const props = defineProps<{
-  savedWord: Database['public']['Tables']['user_words']['Row']
+  savedWord: Database['public']['Tables']['user_words']['Row'] | undefined
   word: string
 }>()
-const isAdded = ref(props.savedWord.learning)
+const isAdded = ref(props.savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
 const throttledSave = useDebounceFn(
@@ -36,11 +36,7 @@ function addWord() {
 </script>
 
 <template>
-  <button aria-label="save word" type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-3xl" @click="addWord">
+  <button aria-label="save word" type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-2xl" @click="addWord">
     <div :class="activeClass" />
   </button>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
