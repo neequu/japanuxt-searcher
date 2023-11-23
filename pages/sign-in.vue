@@ -33,7 +33,7 @@ function onLoad(container: Container) {
   <NuxtParticles
     id="tsparticles"
     url="/options.json"
-    :options="{ fullScreen: { enable: false, zIndex: -1 } }"
+    :options="{ fullScreen: { enable: false, zIndex: -10 } }"
     @load="onLoad"
   />
   <div class="grid h-full place-content-center">

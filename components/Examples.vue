@@ -146,12 +146,11 @@ function loadMore() {
         </label>
       </div>
       <article v-for="(example, idx) in visibleExamples" :key="idx" class="my-4 flex flex-col gap-4 border border-neutral-6 rounded-xl p-5 md:flex-row">
-        <NuxtImg v-if="example.image_url" width="320" height="170" class="rounded-md object-cover shadow" format="webp" :src="example.image_url" />
-        <div class="flex flex-1 flex-col justify-between justify-between gap-6 sm:flex-row">
-          <!-- <p class="text-2xl">{{ example.word_list.join('') }}</p> -->
+        <NuxtImg v-if="example.image_url" width="320" height="170" class="self-center rounded-md object-cover shadow md:self-auto" format="webp" :src="example.image_url" />
+        <div class="flex flex-1 flex-col items-center justify-between justify-between gap-6 lg:flex-row">
           <div>
             <p class="mb-2 text-lg sm:text-2xl">
-              <button class="translate-y-1/5 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
+              <button class="translate-y-1/4 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
                 <div class="i-tdesign:play-circle-filled" />
               </button>
               {{ example.sentence }}

@@ -11,14 +11,14 @@ const { copy, copied } = useClipboard()
 
 <template>
   <article class="grid grid-cols-[min-content_1fr] border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row md:px-10 sm:px-5 sm:py-8 sm:text-xl">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl line-height-[1] sm:w-25 sm:text-5xl">
+    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none sm:w-25 sm:text-5xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
         <button aria-label="copy text" type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
           <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
         </button>
       </div>
-      <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="line-height-[1]">{{ item.japanese[0].reading }}</rt>
+      <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="leading-none">{{ item.japanese[0].reading }}</rt>
     </ruby>
     <div class="pb-8 pl-4 md:pl-0">
       <h2 class="text-base text-neutral-5 sm:mb-2">
@@ -40,7 +40,7 @@ const { copy, copied } = useClipboard()
       <slot name="additional" />
     </div>
     <div class="col-span-2 ml-auto flex flex-col justify-between sm:items-center">
-      <div class="hidden text-base line-height-[1] text-white sm:flex sm:flex-col sm:items-center sm:items-stretch sm:gap-2 sm:text-center">
+      <div class="hidden text-base leading-none text-white sm:flex sm:flex-col sm:items-center sm:items-stretch sm:gap-2 sm:text-center">
         <NuxtLink v-if="jlpt.length" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
           {{ jlpt }}
         </NuxtLink>

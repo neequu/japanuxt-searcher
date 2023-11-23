@@ -54,15 +54,13 @@ useHead({
     <WordCardTemplate :item="word" :main-word="wordParam">
       <template #additional>
         <div class="mt-6 md:mt-10">
-          <h3 class="text-neutral-5 md:mb-1">
+          <h3 class="mb-1 leading-tight text-neutral-5">
             Additional information
           </h3>
           <span class="">{{ word.tags.join(', ') }}</span>
           <div>
             <p v-for="(value, key) in word.attribution" :key="key">
-              <template v-if="value && value.toString().startsWith('http')">
-                <a class="border-b border-b-transparent text-accent transition hover:border-accent" :href="value.toString()" target="_blank">Learn more on {{ key }}</a>
-              </template>
+              <a v-if="value && value.toString().startsWith('http')" class="mt-4 inline-flex border-b border-b-transparent leading-tight text-accent transition hover:border-accent" :href="value.toString()" target="_blank">Learn more on {{ key }}</a>
             </p>
           </div>
         </div>
