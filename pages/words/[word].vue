@@ -6,44 +6,11 @@ useHead({
   title: computed(() => `${route.query.q} - japanese meaning · nequjp`),
 })
 
-// const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), useFetch(`/api/supabase/user-words/${wordParam}`)])
 const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), findWord(wordParam)])
-
-const isAdded = ref(savedWord.value?.learning)
-const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
-
-const throttledSave = useDebounceFn(
-  async () => await saveWord(wordParam),
-  1000,
-)
-
-const throttledRemove = useDebounceFn(
-  async () => await deleteWord(wordParam),
-  1000,
-)
-
-function addWord() {
-  // todo: add toast
-  // remove word
-  if (isAdded.value) {
-    activeClass.value = `i-tdesign:bookmark-add`
-  }
-  // add word
-  else {
-    activeClass.value = `i-tdesign:bookmark-checked`
-    setTimeout(() => {
-      activeClass.value = `i-tdesign:bookmark-minus`
-    }, 1500)
-  }
-  !isAdded.value ? throttledSave() : throttledRemove()
-  isAdded.value = !isAdded.value
-}
 
 useHead({
   title: `${wordParam} - details and examples · nequjp`,
 })
-
-// const showExamples = ref(false)
 </script>
 
 <template>
@@ -67,14 +34,10 @@ useHead({
       </template>
       <template #aside>
         <!-- todo: add toast -->
-        <button aria-label="save word" type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-3xl" @click="addWord">
-          <div :class="activeClass" />
-        </button>
+        <SaveButton :saved-word="savedWord" :word="wordParam" />
       </template>
     </WordCardTemplate>
   </section>
-  <!-- <button @click="showExamples = !showExamples">show examples</button> -->
-  <!-- <section v-if="showExamples" class="mt-6 md:mt-10"> -->
   <section class="mt-6 md:mt-10">
     <Examples :word="wordParam" />
   </section>
