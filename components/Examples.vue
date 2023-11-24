@@ -159,7 +159,10 @@ function loadMore() {
             <button class="translate-y-1/4 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
               <div class="i-tdesign:play-circle-filled" />
             </button>
-            {{ example.sentence }}
+            <!-- {{ example.sentence }} -->
+            <span v-for="(example_word, id) in example.word_list" :key="id" class="transition hover:text-accent">
+              <NuxtLink :to="`/words/${example_word}`">{{ example_word }}</NuxtLink>
+            </span>
           </p>
           <p class="text-sm sm:text-base" :class="{ 'blur-sm hover:blur-none transition': blurredTranslations }">
             {{ example.translation }}
