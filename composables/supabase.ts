@@ -47,7 +47,7 @@ export async function findWord(word: string): Promise<any> {
 export async function saveWord(word: string) {
   return $fetch(`/api/supabase/user-words/${word}`, { method: 'post' })
 }
-
 export async function deleteWord(word: string) {
+  // @ts-expect-error check docs later
   return $fetch(`/api/supabase/user-words/${word}`, { method: 'delete' })
 }

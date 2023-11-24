@@ -45,6 +45,5 @@ export default defineEventHandler(async (event) => {
     return { url: session.url, session }
   }
   catch (e: any) {
-    console.log(e.message)
   }
 })

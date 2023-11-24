@@ -31,7 +31,11 @@ async function getData() {
 
 const audioUrl = ref('')
 const audio = computed(() => new Audio(audioUrl.value))
-function playAudio(url: string) { audio.value.pause(); audioUrl.value = url; audio.value.play() }
+function playAudio(url: string) {
+  audio.value.pause()
+  audioUrl.value = url
+  audio.value.play()
+}
 
 const activeTab = ref('All')
 
@@ -121,7 +125,7 @@ function loadMore() {
           id="blur"
           v-model="blurredTranslations"
           type="checkbox"
-          class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none border border-blue-gray-200 rounded-md transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 checked:border-accent before:rounded-full before:bg-blue-gray-500 checked:bg-accent before:opacity-0 before:transition-opacity before:-translate-x-2/4 before:-translate-y-2/4 checked:before:bg-accent hover:before:opacity-10"
+          class="peer relative h-5 w-5 cursor-pointer appearance-none border border-blue-gray-200 rounded-md transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 checked:border-accent before:rounded-full before:bg-blue-gray-500 checked:bg-accent before:opacity-0 before:transition-opacity before:-translate-x-2/4 before:-translate-y-2/4 checked:before:bg-accent hover:before:opacity-10"
         >
         <div class="pointer-events-none absolute left-2/4 top-2/4 text-white opacity-0 transition-opacity -translate-x-2/4 -translate-y-2/4 peer-checked:opacity-100">
           <svg
