@@ -16,21 +16,28 @@ const wordsLength = userWords.value?.length || 0
     <h1 class="text-2xl sm:text-4xl">
       Your learning progress
     </h1>
-    <p>Words {{ wordsLength }}</p>
-    <p>Learning {{ learningWordsLength }}</p>
-    <p>You know {{ wordsLength - learningWordsLength }}</p>
+    <div class="mt-5 text-xl">
+      <p class="">
+        Words {{ wordsLength }}
+      </p>
+      <p class="">
+        Learning {{ learningWordsLength }}
+      </p>
+      <p class="">
+        You know {{ wordsLength - learningWordsLength }}
+      </p>
+    </div>
   </section>
 
   <section class="mt-5">
-    <article class="border border-neutral-6 rounded-xl p-3 text-sm sm:p-6 sm:text-base">
+    <h2 class="border border-neutral-6 rounded-xl p-3 text-sm sm:p-6 md:text-xl sm:text-base">
       Saved Words
-    </article>
+    </h2>
     <template v-if="userWords?.length">
       <div v-for="w in userWords" :key="w.word" class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-3">
         <NuxtLink :to="`/words/${w.word}`" class="self-center text-2xl sm:text-3xl">
           {{ w.word }}
         </NuxtLink>
-        <!-- {{ w.strength }} -->
         <div class="flex flex-col items-end gap-5">
           <p v-if="w.strength === 0" class="text-accent">
             New
@@ -46,7 +53,7 @@ const wordsLength = userWords.value?.length || 0
             <button class="text-red" @click="updateLevel(0, w.word)">
               don't know
             </button>
-          </div> -->
+          </div>  -->
         </div>
       </div>
     </template>
