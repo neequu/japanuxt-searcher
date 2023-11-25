@@ -2,15 +2,21 @@
 import type { JapaneseWord } from '~/types'
 
 const route = useRoute('decks-deck')
+const { deck } = route.params
+const formatedDeckName = deck.toUpperCase().split('-').join(' ')
 
 const items = ref<JapaneseWord[]>([])
 const count = ref<undefined | number>()
 const hasMoreItems = ref(true)
 
 async function fetch(page: number) {
+  if (!deck.startsWith('jlpt')) {
+    count.value = 0
+    return
+  }
   if (!hasMoreItems.value)
     return
-  const data = await searchDictionary(route.params.deck)
+  const data = await searchDictionary(deck)
 
   if (data.length === 0)
     hasMoreItems.value = false
@@ -24,14 +30,22 @@ async function fetch(page: number) {
 }
 
 useHead({
-  title: `${route.params.deck} - JLPT Deck · nequjp`,
+  title: computed(() => `${formatedDeckName} - JLPT Deck · nequjp`),
 })
 </script>
 
 <template>
-  <div>
-    <AutoLoadGrid :fetch="fetch" :items="items" :count="count" :has-more-items="hasMoreItems" />
-  </div>
+  <section class="mt-8">
+    <div v-if="count === 0" class="md:text-2xl sm:text-lg">
+      Deck was not found!
+    </div>
+    <div v-else>
+      <h1 class="mb-4 text-3xl">
+        Showing {{ formatedDeckName }} deck
+      </h1>
+      <AutoLoadGrid :fetch="fetch" :items="items" :count="count" :has-more-items="hasMoreItems" />
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

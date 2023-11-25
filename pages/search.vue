@@ -15,7 +15,13 @@ function search() {
   if (!query.value.trim())
     return
   currentSearch.value = query.value
-  router.replace({ query: { q: query.value } })
+  // router.replace({ query: { q: query.value } })
+  router.push({
+    name: 'search',
+    query: {
+      q: query.value,
+    },
+  })
   count.value = undefined
   items.value = []
   hasMoreItems.value = true
