@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import type { JapaneseWord } from '~/types'
 
-const props = defineProps<{
+defineProps<{
   item: JapaneseWord
   mainWord: string
 }>()
-const jlpt = props.item.jlpt?.[props.item.jlpt?.length - 1] || ''
 const { copy, copied } = useClipboard()
 </script>
 
 <template>
   <article class="grid grid-cols-[min-content_1fr] border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row md:px-10 sm:px-5 sm:py-8 sm:text-xl">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none sm:w-25 sm:text-5xl">
+    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none sm:w-40 md:text-5xl sm:text-4xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
         <button aria-label="copy text" type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
@@ -41,12 +40,14 @@ const { copy, copied } = useClipboard()
     </div>
     <div class="col-span-2 ml-auto flex flex-col justify-between sm:items-center">
       <div class="hidden text-base leading-none text-white sm:flex sm:flex-col sm:items-center sm:items-stretch sm:gap-2 sm:text-center">
-        <NuxtLink v-if="jlpt.length" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
-          {{ jlpt }}
-        </NuxtLink>
         <p v-if="item.is_common">
           common word
         </p>
+        <template v-if="item.jlpt.length">
+          <NuxtLink v-for="jlpt in item.jlpt" :key="jlpt" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
+            <span>{{ jlpt }}</span>
+          </NuxtLink>
+        </template>
       </div>
       <slot name="aside" />
     </div>

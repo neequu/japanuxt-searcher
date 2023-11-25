@@ -83,7 +83,7 @@ function loadMore() {
 </script>
 
 <template>
-  <div v-if="!results" class="flex justify-center">
+  <div v-if="!results && !isLoading" class="flex justify-center">
     <button aria-label="subscribe" type="button" class="border-b border-transparent text-lg text-accent outline-none transition focus-visible:border-blueGray hover:border-accent!" @click="getData">
       Show Examples
     </button>
@@ -100,7 +100,7 @@ function loadMore() {
       </div>
     </div>
   </div> -->
-  <div v-else>
+  <div v-else-if="results">
     <div class="flex flex-col flex-wrap items-center justify-center border border-neutral-6 rounded-xl p-2 sm:flex-row sm:p-5">
       <button aria-label="all results" type="button" :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
         <p>All</p>
