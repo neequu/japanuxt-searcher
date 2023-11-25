@@ -12,11 +12,11 @@ function updateLevel(lvl: number, word: string) {
 </script>
 
 <template>
-  <!-- <section class="mt-5">
-    <h1 class="text-2xl sm:text-4xl">
-      Your learning progress
+  <section class="mt-8">
+    <h1 class="mb-4 text-3xl">
+      Your Learning Progress
     </h1>
-    <div class="mt-5 text-xl">
+    <div class="mb-4 text-xl">
       <p class="">
         Words {{ wordsLength }}
       </p>
@@ -27,15 +27,14 @@ function updateLevel(lvl: number, word: string) {
         You know {{ wordsLength - learningWordsLength }}
       </p>
     </div>
-  </section> -->
-  <section class="mt-8">
-    <button>learn</button>
+    <NuxtLink class="group mx-auto inline-flex border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/review">
+      <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
+        Review Words
+      </span>
+    </NuxtLink>
   </section>
 
   <section class="mt-8">
-    <!-- <h2 class="border border-neutral-6 rounded-xl p-3 text-sm sm:p-6 md:text-xl sm:text-base">
-      Saved Words
-    </h2> -->
     <h1 class="text-3xl">
       Saved Words
     </h1>
