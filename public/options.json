@@ -8,21 +8,16 @@
       }
     },
     "color": {
-      "value": "#888888"
+      "value": "#4b8dff"
     },
     "shape": {
       "type": "circle",
       "stroke": {
         "width": 0,
-        "color": "#000000"
+        "color": "#4b8dff"
       },
       "polygon": {
         "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
       }
     },
     "opacity": {
@@ -48,7 +43,7 @@
     "line_linked": {
       "enable": true,
       "distance": 150,
-      "color": "#ffffff",
+      "color": "#4b8dff",
       "opacity": 0.4,
       "width": 1
     },

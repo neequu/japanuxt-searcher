@@ -28,12 +28,15 @@ function updateLevel(lvl: number, word: string) {
       </p>
     </div>
   </section> -->
+  <section class="mt-8">
+    <button>learn</button>
+  </section>
 
-  <section class="mt-5">
+  <section class="mt-8">
     <!-- <h2 class="border border-neutral-6 rounded-xl p-3 text-sm sm:p-6 md:text-xl sm:text-base">
       Saved Words
     </h2> -->
-    <h1 class="text-2xl sm:text-4xl">
+    <h1 class="text-3xl">
       Saved Words
     </h1>
     <template v-if="userWords?.length">
@@ -49,7 +52,7 @@ function updateLevel(lvl: number, word: string) {
             Learning
           </p>
           <SaveButton :word="w.word" :saved-word="w" />
-          <div class="grid">
+          <!-- <div class="grid">
             <button class="text-#0f9" @click="updateLevel(1, w.word)">
               know
             </button>
@@ -59,7 +62,7 @@ function updateLevel(lvl: number, word: string) {
             <button class="text-#0a0" @click="updateLevel(2, w.word)">
               never forget
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </template>

@@ -7,27 +7,27 @@
   </h1>
   <NuxtLink to="decks/jlpt-n5" class="text-lg sm:text-2xl">
     <span class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-6">
-      N5
+      JLPT N5 Words
     </span>
   </NuxtLink>
   <NuxtLink to="decks/jlpt-n4" class="text-lg sm:text-2xl">
     <span class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-6">
-      N4
+      JLPT N4 Words
     </span>
   </NuxtLink>
   <NuxtLink to="decks/jlpt-n3" class="text-lg sm:text-2xl">
     <span class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-6">
-      N3
+      JLPT N3 Words
     </span>
   </NuxtLink>
   <NuxtLink to="decks/jlpt-n2" class="text-lg sm:text-2xl">
     <span class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-6">
-      N2
+      JLPT N2 Words
     </span>
   </NuxtLink>
   <NuxtLink to="decks/jlpt-n1" class="text-lg sm:text-2xl">
     <span class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-6">
-      N1
+      JLPT N1 Words
     </span>
   </NuxtLink>
 </template>
