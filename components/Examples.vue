@@ -80,6 +80,8 @@ function loadMore() {
   visibleExamples.value.push(...filteredExamples.value.slice(currentStep.value, newStep))
   currentStep.value = newStep
 }
+
+const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a + b, null))
 </script>
 
 <template>
@@ -100,11 +102,11 @@ function loadMore() {
       </div>
     </div>
   </div> -->
-  <div v-else-if="results">
+  <div v-else-if="results && allResultCount && allResultCount > 0">
     <div class="flex flex-col flex-wrap items-center justify-center border border-neutral-6 rounded-xl p-2 sm:flex-row sm:p-5">
       <button aria-label="all results" type="button" :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
         <p>All</p>
-        <span>({{ Object.values(results.category_count).reduce((a, b) => a + b, 0) }})</span>
+        <span>({{ allResultCount }})</span>
       </button>
       <button v-for="(k, cat) in results.category_count" :key="cat" :aria-label="`$show only ${cat}`" type="button" @click="activeTab = cat">
         <div v-if="k > 0" :class="{ 'text-accent': activeTab === cat }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!">
@@ -174,6 +176,9 @@ function loadMore() {
       </div>
     </article>
     <div ref="tailEl" />
+  </div>
+  <div v-if="allResultCount === 0" class="text-center text-lg">
+    No examples found
   </div>
   <div v-if="isLoading" class="i-tdesign:loading mx-auto mt-8 animate-spin text-3xl md:text-4xl" />
 </template>

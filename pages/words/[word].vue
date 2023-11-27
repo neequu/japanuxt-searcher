@@ -19,7 +19,7 @@ useHead({
   </h1>
   <section v-if="word.japanese" class="my-6 md:mt-10">
     <WordCardTemplate :item="word" :main-word="wordParam">
-      <template #additional>
+      <template v-if="word.tags.length" #additional>
         <div class="mt-6 md:mt-10">
           <h3 class="mb-1 leading-tight text-neutral-5">
             Additional information
