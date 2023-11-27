@@ -17,14 +17,14 @@ useHead({
   <h1 class="my-4 text-center text-2xl md:my-8.5 md:text-4xl">
     Information for {{ wordParam }}
   </h1>
-  <section class="my-6 md:mt-10">
+  <section v-if="word.japanese" class="my-6 md:mt-10">
     <WordCardTemplate :item="word" :main-word="wordParam">
       <template #additional>
         <div class="mt-6 md:mt-10">
           <h3 class="mb-1 leading-tight text-neutral-5">
             Additional information
           </h3>
-          <span class="">{{ word.tags.join(', ') }}</span>
+          <span>{{ word.tags.join(', ') }}</span>
           <div>
             <p v-for="(value, key) in word.attribution" :key="key">
               <a v-if="value && value.toString().startsWith('http')" class="mt-4 inline-flex border-b border-b-transparent leading-tight text-accent transition hover:border-accent" :href="value.toString()" target="_blank">Learn more on {{ key }}</a>

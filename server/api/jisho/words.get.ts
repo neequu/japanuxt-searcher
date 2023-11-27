@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
         page: query.page,
       },
     })
+
     return data
   }
   catch (e: any) {

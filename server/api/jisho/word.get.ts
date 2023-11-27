@@ -8,8 +8,7 @@ export default defineEventHandler(async (event) => {
         page: 1,
       },
     })
-
-    return data[0] ?? []
+    return data[0]
   }
   catch (e: any) {
   }

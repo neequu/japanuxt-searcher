@@ -156,7 +156,7 @@ function loadMore() {
       <div class="flex flex-1 flex-col justify-between justify-between gap-6 lg:flex-row">
         <div class="flex-1">
           <p class="mb-2 text-lg sm:text-2xl">
-            <button class="translate-y-1/4 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
+            <button class="mr-1 translate-y-1/4 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
               <div class="i-tdesign:play-circle-filled" />
             </button>
             <!-- {{ example.sentence }} -->

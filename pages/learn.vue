@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { getUserWords } from '~/composables/supabase'
-
 const userWords = ref<any>([])
 const isLoading = ref(false)
 async function fetch() {
@@ -61,7 +59,7 @@ fetch()
     <div v-else class="mt-4 text-lg">
       You haven't saved anything yet
     </div>
-    <div v-if="isLoading" class="">
+    <div v-if="isLoading">
       <!-- todo: create skeleton -->
       <div class="i-tdesign:loading animate-spin text-4xl" />
     </div>

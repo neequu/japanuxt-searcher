@@ -17,7 +17,7 @@ const { copy, copied } = useClipboard()
           <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
         </button>
       </div>
-      <rt v-if="item.japanese[0].reading !== (item.japanese[0].word ?? item.slug)" class="leading-none">{{ item.japanese[0].reading }}</rt>
+      <rt v-if="item.japanese?.[0].reading !== (item.japanese?.[0].word ?? item.slug)" class="leading-none">{{ item.japanese?.[0].reading }}</rt>
     </ruby>
     <div class="pb-8 pl-4 md:pl-0">
       <h2 class="text-base text-neutral-5 sm:mb-2">
@@ -25,14 +25,14 @@ const { copy, copied } = useClipboard()
       </h2>
       <div v-for="(sense, idx) in item.senses" :key="idx">
         <div class="font-700 text-neutral-5 sm:text-xl">
-          <p v-if="sense.parts_of_speech.join(', ') !== item.senses[idx && idx - 1].parts_of_speech.join(', ') || idx === 0" class="my-1">
-            {{ sense.parts_of_speech.join(', ') }}
+          <p v-if="sense.parts_of_speech?.join(', ') !== item.senses[idx && idx - 1].parts_of_speech?.join(', ') || idx === 0" class="my-1">
+            {{ sense.parts_of_speech?.join(', ') }}
           </p>
         </div>
         <div>
           <div class="flex gap-1">
             <p>{{ idx + 1 }}.</p>
-            <p>{{ sense.english_definitions.join('; ') }} <span class="italic text-neutral-5">{{ sense.tags.join(', ') }}</span></p>
+            <p>{{ sense.english_definitions?.join('; ') }} <span class="italic text-neutral-5">{{ sense.tags?.join(', ') }}</span></p>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@ const { copy, copied } = useClipboard()
         <p v-if="item.is_common">
           common word
         </p>
-        <template v-if="item.jlpt.length">
+        <template v-if="item.jlpt?.length">
           <NuxtLink v-for="jlpt in item.jlpt" :key="jlpt" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">
             <span>{{ jlpt }}</span>
           </NuxtLink>
