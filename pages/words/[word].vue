@@ -6,7 +6,7 @@ useHead({
   title: computed(() => `${route.query.q} - japanese meaning · nequjp`),
 })
 
-const [word, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), findWord(wordParam)])
+const [word, savedWord] = await Promise.all([searchDictionarySingle(wordParam), findWord(wordParam)])
 
 useHead({
   title: `${wordParam} - details and examples · nequjp`,
