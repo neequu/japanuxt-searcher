@@ -18,6 +18,7 @@ export default eventHandler(async (event) => {
       .select()
       .eq('word', decodedWord)
       .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
       .maybeSingle()
 
     if (error)
