@@ -16,15 +16,15 @@ async function fetch(page: number) {
   }
   if (!hasMoreItems.value)
     return
-  const data = await searchDictionary(deck)
+  const { data: words } = await searchDictionary(deck)
 
-  if (data.length === 0)
+  if (words.value.length === 0)
     hasMoreItems.value = false
 
   if (page > 1)
-    items.value.push(...data)
+    items.value.push(...words.value)
   else
-    items.value = data
+    items.value = words.value
 
   count.value = items.value.length
 }

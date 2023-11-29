@@ -81,7 +81,7 @@ function loadMore() {
   currentStep.value = newStep
 }
 
-const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a && a + b, null))
+const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a + b, null))
 </script>
 
 <template>
@@ -102,7 +102,7 @@ const allResultCount = computed(() => Object.values(results.value?.category_coun
       </div>
     </div>
   </div> -->
-  <div v-else-if="results && allResultCount && allResultCount > 0">
+  <div v-else-if="results">
     <div class="flex flex-col flex-wrap items-center justify-center border border-neutral-6 rounded-xl p-2 sm:flex-row sm:p-5">
       <button aria-label="all results" type="button" :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
         <p>All</p>
@@ -161,7 +161,6 @@ const allResultCount = computed(() => Object.values(results.value?.category_coun
             <button class="mr-1 translate-y-1/4 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
               <div class="i-tdesign:play-circle-filled" />
             </button>
-            <!-- {{ example.sentence }} -->
             <span v-for="(example_word, id) in example.word_list" :key="id" class="transition hover:text-accent">
               <NuxtLink :to="`/words/${example_word}`">{{ example_word }}</NuxtLink>
             </span>
