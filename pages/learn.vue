@@ -1,16 +1,7 @@
 <script setup lang="ts">
-const userWords = ref<any>([])
-const isLoading = ref(false)
-async function fetch() {
-  isLoading.value = true
-  const words = await getUserWords()
-  userWords.value = words
-  isLoading.value = false
-}
+import type { Database } from '~/supabase'
 
-// const learningWordsLength = userWords?.filter(w => w.learning).length || 0
-// const wordsLength = userWords.length || 0
-fetch()
+const { data: userWords }: { data: Database['public']['Tables']['user_words']['Row'][] } = await getUserWords()
 </script>
 
 <template>
@@ -18,17 +9,6 @@ fetch()
     <h1 class="mb-4 text-3xl">
       Your Learning Progress
     </h1>
-    <div class="mb-4 text-xl">
-      <p class="">
-        <!-- Words {{ wordsLength }} -->
-      </p>
-      <p class="">
-        <!-- Learning {{ learningWordsLength }} -->
-      </p>
-      <p class="">
-        <!-- You know {{ wordsLength - learningWordsLength }} -->
-      </p>
-    </div>
     <NuxtLink class="group mx-auto inline-flex border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/review">
       <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
         Review Words
@@ -58,10 +38,6 @@ fetch()
     </template>
     <div v-else class="mt-4 text-lg">
       You haven't saved anything yet
-    </div>
-    <div v-if="isLoading">
-      <!-- todo: create skeleton -->
-      <div class="i-tdesign:loading animate-spin text-4xl" />
     </div>
   </section>
 </template>
