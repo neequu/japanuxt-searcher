@@ -17,10 +17,16 @@ export default defineConfig({
   theme: {
     colors: {
       accent: '#4b8dff',
+      accent2: '#078001',
+      accent3: '#a94002',
+      accent4: '#60ee90',
       // accent: '#fc7abc',
     },
     boxShadow: {
       accent: 'inset 2px 2px 5px #4b8dff, inset -2px -2px 5px #4b8dff',
+      accent2: 'inset 2px 2px 5px #078001, inset -2px -2px 5px #078001',
+      accent3: 'inset 2px 2px 5px #a94002, inset -2px -2px 5px #a94002',
+      accent4: 'inset 2px 2px 5px #60ee90, inset -2px -2px 5px #60ee90',
     },
     // breakpoints: {
     //   'sm': '640px',

@@ -29,8 +29,11 @@ const { data: userWords }: { data: Database['public']['Tables']['user_words']['R
           <p v-if="w.strength === 0" class="text-accent">
             New
           </p>
-          <p v-else class="text-green">
+          <p v-else-if="w.strength === 1" class="text-accent4">
             Learning
+          </p>
+          <p v-else class="text-accent2">
+            Never Forget
           </p>
           <SaveButton :word="w.word" :saved-word="w" />
         </div>

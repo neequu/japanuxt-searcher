@@ -81,7 +81,7 @@ function loadMore() {
   currentStep.value = newStep
 }
 
-const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a + b, null))
+const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a && a + b, null))
 </script>
 
 <template>
