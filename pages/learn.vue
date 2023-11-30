@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const { data: userWords } = await getUserWords()
+
+useHead({
+  title: `Learn · nequjp`,
+})
 </script>
 
 <template>

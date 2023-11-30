@@ -13,6 +13,10 @@ onMounted(() => {
   if (reviews.reviewWords.length > 0 && reviews.activeIndex)
     reviewSession.value = true
 })
+
+useHead({
+  title: `Review · nequjp`,
+})
 </script>
 
 <template>

@@ -9,10 +9,14 @@ if (reviews.reviewWords?.length === 0)
 const reviewLength = reviews.reviewWords.length
 reviews.setActiveIndex(0)
 reviews.setReviewWords([])
+
+useHead({
+  title: `Review end · nequjp`,
+})
 </script>
 
 <template>
-  <section class="mt-8 h-full flex flex-1 flex-col items-center gap-4 md:place-content-center md:gap-8">
+  <section class="mt-8 h-full flex flex-1 flex-col items-center md:place-content-center md:gap-4">
     <h1 class="mb-4 text-center text-xl md:text-3xl">
       Good job!
     </h1>

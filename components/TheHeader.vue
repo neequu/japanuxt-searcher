@@ -28,7 +28,7 @@ const visible = ref(false)
     </div>
     <Transition>
       <!-- <template > -->
-      <nav v-if="width >= 640 || visible" class="mt-4 flex flex-wrap items-center justify-center sm:mt-0">
+      <nav v-if="width >= 640 || visible" class="mt-4 flex flex-wrap items-center justify-center gap-y-1 sm:mt-0">
         <NuxtLink v-slot="{ isActive }" to="/learn" class="group outline-none">
           <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
             Learn
