@@ -1,13 +1,17 @@
 import type { Database } from '~/supabase'
 
 export async function findWord(word: string): Promise<any> {
-  return useFetch(`/api/supabase/user-words/${word}`, { getCachedData(key) {
-    return useNuxtApp().payload.data[key] || useNuxtApp().static.data[key]
-  } })
+  return useFetch(`/api/supabase/user-words/${word}`, {
+    key: 'word',
+    // getCachedData(key) {
+    //   return useNuxtApp().payload.data[key] || useNuxtApp().static.data[key]
+    // },
+  })
 }
 
 export async function getUserWords(): Promise<any> {
   return useFetch(`/api/supabase/user-words`, {
+    key: 'userWords',
     getCachedData(key) {
       return useNuxtApp().payload.data[key] || useNuxtApp().static.data[key]
     },

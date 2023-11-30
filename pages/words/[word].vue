@@ -34,7 +34,23 @@ useHead({
       </template>
       <template #aside>
         <!-- todo: add toast -->
-        <SaveButton :saved-word="savedWord" :word="wordParam" />
+        <div class="flex flex-col items-center gap-2">
+          <div v-if="savedWord">
+            <p v-if="savedWord.strength === 0" class="text-accent">
+              New
+            </p>
+            <p v-else-if="savedWord.strength === 1" class="text-accent4">
+              Learning
+            </p>
+            <p v-else-if="savedWord.strength === -1" class="text-accent3">
+              Failed
+            </p>
+            <p v-else class="text-accent2">
+              Never Forget
+            </p>
+          </div>
+          <SaveButton :saved-word="savedWord" :word="wordParam" />
+        </div>
       </template>
     </WordCardTemplate>
   </section>

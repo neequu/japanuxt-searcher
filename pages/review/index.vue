@@ -4,7 +4,7 @@ import { useReviewStore } from '@/stores/review'
 const reviews = useReviewStore()
 // todo: add type
 const { data: userWords } = await getUserWords()
-const newWords = userWords.value.filter(w => w.strength === 0).map(w => w.word)
+const newWords = userWords.value.filter(w => w.strength < 1).map(w => w.word)
 reviews.setReviewWords(newWords)
 
 const wordsLength = userWords.value.length
@@ -28,7 +28,7 @@ onMounted(() => {
     </div>
     <button v-if="newWords.length" class="group mx-auto inline-flex border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" @click="reviewSession = true">
       <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
-        Start Review
+        Review {{ newWords.length === 1 ? `${newWords.length} word` : `${newWords.length} words` }}
       </span>
     </button>
     <div v-else class="grid mt-4 place-items-center gap-4">

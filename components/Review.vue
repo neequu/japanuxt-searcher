@@ -8,6 +8,7 @@ async function nextReview() {
   const isLastWord = reviews.activeIndex === reviews.reviewWords.length - 1
 
   if (isLastWord) {
+    await refreshNuxtData('userWords')
     await navigateTo(`/review/end`)
     return
   }
@@ -41,7 +42,7 @@ async function updateLevel(lvl: number, word: string) {
           Know
         </span>
       </button>
-      <button :disabled="isLoading" class="group border-accent3 text-accent3 hover:shadow-accent3 border rounded-xl px-5 py-2 outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl disabled:filter-brightness-60" @click="updateLevel(0, reviews.reviewWords[reviews.activeIndex])">
+      <button :disabled="isLoading" class="group border-accent3 text-accent3 hover:shadow-accent3 border rounded-xl px-5 py-2 outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl disabled:filter-brightness-60" @click="updateLevel(-1, reviews.reviewWords[reviews.activeIndex])">
         <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
           Don't Know
         </span>

@@ -10,14 +10,14 @@ const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:
 
 const throttledSave = useDebounceFn(
   async () => await saveWord(props.word),
-  1000,
+  200,
 )
 
 const throttledRemove = useDebounceFn(
   async () => await deleteWord(props.word),
-  1000,
+  200,
 )
-function addWord() {
+async function addWord() {
   // todo: add toast
   // remove word
   if (isAdded.value) {
@@ -30,8 +30,12 @@ function addWord() {
       activeClass.value = `i-tdesign:bookmark-minus`
     }, 1500)
   }
-  !isAdded.value ? throttledSave() : throttledRemove()
+  isAdded.value ? deleteWord(props.word) : saveWord(props.word)
   isAdded.value = !isAdded.value
+  if (useRoute().name !== 'learn')
+    clearNuxtData(['userWords'])
+
+  await refreshNuxtData(['userWords', 'word'])
 }
 </script>
 

@@ -33,6 +33,9 @@ const { data: userWords }: { data: Database['public']['Tables']['user_words']['R
             <p v-else-if="w.strength === 1" class="text-accent4">
               Learning
             </p>
+            <p v-else-if="w.strength === -1" class="text-accent3">
+              Failed
+            </p>
             <p v-else class="text-accent2">
               Never Forget
             </p>

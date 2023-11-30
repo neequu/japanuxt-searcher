@@ -12,11 +12,11 @@ reviews.setReviewWords([])
 </script>
 
 <template>
-  <section class="mt-8 h-full flex flex-1 flex-col items-center md:place-content-center md:gap-10">
+  <section class="mt-8 h-full flex flex-1 flex-col items-center gap-4 md:place-content-center md:gap-8">
     <h1 class="mb-4 text-center text-xl md:text-3xl">
       Good job!
     </h1>
-    <div class="mb-4 text-center text-base md:text-3xl">
+    <div class="mb-4 text-center md:text-2xl">
       <p>You went through {{ reviewLength }} words</p>
     </div>
     <div class="flex gap-4">

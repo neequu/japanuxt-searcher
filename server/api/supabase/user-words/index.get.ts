@@ -13,6 +13,7 @@ export default eventHandler(async (event) => {
     const { data: wordData, error } = await supabase.from('user_words')
       .select()
       .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
 
     if (error)
       throw new Error(error.message)
