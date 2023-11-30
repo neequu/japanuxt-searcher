@@ -40,7 +40,7 @@ useHead({
       Deck was not found!
     </div>
     <div v-else>
-      <h1 class="mb-4 text-3xl">
+      <h1 class="mb-4 text-xl md:text-3xl">
         Showing {{ formatedDeckName }} deck
       </h1>
       <AutoLoadGrid :fetch="fetch" :items="items" :count="count" :has-more-items="hasMoreItems" />

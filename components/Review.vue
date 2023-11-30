@@ -36,17 +36,17 @@ async function updateLevel(lvl: number, word: string) {
       </h1>
     </Transition>
     <div class="flex flex-wrap place-content-center gap-2 md:gap-4">
-      <button :disabled="isLoading" class="group hover:shadow-accent4 border border-green rounded-xl px-5 py-2 text-green outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-3xl disabled:filter-brightness-60" @click="updateLevel(1, reviews.reviewWords[reviews.activeIndex])">
+      <button :disabled="isLoading" class="group hover:shadow-accent4 border border-green rounded-xl px-5 py-2 text-green outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl disabled:filter-brightness-60" @click="updateLevel(1, reviews.reviewWords[reviews.activeIndex])">
         <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
           Know
         </span>
       </button>
-      <button :disabled="isLoading" class="group border-accent3 text-accent3 hover:shadow-accent3 border rounded-xl px-5 py-2 outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-3xl disabled:filter-brightness-60" @click="updateLevel(0, reviews.reviewWords[reviews.activeIndex])">
+      <button :disabled="isLoading" class="group border-accent3 text-accent3 hover:shadow-accent3 border rounded-xl px-5 py-2 outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl disabled:filter-brightness-60" @click="updateLevel(0, reviews.reviewWords[reviews.activeIndex])">
         <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
           Don't Know
         </span>
       </button>
-      <button :disabled="isLoading" class="group border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-3xl hover:shadow-accent disabled:filter-brightness-60" @click="updateLevel(2, reviews.reviewWords[reviews.activeIndex])">
+      <button :disabled="isLoading" class="group border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent disabled:filter-brightness-60" @click="updateLevel(2, reviews.reviewWords[reviews.activeIndex])">
         <span class="border-b border-transparent text-center group-focus-visible:border-blueGray">
           Never Forget
         </span>
@@ -58,7 +58,7 @@ async function updateLevel(lvl: number, word: string) {
 <style>
 .review-enter-active,
 .review-leave-active {
-  transition: filter 0.5s ease;
+  transition: filter 1000ms ease;
 }
 
 .review-enter-from,

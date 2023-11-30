@@ -86,7 +86,7 @@ export default defineNuxtConfig({
   pwa,
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 
   runtimeConfig: {

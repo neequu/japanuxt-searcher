@@ -21,7 +21,5 @@ export async function saveWord(word: string) {
   return useFetch(`/api/supabase/user-words/${word}`, { method: 'post' })
 }
 export async function deleteWord(word: string) {
-  // todo: fix this
-  // ts-ignore-error fix later
-  return useFetch(`/api/supabase/user-words/${word}`, { method: 'delete' })
+  return fetch(`/api/supabase/user-words/${word}`, { method: 'delete' })
 }
