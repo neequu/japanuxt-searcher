@@ -9,7 +9,7 @@ export async function findWord(word: string): Promise<any> {
   })
 }
 
-export async function getUserWords(): Promise<any> {
+export async function getUserWords(): Promise<{ data: Ref<Database['public']['Tables']['user_words']['Row'][]> }> {
   return useFetch(`/api/supabase/user-words`, {
     key: 'userWords',
     getCachedData(key) {

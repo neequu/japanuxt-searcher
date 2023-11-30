@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { Database } from '~/supabase'
-
-const { data: userWords }: { data: Database['public']['Tables']['user_words']['Row'][] } = await getUserWords()
+const { data: userWords } = await getUserWords()
 </script>
 
 <template>
@@ -30,13 +28,13 @@ const { data: userWords }: { data: Database['public']['Tables']['user_words']['R
             <p v-if="w.strength === 0" class="text-accent">
               New
             </p>
-            <p v-else-if="w.strength === 1" class="text-accent4">
+            <p v-else-if="w.strength === 1" class="text-accent-lightgreen">
               Learning
             </p>
-            <p v-else-if="w.strength === -1" class="text-accent3">
+            <p v-else-if="w.strength === -1" class="text-accent-red">
               Failed
             </p>
-            <p v-else class="text-accent2">
+            <p v-else class="text-accent-darkgreen">
               Never Forget
             </p>
             <SaveButton :word="w.word" :saved-word="w" />

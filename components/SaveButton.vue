@@ -8,33 +8,26 @@ const props = defineProps<{
 const isAdded = ref(props.savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
-const throttledSave = useDebounceFn(
-  async () => await saveWord(props.word),
-  200,
-)
-
-const throttledRemove = useDebounceFn(
-  async () => await deleteWord(props.word),
-  200,
-)
 async function addWord() {
   // todo: add toast
-  // remove word
+  // change class so user can remove word
   if (isAdded.value) {
     activeClass.value = `i-tdesign:bookmark-add`
   }
-  // add word
+  // or to add word
   else {
     activeClass.value = `i-tdesign:bookmark-checked`
     setTimeout(() => {
       activeClass.value = `i-tdesign:bookmark-minus`
     }, 1500)
   }
+  // delete or save word
   isAdded.value ? await deleteWord(props.word) : await saveWord(props.word)
   isAdded.value = !isAdded.value
+  // clear cache if used is not on the learn page
   if (useRoute().name !== 'learn')
     clearNuxtData(['userWords'])
-
+  // revalidate cache
   await refreshNuxtData(['userWords', 'word'])
 }
 </script>

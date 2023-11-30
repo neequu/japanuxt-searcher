@@ -18,6 +18,7 @@ export default eventHandler(async (event) => {
       user_id: user?.id,
       word: decodedWord,
     })
+
     if (error)
       throw new Error(error.message)
   }

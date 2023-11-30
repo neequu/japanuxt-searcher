@@ -17,7 +17,7 @@ useHead({
   <h1 class="my-4 text-center text-2xl md:my-8.5 md:text-4xl">
     Information for {{ wordParam }}
   </h1>
-  <section v-if="word.japanese" class="my-6 md:mt-10">
+  <section v-if="word?.japanese" class="my-6 md:mt-10">
     <WordCardTemplate :item="word" :main-word="wordParam">
       <template v-if="word.tags.length" #additional>
         <div class="mt-6 md:mt-10">
@@ -34,18 +34,18 @@ useHead({
       </template>
       <template #aside>
         <!-- todo: add toast -->
-        <div class="flex flex-col items-center gap-2">
+        <div class="flex flex-col items-end gap-2">
           <div v-if="savedWord">
             <p v-if="savedWord.strength === 0" class="text-accent">
               New
             </p>
-            <p v-else-if="savedWord.strength === 1" class="text-accent4">
+            <p v-else-if="savedWord.strength === 1" class="text-accent-lightgreen">
               Learning
             </p>
-            <p v-else-if="savedWord.strength === -1" class="text-accent3">
+            <p v-else-if="savedWord.strength === -1" class="text-accent-red">
               Failed
             </p>
-            <p v-else class="text-accent2">
+            <p v-else class="text-accent-darkgreen">
               Never Forget
             </p>
           </div>
