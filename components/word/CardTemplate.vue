@@ -53,7 +53,3 @@ const { copy, copied } = useClipboard()
     </div>
   </article>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
