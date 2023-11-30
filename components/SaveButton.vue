@@ -30,7 +30,7 @@ async function addWord() {
       activeClass.value = `i-tdesign:bookmark-minus`
     }, 1500)
   }
-  isAdded.value ? deleteWord(props.word) : saveWord(props.word)
+  isAdded.value ? await deleteWord(props.word) : await saveWord(props.word)
   isAdded.value = !isAdded.value
   if (useRoute().name !== 'learn')
     clearNuxtData(['userWords'])

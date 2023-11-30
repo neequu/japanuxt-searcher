@@ -21,7 +21,7 @@ const { data: userWords }: { data: Database['public']['Tables']['user_words']['R
       <h1 class="text-xl md:text-3xl">
         Saved Words
       </h1>
-      <template v-if="true">
+      <template v-if="userWords?.length">
         <div v-for="w in userWords" :key="w.word" class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-3">
           <NuxtLink :to="`/words/${w.word}`" class="self-center text-2xl sm:text-3xl">
             {{ w.word }}
@@ -43,8 +43,10 @@ const { data: userWords }: { data: Database['public']['Tables']['user_words']['R
           </div>
         </div>
       </template>
-      <div v-else class="mt-4 text-lg">
-        You haven't saved anything yet
+      <div v-else class="mt-4 text-lg md:text-xl">
+        You haven't saved anything yet. <NuxtLink class="border-b border-transparent text-accent outline-none transition focus-visible:border-blueGray hover:border-blueGray" to="/search?q=こんにちは">
+          Try this.
+        </NuxtLink>
       </div>
     </section>
   </div>
