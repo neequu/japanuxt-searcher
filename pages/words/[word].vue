@@ -36,7 +36,7 @@ useHead({
             <p class="mb-1 mt-6 font-bold leading-tight text-neutral-5 sm:mb-2">
               Reviews
             </p>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
               <p>Last review: {{ getFormattedDate(savedWord.last_reviewed) }}</p>
               <p v-if="savedWord.next_review_date" class="text-accent">
                 Next review: {{ getFormattedDate(savedWord.next_review_date) }}
@@ -46,7 +46,7 @@ useHead({
         </template>
         <template #aside>
           <!-- todo: add toast -->
-          <div class="mt-10 flex flex-col items-center gap-2">
+          <div class="flex flex-col items-center gap-2">
             <div v-if="savedWord" class="flex flex-col items-center text-center">
               <p v-if="savedWord.strength === 0" class="text-accent">
                 New
