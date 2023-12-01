@@ -4,7 +4,6 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
-  // presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -27,13 +26,6 @@ export default defineConfig({
       'accent-red': 'inset 2px 2px 5px #a94002, inset -2px -2px 5px #a94002',
       'accent-lightgreen': 'inset 2px 2px 5px #60ee90, inset -2px -2px 5px #60ee90',
     },
-    // breakpoints: {
-    //   'sm': '640px',
-    //   'md': '768px',
-    //   'lg': '1024px',
-    //   'xl': '1280px',
-    //   '2xl': '1536px',
-    // },
   },
 
   presets: [
@@ -43,12 +35,6 @@ export default defineConfig({
       scale: 1.2,
     }),
     presetTypography(),
-    // presetWebFonts({
-    //   provider: 'google',
-    //   fonts: {
-    //     mono: ['Nunito Sans'],
-    //   },
-    // }),
   ],
   transformers: [
     transformerDirectives(),

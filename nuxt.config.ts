@@ -16,16 +16,16 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/color-mode',
-    '@vite-pwa/nuxt',
     '@nuxtjs/supabase',
     '@nuxt/image',
     'nuxt-particles',
   ],
+
   supabase: {
     redirectOptions: {
       login: '/sign-in',
       callback: '/confirm',
-      exclude: ['/search', '/', '/about', 'words/**'],
+      exclude: ['/search', '/', '/about', '/words/**'],
     },
   },
   vite: {
@@ -81,12 +81,6 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
-  },
-
-  pwa,
-
-  devtools: {
-    enabled: false,
   },
 
   runtimeConfig: {

@@ -23,7 +23,7 @@ export async function saveWord(word: string) {
 }
 export async function deleteWord(word: string, id: number) {
   return $fetch(`/api/supabase/user-words/${word}`, {
-  // @ts-expect-error nuxt's ts problem
+  // @ts-expect-error nuxt ts problem
     method: 'delete',
     body: { id },
   })
