@@ -52,7 +52,6 @@ if (process.client) {
     />
   </WordGrid>
   <div ref="tailEl" />
-  <!-- todo replace with another icon -->
   <div v-if="items.length > 19 && isLoading" class="grid mt-5 place-content-center">
     <div class="i-tdesign:loading animate-spin text-2xl md:text-4xl" />
   </div>

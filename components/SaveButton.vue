@@ -9,11 +9,14 @@ const isAdded = ref(!!props.savedWord)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
 async function changeWordState() {
-  // ts-ignore isAdded covers this
-  const res: any = isAdded.value ? await deleteWord(props.word, props.savedWord.id) : await saveWord(props.word)
+  const res: any = isAdded.value
+    ? props.savedWord?.id && await deleteWord(props.word, props.savedWord.id)
+    : await saveWord(props.word)
 
   if (res.error) {
-    activeClass.value = isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`
+    activeClass.value = isAdded.value
+      ? `i-tdesign:bookmark-minus`
+      : `i-tdesign:bookmark-add`
     return
   }
   // todo: add toast
@@ -21,7 +24,7 @@ async function changeWordState() {
   // clear cache if used is not on the learn page
   if (useRoute().name !== 'learn')
     clearNuxtData(['userWords'])
-    // revalidate cache
+  // revalidate cache
   await refreshNuxtData(['userWords', 'word'])
 }
 

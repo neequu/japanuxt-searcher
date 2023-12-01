@@ -13,7 +13,6 @@ export default eventHandler(async (event) => {
       throw new Error('no params')
 
     const decodedWord = decodeURIComponent(word)
-
     const { error } = await supabase.from('user_words').insert({
       user_id: user.id,
       word: decodedWord,

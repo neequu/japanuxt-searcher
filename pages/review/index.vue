@@ -2,7 +2,6 @@
 import { useReviewStore } from '@/stores/review'
 
 const reviews = useReviewStore()
-// todo: add type
 const { data: userWords } = await getUserWords()
 const dueWords = userWords.value.filter(w => w.strength !== 2 && (w.next_review_date == null || new Date(w.next_review_date) < new Date()))
 reviews.setReviewWords(dueWords.map(w => w.word))
