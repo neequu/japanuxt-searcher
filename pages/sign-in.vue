@@ -12,9 +12,10 @@ async function signInWithOAuth() {
       redirectTo: `${location.origin}/confirm`,
     },
   })
-  // todo: add toast
-  if (error)
+  if (error) {
     error.value = loginError?.message
+    showErrorMessage(`Couldn't sign in. Please try again.`)
+  }
 }
 
 watchEffect(() => {
