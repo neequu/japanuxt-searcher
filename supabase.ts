@@ -181,7 +181,7 @@ export interface Database {
       user_words: {
         Row: {
           created_at: string
-          id: string | null
+          id: number
           last_reviewed: string | null
           learning: boolean
           next_review_date: string | null
@@ -189,11 +189,10 @@ export interface Database {
           strength: number
           user_id: string
           word: string
-          word_id: string
         }
         Insert: {
           created_at?: string
-          id?: string | null
+          id?: number
           last_reviewed?: string | null
           learning?: boolean
           next_review_date?: string | null
@@ -201,11 +200,10 @@ export interface Database {
           strength?: number
           user_id: string
           word: string
-          word_id?: string
         }
         Update: {
           created_at?: string
-          id?: string | null
+          id?: number
           last_reviewed?: string | null
           learning?: boolean
           next_review_date?: string | null
@@ -213,7 +211,6 @@ export interface Database {
           strength?: number
           user_id?: string
           word?: string
-          word_id?: string
         }
         Relationships: [
           {

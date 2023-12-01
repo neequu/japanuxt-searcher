@@ -9,7 +9,7 @@ export default eventHandler(async (event) => {
 
     const supabase = await serverSupabaseClient<Database>(event)
     const { id } = await readBody(event)
-    throw new Error('yo')
+
     const { error } = await supabase
       .from('user_words')
       .delete()
