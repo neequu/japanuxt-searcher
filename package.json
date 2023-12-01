@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "1.1.0",
+    "@element-plus/nuxt": "^1.0.7",
     "@iconify-json/tdesign": "^1.1.0",
     "@nuxt/image": "^1.0.0",
     "@nuxtjs/color-mode": "^3.3.0",
@@ -27,6 +28,7 @@
     "@unocss/eslint-config": "^0.56.5",
     "@unocss/nuxt": "^0.56.5",
     "@vueuse/nuxt": "^10.5.0",
+    "element-plus": "^2.4.3",
     "eslint": "^8.51.0",
     "nuxt": "^3.8.1",
     "nuxt-particles": "^0.1.5",

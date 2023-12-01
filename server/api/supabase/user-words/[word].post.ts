@@ -1,20 +1,21 @@
-import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
+import { serverSupabaseClient } from '#supabase/server'
 import type { Database } from '~/supabase'
 
 export default eventHandler(async (event) => {
   try {
-    const user = await serverSupabaseUser(event)
-    if (!user)
-      throw new Error('not auth')
-
     const supabase = await serverSupabaseClient<Database>(event)
+    const { data: { session } } = await supabase.auth.getSession()
+    // const user = await serverSupabaseUser(event)
+    if (!session?.user)
+      throw new Error('You need to login first!')
+
     const word = getRouterParam(event, 'word')
     if (!word)
-      throw new Error('no params')
+      throw new Error('No word has been passed')
 
     const decodedWord = decodeURIComponent(word)
     const { error } = await supabase.from('user_words').insert({
-      user_id: user.id,
+      user_id: session.user.id,
       word: decodedWord,
     })
 
@@ -24,6 +25,6 @@ export default eventHandler(async (event) => {
     return { success: true }
   }
   catch (e: any) {
-    return { error: 'couldnt save word' }
+    return { error: e.message || `Coulnd't save word` }
   }
 })

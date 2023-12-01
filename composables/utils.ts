@@ -26,3 +26,6 @@ export function getFormattedDate(dateString: string | null) {
 
   return formattedDate
 }
+
+export const showSuccessMessage = (msg: string) => ElMessage.success(msg)
+export const showErrorMessage = (msg: string) => ElMessage.error(msg)

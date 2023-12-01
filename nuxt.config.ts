@@ -1,5 +1,4 @@
 import process from 'node:process'
-import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -19,7 +18,12 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@nuxt/image',
     'nuxt-particles',
+    '@element-plus/nuxt',
   ],
+
+  elementPlus: {
+    themes: ['dark'],
+  },
 
   supabase: {
     redirectOptions: {

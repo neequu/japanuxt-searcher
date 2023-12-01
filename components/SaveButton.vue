@@ -8,38 +8,57 @@ const props = defineProps<{
 const isAdded = ref(!!props.savedWord)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
-async function changeWordState() {
+async function updateWordState() {
   const res: any = isAdded.value
-    ? props.savedWord?.id && await deleteWord(props.word, props.savedWord.id)
+    // @ts-expect-error isAdded covers this
+    ? await deleteWord(props.word, props.savedWord.id)
     : await saveWord(props.word)
 
-  if (res.error) {
-    activeClass.value = isAdded.value
-      ? `i-tdesign:bookmark-minus`
-      : `i-tdesign:bookmark-add`
-    return
-  }
-  // todo: add toast
-  isAdded.value = !isAdded.value
+  return res
+}
+
+// Display messages
+function handleError(errorMsg: string) {
+  activeClass.value = isAdded.value
+    ? `i-tdesign:bookmark-minus`
+    : `i-tdesign:bookmark-add`
+  showErrorMessage(errorMsg)
+}
+function showToast() {
+  isAdded.value
+    ? showSuccessMessage(`Removed ${props.word} from your list`)
+    : showSuccessMessage(`Added ${props.word} to your list`)
+}
+
+// Handle cache
+async function clearCache() {
   // clear cache if used is not on the learn page
   if (useRoute().name !== 'learn')
     clearNuxtData(['userWords'])
-  // revalidate cache
-  await refreshNuxtData(['userWords', 'word'])
+  // revalidate cache of user words
+  await refreshNuxtData(['userWords'])
+  // delete cache of word to prevent showing stale data on all words
+  clearNuxtData(['word'])
+}
+
+async function changeWordState() {
+  const res = await updateWordState()
+
+  if (res.error)
+    return handleError(res.error)
+  showToast()
+  isAdded.value = !isAdded.value
+  await clearCache()
 }
 
 async function addWord() {
   // change class so user can remove word
-  if (isAdded.value) {
+  if (isAdded.value)
     activeClass.value = `i-tdesign:bookmark-add`
-  }
   // or to add word
-  else {
+  else
     activeClass.value = `i-tdesign:bookmark-checked`
-    setTimeout(() => {
-      activeClass.value = `i-tdesign:bookmark-minus`
-    }, 1500)
-  }
+
   changeWordState()
 }
 </script>
