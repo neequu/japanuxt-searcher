@@ -13,5 +13,6 @@ export default defineEventHandler(async (event) => {
     return data
   }
   catch (e: any) {
+    return { error: e.message || `Coulnd't get word` }
   }
 })

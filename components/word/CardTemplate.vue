@@ -5,7 +5,6 @@ defineProps<{
   item: JapaneseWord
   mainWord: string
 }>()
-const { copy, copied } = useClipboard()
 </script>
 
 <template>
@@ -13,9 +12,7 @@ const { copy, copied } = useClipboard()
     <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] mr-2 w-6 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none lg:mr-12 md:mr-8 sm:w-16 md:text-5xl sm:text-4xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
-        <button aria-label="copy text" type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
-          <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
-        </button>
+        <CopyButton :item="mainWord" />
       </div>
       <rt v-if="item.japanese?.[0].reading !== (item.japanese?.[0].word ?? item.slug)" class="mx-2 mr-2 w-5 leading-none md:w-6">{{ item.japanese?.[0].reading }}</rt>
     </ruby>

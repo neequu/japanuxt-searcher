@@ -4,15 +4,8 @@ import type { Example } from '~/types'
 const props = defineProps<{
   word: string
 }>()
-// const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 
-// async function subscribe() {
-//   const { url } = await $fetch('/api/stripe/subscribe')
-
-//   navigateTo(url, {
-//     external: true,
-//   })
-// }
 const STEP = 10
 const currentStep = ref(STEP)
 const isLoading = ref(false)
@@ -82,26 +75,20 @@ function loadMore() {
 }
 
 const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a + b, 0))
+
+async function checkSubscription() {
+  if (!user.value)
+    await navigateTo('/sign-in')
+  getData()
+}
 </script>
 
 <template>
   <div v-if="!results && !isLoading" class="flex justify-center">
-    <button aria-label="subscribe" type="button" class="border-b border-transparent text-lg text-accent outline-none transition focus-visible:border-blueGray hover:border-accent!" @click="getData">
+    <button aria-label="subscribe" type="button" class="border-b border-transparent text-lg text-accent outline-none transition focus-visible:border-blueGray hover:border-accent!" @click="checkSubscription">
       Show Examples
     </button>
   </div>
-  <!-- <div class="relative overflow-hidden rounded">
-    <NuxtImg width="600" format="webp" src="/examples-preview.jpg" />
-    <NuxtImg width="600" format="webp" src="/examples-preview2.jpg" />
-    <div class="absolute inset-0 bg-dark bg-opacity-50 backdrop-blur-4">
-      <div class="grid mx-auto h-full place-content-center text-center text-lg md:text-xl">
-        <div class="i-tdesign:lock-on mx-auto" />
-        <button aria-label="pay" type="button" @click="subscribe">
-          Pay to see examples
-        </button>
-      </div>
-    </div>
-  </div> -->
   <div v-else-if="results && allResultCount > 0">
     <div class="flex flex-col flex-wrap items-center justify-center border border-neutral-6 rounded-xl p-2 sm:flex-row sm:p-5">
       <button aria-label="all results" type="button" :class="{ 'text-accent': activeTab === 'All' }" class="flex items-center gap-1 border-b border-transparent px-3 py-2 outline-none transition focus-visible:border-blueGray md:px-6 md:py-3 md:text-2xl sm:text-lg hover:border-blueGray!" @click="activeTab = 'All'">
