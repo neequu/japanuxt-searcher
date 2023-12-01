@@ -4,7 +4,7 @@ import { useReviewStore } from '@/stores/review'
 const reviews = useReviewStore()
 // todo: add type
 const { data: userWords } = await getUserWords()
-const dueWords = userWords.value.filter(w => (w.strength !== 0 && w.strength !== 2) && (w.next_review_date == null || new Date(w.next_review_date) < new Date()))
+const dueWords = userWords.value.filter(w => w.strength !== 2 && (w.next_review_date == null || new Date(w.next_review_date) < new Date()))
 reviews.setReviewWords(dueWords.map(w => w.word))
 
 const wordsLength = userWords.value.length
@@ -20,7 +20,6 @@ useHead({
 </script>
 
 <template>
-  {{ dueWords }}
   <Review v-if="reviewSession" />
   <section v-else class="mt-8 h-full flex flex-1 flex-col items-center md:place-content-center md:gap-4">
     <h1 class="mb-4 text-center text-xl md:text-3xl">

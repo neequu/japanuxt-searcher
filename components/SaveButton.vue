@@ -22,7 +22,7 @@ async function addWord() {
     }, 1500)
   }
   // delete or save word
-  isAdded.value ? await changeLearningStatus(props.word, true) : await changeLearningStatus(props.word, false)
+  isAdded.value ? await deleteWord(props.word) : await saveWord(props.word)
   isAdded.value = !isAdded.value
   // clear cache if used is not on the learn page
   if (useRoute().name !== 'learn')
