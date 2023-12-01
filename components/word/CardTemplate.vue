@@ -9,18 +9,18 @@ const { copy, copied } = useClipboard()
 </script>
 
 <template>
-  <article class="grid grid-cols-[min-content_1fr] border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row md:px-10 sm:px-5 sm:py-8 sm:text-xl">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] w-12 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none sm:w-40 md:text-5xl sm:text-4xl">
+  <article class="grid grid-cols-[min-content_1fr] gap-2 border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row md:px-10 sm:px-5 sm:py-8 sm:text-xl">
+    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] mr-2 w-6 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none lg:mr-12 md:mr-8 sm:w-16 md:text-5xl sm:text-4xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
         <button aria-label="copy text" type="button" class="text-lg outline-none transition hover:scale-105 sm:text-2xl" :title="`Copy ${mainWord} to clipboard`" @click="copy(mainWord)">
           <div :class="[copied ? 'i-tdesign:component-checkbox' : 'i-tdesign:copy']" />
         </button>
       </div>
-      <rt v-if="item.japanese?.[0].reading !== (item.japanese?.[0].word ?? item.slug)" class="leading-none">{{ item.japanese?.[0].reading }}</rt>
+      <rt v-if="item.japanese?.[0].reading !== (item.japanese?.[0].word ?? item.slug)" class="mx-2 mr-2 w-5 leading-none md:w-6">{{ item.japanese?.[0].reading }}</rt>
     </ruby>
     <div class="pb-8 pl-4 md:pl-0">
-      <h2 class="text-base text-neutral-5 sm:mb-2">
+      <h2 class="font-bold text-neutral-5 sm:mb-2">
         Meanings
       </h2>
       <div v-for="(sense, idx) in item.senses" :key="idx">

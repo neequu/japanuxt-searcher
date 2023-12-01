@@ -21,7 +21,7 @@ useHead({
       Good job!
     </h1>
     <div class="mb-4 text-center md:text-2xl">
-      <p>You went through {{ reviewLength }} words</p>
+      <p>You went through {{ reviewLength === 1 ? `${reviewLength} word` : `${reviewLength} words` }}</p>
     </div>
     <div class="flex gap-4">
       <NuxtLink class="group mx-auto inline-flex border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/learn">

@@ -1,6 +1,6 @@
 import type { Database } from '~/supabase'
 
-export async function findWord(word: string): Promise<any> {
+export async function findWord(word: string): Promise<{ data: Ref<Database['public']['Tables']['user_words']['Row']> }> {
   return useFetch(`/api/supabase/user-words/${word}`, {
     key: 'word',
     // getCachedData(key) {

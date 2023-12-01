@@ -20,9 +20,9 @@ useHead({
   <template v-if="word?.japanese">
     <section class="my-6 md:mt-10">
       <WordCardTemplate :item="word" :main-word="wordParam">
-        <template v-if="word.tags.length" #additional>
-          <div class="mt-6 md:mt-10">
-            <h3 class="mb-1 leading-tight text-neutral-5">
+        <template #additional>
+          <div v-if="word.tags.length" class="mt-6 md:mt-10">
+            <h3 class="mb-1 font-bold leading-tight text-neutral-5 sm:mb-2">
               Additional information
             </h3>
             <span>{{ word.tags.join(', ') }}</span>
@@ -32,11 +32,22 @@ useHead({
               </p>
             </div>
           </div>
+          <div v-if="savedWord?.last_reviewed">
+            <p class="mb-1 mt-6 font-bold leading-tight text-neutral-5 sm:mb-2">
+              Reviews
+            </p>
+            <div class="flex flex-col gap-2">
+              <p>Last review: {{ getFormattedDate(savedWord.last_reviewed) }}</p>
+              <p v-if="savedWord.next_review_date" class="text-accent">
+                Next review: {{ getFormattedDate(savedWord.next_review_date) }}
+              </p>
+            </div>
+          </div>
         </template>
         <template #aside>
           <!-- todo: add toast -->
-          <div class="flex items-end gap-2 md:flex-col">
-            <div v-if="savedWord">
+          <div class="mt-10 flex flex-col items-center gap-2">
+            <div v-if="savedWord" class="flex flex-col items-center text-center">
               <p v-if="savedWord.strength === 0" class="text-accent">
                 New
               </p>
@@ -47,7 +58,7 @@ useHead({
                 Failed
               </p>
               <p v-else class="text-accent-darkgreen">
-                Never Forget
+                Never&nbsp;Forget
               </p>
             </div>
             <SaveButton :saved-word="savedWord" :word="wordParam" />

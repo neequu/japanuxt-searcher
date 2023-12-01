@@ -1,5 +1,6 @@
 import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 import type { Database } from '~/supabase'
+import { getNextReviewDate } from '~/composables/utils'
 
 export default eventHandler(async (event) => {
   try {
@@ -15,7 +16,7 @@ export default eventHandler(async (event) => {
     const decodedWord = decodeURIComponent(word)
 
     const { error } = await supabase.from('user_words')
-      .update({ strength: lvl })
+      .update({ strength: lvl, last_reviewed: new Date().toISOString(), next_review_date: getNextReviewDate(Date.now(), lvl) })
       .eq('word', decodedWord)
       .eq('user_id', user.id)
 
