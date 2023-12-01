@@ -8,22 +8,20 @@ export default eventHandler(async (event) => {
       throw new Error('not auth')
 
     const supabase = await serverSupabaseClient<Database>(event)
-    const word = getRouterParam(event, 'word')
-    if (!word)
-      throw new Error('no params')
-
-    const decodedWord = decodeURIComponent(word)
-
+    const { id } = await readBody(event)
+    throw new Error('yo')
     const { error } = await supabase
       .from('user_words')
       .delete()
-      .eq('user_id', user?.id)
-      .eq('word', decodedWord)
+      .eq('user_id', user.id)
+      .eq('id', id)
 
     if (error)
       throw new Error(error.message)
-  }
-  catch (e) {
 
+    return { success: true }
+  }
+  catch (e: any) {
+    return { error: 'couldnt delete word' }
   }
 })

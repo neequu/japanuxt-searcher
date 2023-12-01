@@ -19,8 +19,9 @@ export async function getUserWords(): Promise<{ data: Ref<Database['public']['Ta
 }
 
 export async function saveWord(word: string) {
-  return useFetch(`/api/supabase/user-words/${word}`, { method: 'post' })
+  return $fetch(`/api/supabase/user-words/${word}`, { method: 'post' })
 }
-export async function deleteWord(word: string) {
-  return fetch(`/api/supabase/user-words/${word}`, { method: 'delete' })
+export async function deleteWord(word: string, id: number) {
+  // ts-ignore-error zxcvb
+  return $fetch(`/api/supabase/user-words/${word}`, { method: 'delete', body: { id } })
 }

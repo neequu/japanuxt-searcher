@@ -26,6 +26,8 @@ async function loadingNext() {
   }
 }
 
+loadingNext()
+
 if (process.client) {
   useIntervalFn(() => {
     if (!tailEl.value || isLoading.value || !props.hasMoreItems)
@@ -39,10 +41,10 @@ if (process.client) {
 </script>
 
 <template>
-  <WordGrid v-if="!items?.length && isLoading">
+  <WordGrid v-if="hasMoreItems && items.length === 0 || isLoading">
     <WordCardSkeleton v-for="(_, idx) in 10" :key="idx" />
   </WordGrid>
-  <WordGrid v-else>
+  <WordGrid>
     <WordCard
       v-for="(item, idx) in items"
       :key="idx"
@@ -51,10 +53,10 @@ if (process.client) {
   </WordGrid>
   <div ref="tailEl" />
   <!-- todo replace with another icon -->
-  <div v-if="isLoading" class="grid mt-5 place-content-center">
+  <div v-if="items.length > 19 && isLoading" class="grid mt-5 place-content-center">
     <div class="i-tdesign:loading animate-spin text-2xl md:text-4xl" />
   </div>
-  <p v-else-if="count" class="mt-5 text-right md:text-xl">
+  <p class="mt-5 text-right md:text-xl">
     Total results: {{ count }}
   </p>
 </template>

@@ -41,7 +41,7 @@ const { copy, copied } = useClipboard()
     <div class="col-span-2 ml-auto flex flex-col justify-between sm:items-center">
       <div class="hidden text-base leading-none text-white sm:flex sm:flex-col sm:items-center sm:items-stretch sm:gap-2 sm:text-center">
         <p v-if="item.is_common">
-          common word
+          common&nbsp;word
         </p>
         <template v-if="item.jlpt?.length">
           <NuxtLink v-for="jlpt in item.jlpt" :key="jlpt" :to="`/decks/${jlpt}`" class="border-b border-transparent rounded-sm bg-neutral-8 bg-opacity-40 p-2 outline-none transition focus-visible:border-blueGray hover:bg-opacity-80">

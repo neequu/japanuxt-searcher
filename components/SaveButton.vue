@@ -8,8 +8,11 @@ const props = defineProps<{
 const isAdded = ref(props.savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
+async function changeWordState() {
+
+}
+
 async function addWord() {
-  // todo: add toast
   // change class so user can remove word
   if (isAdded.value) {
     activeClass.value = `i-tdesign:bookmark-add`
@@ -22,13 +25,34 @@ async function addWord() {
     }, 1500)
   }
   // delete or save word
-  isAdded.value ? await deleteWord(props.word) : await saveWord(props.word)
-  isAdded.value = !isAdded.value
-  // clear cache if used is not on the learn page
-  if (useRoute().name !== 'learn')
-    clearNuxtData(['userWords'])
-  // revalidate cache
-  await refreshNuxtData(['userWords', 'word'])
+  if (isAdded.value) {
+    const res = await deleteWord(props.word, props.savedWord.id)
+    // todo: add toast
+    if (res.error) {
+      activeClass.value = `i-tdesign:bookmark-minus`
+      return
+    }
+    isAdded.value = !isAdded.value
+    // clear cache if used is not on the learn page
+    if (useRoute().name !== 'learn')
+      clearNuxtData(['userWords'])
+    // revalidate cache
+    await refreshNuxtData(['userWords', 'word'])
+  }
+  else {
+    const res = await saveWord(props.word)
+    // todo: add toast
+    if (res.error) {
+      activeClass.value = `i-tdesign:bookmark-add`
+      return
+    }
+    isAdded.value = !isAdded.value
+    // clear cache if used is not on the learn page
+    if (useRoute().name !== 'learn')
+      clearNuxtData(['userWords'])
+    // revalidate cache
+    await refreshNuxtData(['userWords', 'word'])
+  }
 }
 </script>
 

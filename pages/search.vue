@@ -6,7 +6,6 @@ const router = useRouter()
 
 const query = ref((route.query.q || '').toString())
 const currentSearch = ref(query.value)
-const { data: words } = await searchDictionary(query.value)
 
 const items = ref<JapaneseWord[]>([])
 const count = ref<undefined | number>()
@@ -30,15 +29,15 @@ function search() {
 async function fetch(page: number) {
   if (!hasMoreItems.value)
     return
-  const { data: words } = await searchDictionary(query.value, page)
+  const { data: dictWords } = await searchDictionary(query.value, page)
 
-  if (words.value.length === 0)
+  if (dictWords.value.length === 0)
     hasMoreItems.value = false
 
   if (page > 1)
-    items.value.push(...words.value)
+    items.value.push(...dictWords.value)
   else
-    items.value = words.value
+    items.value = dictWords.value
 
   count.value = items.value.length
 }
@@ -56,6 +55,6 @@ useHead({
     <div v-if="count === 0" class="md:text-2xl sm:text-lg">
       No results found.
     </div>
-    <AutoLoadGrid :key="currentSearch" :has-more-items="hasMoreItems" :items="items.length ? items : words" :fetch="fetch" :count="count" />
+    <AutoLoadGrid :key="currentSearch" :has-more-items="hasMoreItems" :items="items" :fetch="fetch" :count="count" />
   </section>
 </template>

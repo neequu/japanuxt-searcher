@@ -15,14 +15,16 @@ export default eventHandler(async (event) => {
     const decodedWord = decodeURIComponent(word)
 
     const { error } = await supabase.from('user_words').insert({
-      user_id: user?.id,
+      user_id: user.id,
       word: decodedWord,
     })
 
     if (error)
       throw new Error(error.message)
-  }
-  catch (e) {
 
+    return { success: true }
+  }
+  catch (e: any) {
+    return { error: 'couldnt save word' }
   }
 })
