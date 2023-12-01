@@ -6,6 +6,7 @@ const { deck } = route.params
 const formatedDeckName = deck.toUpperCase().split('-').join(' ')
 
 const items = ref<JapaneseWord[]>([])
+const { data: words } = await searchDictionary(deck)
 const count = ref<undefined | number>()
 const hasMoreItems = ref(true)
 
@@ -43,7 +44,7 @@ useHead({
       <h1 class="mb-4 text-xl md:text-3xl">
         Showing {{ formatedDeckName }} deck
       </h1>
-      <AutoLoadGrid :fetch="fetch" :items="items" :count="count" :has-more-items="hasMoreItems" />
+      <AutoLoadGrid :fetch="fetch" :items="items.length ? items : words" :count="count" :has-more-items="hasMoreItems" />
     </div>
   </section>
 </template>

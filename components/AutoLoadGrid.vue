@@ -26,8 +26,6 @@ async function loadingNext() {
   }
 }
 
-// loadingNext()
-
 if (process.client) {
   useIntervalFn(() => {
     if (!tailEl.value || isLoading.value || !props.hasMoreItems)
