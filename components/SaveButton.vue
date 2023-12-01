@@ -36,9 +36,7 @@ async function clearCache() {
   if (useRoute().name !== 'learn')
     clearNuxtData(['userWords'])
   // revalidate cache of user words
-  await refreshNuxtData(['userWords'])
-  // delete cache of word to prevent showing stale data on all words
-  clearNuxtData(['word'])
+  await refreshNuxtData(['userWords', props.word])
 }
 
 async function changeWordState() {
