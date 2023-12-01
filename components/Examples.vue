@@ -181,7 +181,3 @@ const allResultCount = computed(() => Object.values(results.value?.category_coun
   </div>
   <div v-if="isLoading" class="i-tdesign:loading mx-auto mt-8 animate-spin text-3xl md:text-4xl" />
 </template>
-
-<style lang="scss" scoped>
-
-</style>

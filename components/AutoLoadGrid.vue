@@ -26,7 +26,7 @@ async function loadingNext() {
   }
 }
 
-loadingNext()
+// loadingNext()
 
 if (process.client) {
   useIntervalFn(() => {

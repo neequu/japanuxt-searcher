@@ -6,6 +6,7 @@ const router = useRouter()
 
 const query = ref((route.query.q || '').toString())
 const currentSearch = ref(query.value)
+const { data: words } = await searchDictionary(query.value)
 
 const items = ref<JapaneseWord[]>([])
 const count = ref<undefined | number>()
@@ -15,7 +16,6 @@ function search() {
   if (!query.value.trim())
     return
   currentSearch.value = query.value
-  // router.replace({ query: { q: query.value } })
   router.push({
     name: 'search',
     query: {
@@ -56,6 +56,6 @@ useHead({
     <div v-if="count === 0" class="md:text-2xl sm:text-lg">
       No results found.
     </div>
-    <AutoLoadGrid :key="currentSearch" :has-more-items="hasMoreItems" :items="items" :fetch="fetch" :count="count" />
+    <AutoLoadGrid :key="currentSearch" :has-more-items="hasMoreItems" :items="items.length ? items : words" :fetch="fetch" :count="count" />
   </section>
 </template>

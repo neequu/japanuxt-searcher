@@ -34,7 +34,3 @@ useHead({
     </span>
   </NuxtLink>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
