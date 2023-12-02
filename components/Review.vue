@@ -15,6 +15,7 @@ async function nextReview() {
   const nextWord = reviews.reviewWords[reviews.activeIndex + 1]
   if (nextWord)
     reviews.setActiveIndex(reviews.activeIndex + 1)
+  await refreshNuxtData('userWords')
 }
 
 async function updateLevel(lvl: number, word: string) {
