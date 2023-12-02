@@ -50,10 +50,10 @@ useHead({
               <p v-if="savedWord.strength === 0" class="text-accent">
                 New
               </p>
-              <p v-else-if="savedWord.strength === 1" class="text-accent-lightgreen">
+              <p v-else-if="savedWord.strength === 2" class="text-accent-lightgreen">
                 Learning
               </p>
-              <p v-else-if="savedWord.strength === -1" class="text-accent-red">
+              <p v-else-if="savedWord.strength === 1" class="text-accent-red">
                 Failed
               </p>
               <p v-else class="text-accent-darkgreen">

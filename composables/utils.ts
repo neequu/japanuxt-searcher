@@ -1,10 +1,10 @@
 export function getNextReviewDate(date: number, lvl: number) {
   const dateObj = new Date(date)
-  if (lvl === -1) {
+  if (lvl === 1) {
     dateObj.setHours(dateObj.getHours() + 10)
     return dateObj.toISOString()
   }
-  else if (lvl === 1) {
+  else if (lvl === 2) {
     dateObj.setDate(dateObj.getDate() + 3)
     return dateObj.toISOString()
   }

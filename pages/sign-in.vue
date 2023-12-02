@@ -11,7 +11,7 @@ async function signInWithOAuth() {
       redirectTo: `${location.origin}/confirm`,
     },
   })
-  if (error) {
+  if (loginError) {
     error.value = loginError?.message
     showErrorMessage(`Couldn't sign you in. Please try again`)
   }

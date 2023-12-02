@@ -5,8 +5,8 @@ const supabase = useSupabaseClient<Database>()
 const user = useSupabaseUser()
 
 async function signOut() {
+  await navigateTo('/confirm')
   await supabase.auth.signOut()
-  navigateTo('/')
 }
 
 const { width } = useWindowSize()
