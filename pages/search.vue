@@ -35,7 +35,7 @@ async function fetch(page: number) {
     hasMoreItems.value = false
 
   if (page > 1)
-    items.value.push(...(dictWords.value || []))
+    items.value.push(...dictWords.value)
   else
     items.value = dictWords.value
 
