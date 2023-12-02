@@ -17,7 +17,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/supabase',
     '@nuxt/image',
-    'nuxt-particles',
     '@element-plus/nuxt',
   ],
 
