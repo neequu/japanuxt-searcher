@@ -5,7 +5,7 @@ const props = defineProps<{
   savedWord: Database['public']['Tables']['user_words']['Row'] | undefined
   word: string
 }>()
-const isAdded = ref(!!props.savedWord)
+const isAdded = ref(!!props.savedWord?.learning)
 const activeClass = ref(isAdded.value ? `i-tdesign:bookmark-minus` : `i-tdesign:bookmark-add`)
 
 async function updateWordState() {
@@ -22,11 +22,11 @@ function handleError(errorMsg: string) {
   activeClass.value = isAdded.value
     ? `i-tdesign:bookmark-minus`
     : `i-tdesign:bookmark-add`
-    // todo: add toast
+  showErrorMessage(errorMsg)
 }
 function showToast() {
-  // todo: add toast
-  // isAdded.value ?  :
+  const message = isAdded.value ? `Removed ${props.word} from your list` : `Added ${props.word} to your list`
+  showSuccessMessage(message)
 }
 
 // Handle cache
@@ -62,9 +62,6 @@ async function addWord() {
 </script>
 
 <template>
-  <button @click="() => showSuccessMessage(word)">
-    click
-  </button>
   <button aria-label="save word" type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-2xl" @click="addWord">
     <div :class="activeClass" />
   </button>

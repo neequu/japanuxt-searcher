@@ -46,7 +46,7 @@ useHead({
         </template>
         <template #aside>
           <div class="flex flex-col items-center gap-2">
-            <div v-if="savedWord" class="flex flex-col items-center text-center">
+            <div v-if="savedWord?.id" class="flex flex-col items-center text-center">
               <p v-if="savedWord.strength === 0" class="text-accent">
                 New
               </p>
