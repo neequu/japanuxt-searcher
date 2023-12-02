@@ -13,9 +13,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@stripe/stripe-js": "^2.1.11",
     "chart.js": "^4.4.0",
-    "stripe": "^14.3.0",
     "vue-chartjs": "^5.2.0",
     "vue3-toastify": "^0.1.14"
   },
