@@ -49,7 +49,7 @@ useHead({
 
 <template>
   <section class="mt-2">
-    <SearchForm v-model="query " :on-submit="search" />
+    <SearchForm v-model="query" :on-submit="search" />
   </section>
   <section class="my-6 md:my-10">
     <div v-if="count === 0" class="md:text-2xl sm:text-lg">
