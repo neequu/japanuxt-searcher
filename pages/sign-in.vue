@@ -29,7 +29,7 @@ watchEffect(() => {
       <div class="i-tdesign:logo-github-filled text-xl md:text-4xl" />
       Sign In With Github
     </button>
-    <div v-if="error" class="text-accent-red">
+    <div v-if="error" class="mt-5 text-accent-red">
       There was an error. Please try again
     </div>
   </section>

@@ -1,14 +1,6 @@
-import process from 'node:process'
 import { appDescription } from './constants/index'
 
-const isDev = process.env.NODE_ENV === 'development'
-
 export default defineNuxtConfig({
-  routeRules: {
-    '/**': isDev ? {} : { cache: { swr: true, maxAge: 1200, staleMaxAge: 600, headersOnly: true } },
-    '/api/**': { cors: true },
-    '/api/tmdb/**': { swr: 3600 },
-  },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
@@ -77,12 +69,6 @@ export default defineNuxtConfig({
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
-    },
-  },
-
-  runtimeConfig: {
-    public: {
-      baseURL: process.env.NUXT_PUBLIC_BASEURL,
     },
   },
 

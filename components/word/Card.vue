@@ -4,7 +4,7 @@ import type { JapaneseWord } from '~/types'
 const props = defineProps<{
   item: JapaneseWord
 }>()
-const mainWord = computed(() => props.item.japanese[0].word ?? props.item.slug)
+const mainWord = computed(() => props.item.japanese?.[0].word ?? props.item.slug)
 </script>
 
 <template>
