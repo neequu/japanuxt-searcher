@@ -6,7 +6,7 @@ const props = defineProps<{
 const { copy, copied } = useClipboard()
 function handleCopy() {
   copy(props.item)
-  showSuccessMessage('Copied!')
+  // todo: add toast
 }
 </script>
 

@@ -22,12 +22,11 @@ function handleError(errorMsg: string) {
   activeClass.value = isAdded.value
     ? `i-tdesign:bookmark-minus`
     : `i-tdesign:bookmark-add`
-  showErrorMessage(errorMsg)
+    // todo: add toast
 }
 function showToast() {
-  isAdded.value
-    ? showSuccessMessage(`Removed ${props.word} from your list`)
-    : showSuccessMessage(`Added ${props.word} to your list`)
+  // todo: add toast
+  // isAdded.value ?  :
 }
 
 // Handle cache
@@ -63,6 +62,9 @@ async function addWord() {
 </script>
 
 <template>
+  <button @click="() => showSuccessMessage(word)">
+    click
+  </button>
   <button aria-label="save word" type="button" class="border-b border-transparent text-xl text-accent outline-none transition hover:scale-105 focus-visible:border-blueGray md:text-2xl" @click="addWord">
     <div :class="activeClass" />
   </button>

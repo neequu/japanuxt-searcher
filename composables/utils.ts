@@ -27,5 +27,12 @@ export function getFormattedDate(dateString: string | null) {
   return formattedDate
 }
 
-export const showSuccessMessage = (msg: string) => ElMessage.success(msg)
-export const showErrorMessage = (msg: string) => ElMessage.error(msg)
+function showToast(msg: string, type?: 'error' | 'success' | 'info') {
+  useNuxtApp().$toast(msg, {
+    theme: 'auto',
+    type,
+  })
+}
+
+export const showSuccessMessage = (msg: string) => showToast(msg, 'success')
+export const showErrorMessage = (msg: string) => showToast(msg, 'error')

@@ -1,4 +1,13 @@
 @import url(~/assets/fonts/nunito.css);
+:root {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #181818;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #60ee90;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #e74c3c;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+}
 
 ::-webkit-scrollbar {
   @apply bg-dark-5 w-10px h-6px;
@@ -12,4 +21,3 @@
 ::-webkit-scrollbar-track {
   @apply rounded-xl bg-transparent;
 }
-

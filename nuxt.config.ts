@@ -17,12 +17,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/supabase',
     '@nuxt/image',
-    '@element-plus/nuxt',
   ],
-
-  elementPlus: {
-    themes: ['dark'],
-  },
 
   supabase: {
     redirectOptions: {
