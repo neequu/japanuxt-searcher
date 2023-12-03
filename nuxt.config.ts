@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@nuxt/image',
   ],
-
   supabase: {
     redirectOptions: {
       login: '/sign-in',
