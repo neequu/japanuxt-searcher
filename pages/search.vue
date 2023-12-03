@@ -31,6 +31,9 @@ async function fetch(page: number) {
     return
   const { data: dictWords } = await searchDictionary(query.value, page)
 
+  if (!dictWords.value)
+    return
+
   if (dictWords.value.length === 0)
     hasMoreItems.value = false
 
