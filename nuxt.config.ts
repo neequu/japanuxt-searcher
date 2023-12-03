@@ -1,12 +1,6 @@
-import process from 'node:process'
 import { appDescription } from './constants/index'
 
-const isDev = process.env.NODE_ENV === 'development'
 export default defineNuxtConfig({
-  routeRules: {
-    '/**': isDev ? {} : { cache: { swr: true, maxAge: 120, staleMaxAge: 60, headersOnly: true } },
-    '/api/**': { cors: true },
-  },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
