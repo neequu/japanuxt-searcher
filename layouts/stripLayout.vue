@@ -3,10 +3,7 @@
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col">
-    <TheHeader />
-    <main class="flex-1">
-      <slot />
-    </main>
-  </div>
+  <main class="h-screen w-screen">
+    <slot />
+  </main>
 </template>

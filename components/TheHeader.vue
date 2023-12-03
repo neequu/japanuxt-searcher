@@ -8,9 +8,8 @@ const isLoading = ref(false)
 async function signOut() {
   isLoading.value = true
   try {
-    await supabase.auth.signOut()
-    // useRouter().go(0)
-    await navigateTo('/')
+    supabase.auth.signOut()
+    await navigateTo('/logout')
   }
   catch (e) {
     showErrorMessage('Couldnt log you out. Please try again!')

@@ -4,7 +4,7 @@ definePageMeta({
 })
 const user = useSupabaseUser()
 watchEffect(() => {
-  if (user.value)
+  if (!user.value)
     navigateTo('/')
 })
 </script>
