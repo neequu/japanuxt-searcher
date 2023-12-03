@@ -31,14 +31,11 @@ async function fetch(page: number) {
     return
   const { data: dictWords } = await searchDictionary(query.value, page)
 
-  if (!dictWords.value)
-    return
-
   if (dictWords.value.length === 0)
     hasMoreItems.value = false
 
   if (page > 1)
-    items.value.push(...dictWords.value)
+    items.value.concat(dictWords.value)
   else
     items.value = dictWords.value
 
