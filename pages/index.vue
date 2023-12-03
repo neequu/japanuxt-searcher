@@ -24,7 +24,7 @@ function search() {
   </section>
   <section class="grid mt-6 gap-3 md:mt-28 md:gap-6">
     <p class="text-xl md:text-4xl">
-      This project if finally completed! ヽ(✿ﾟ▽ﾟ)ノ
+      This project if finally completed!
     </p>
     <p class="md:text-2xl">
       This website is kind of a clone of jpdb.io. Used as a demonstration of skills with nuxt3 and other tools. Click the link below to check out your stats!
