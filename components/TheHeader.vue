@@ -53,7 +53,7 @@ const cond = computed(() => width.value < Number.POSITIVE_INFINITY && width.valu
         </div>
       </NuxtLink>
       <button v-if="user" :disabled="isLoading" aria-label="sign out of account" type="button" class="outline-none transition-300 focus-visible:border-blueGray disabled:filter-brightness-60 linkRed" @click="signOut">
-        {{ isLoading ? 'Logging out...' : 'Logout' }}
+        Logout
       </button>
       <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">
         <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
