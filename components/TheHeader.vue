@@ -2,7 +2,7 @@
 import type { Database } from '~/supabase'
 
 const supabase = useSupabaseClient<Database>()
-const user = useSupabaseUser()
+const { data: { session } } = await supabase.auth.getSession()
 
 async function signOut() {
   await navigateTo('/confirm')
@@ -44,7 +44,7 @@ const visible = ref(false)
             Stats
           </div>
         </NuxtLink>
-        <button v-if="user" aria-label="sign out of account" type="button" class="outline-none focus-visible:border-blueGray linkRed" @click="signOut">
+        <button v-if="session?.user" aria-label="sign out of account" type="button" class="outline-none focus-visible:border-blueGray linkRed" @click="signOut">
           Logout
         </button>
         <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">
