@@ -33,7 +33,7 @@ async function updateLevel(lvl: number, word: string) {
 <template>
   <section class="grid h-full place-content-center gap-4 text-center md:gap-8">
     <Transition name="review">
-      <h1 :key="reviews.activeIndex" class="text-3xl md:text-7xl">
+      <h1 :key="reviews.activeIndex" lang="jp" class="text-3xl md:text-7xl">
         {{ reviews.reviewWords[reviews.activeIndex] }}
       </h1>
     </Transition>

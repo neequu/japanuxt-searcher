@@ -24,7 +24,7 @@ useHead({
     </h1>
     <template v-if="userWords?.length">
       <div v-for="w in userWords" :key="w.word" class="mt-4 flex justify-between border border-neutral-6 rounded-xl p-3">
-        <NuxtLink :to="`/words/${w.word}`" class="self-center text-2xl sm:text-3xl">
+        <NuxtLink lang="jp" :to="`/words/${w.word}`" class="self-center text-2xl sm:text-3xl">
           {{ w.word }}
         </NuxtLink>
         <div class="flex flex-col items-end gap-5">

@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <article class="grid grid-cols-[min-content_1fr] gap-2 border border-neutral-6 rounded-xl px-5 py-4 sm:flex sm:flex-row md:px-10 sm:px-5 sm:py-8 sm:text-xl">
-    <ruby class="grid grid-cols-[repeat(2,minmax(0,min-content))] mr-2 w-6 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none lg:mr-12 md:mr-8 sm:w-16 md:text-5xl sm:text-4xl">
+    <ruby lang="jp" class="grid grid-cols-[repeat(2,minmax(0,min-content))] mr-2 w-4 items-start gap-x-1 whitespace-normal break-anywhere text-3xl leading-none lg:mr-12 md:mr-8 sm:w-16 md:text-5xl sm:text-4xl">
       <div class="flex flex-col items-center gap-2 sm:gap-5">
         {{ mainWord }}
         <CopyButton :item="mainWord" />

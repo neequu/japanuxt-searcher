@@ -46,6 +46,7 @@ const options = computed<ChartOptions<'doughnut'>>(() => ({
       text: 'Amount of words in each category',
     },
   },
+  maintainAspectRatio: false,
 }))
 
 const { barChartProps } = useBarChart({
@@ -59,7 +60,7 @@ const { barChartProps } = useBarChart({
     <h1 class="mb-4 text-xl md:text-3xl">
       Your stats
     </h1>
-    <BarChart v-bind="barChartProps" />
+    <BarChart v-bind="barChartProps" class="w-full" />
   </section>
   <section class="mt-8">
     <h1 class="mb-4 text-xl md:text-3xl">
