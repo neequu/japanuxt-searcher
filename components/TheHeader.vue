@@ -2,11 +2,22 @@
 import type { Database } from '~/supabase'
 
 const supabase = useSupabaseClient<Database>()
-const { data: { session } } = await supabase.auth.getSession()
+const user = useSupabaseUser()
+const isLoading = ref(false)
 
 async function signOut() {
-  await supabase.auth.signOut()
-  await navigateTo('/')
+  isLoading.value = true
+  try {
+    await supabase.auth.signOut()
+    // useRouter().go(0)
+    await navigateTo('/')
+  }
+  catch (e) {
+    showErrorMessage('Couldnt log you out. Please try again!')
+  }
+  finally {
+    isLoading.value = false
+  }
 }
 
 const { width } = useWindowSize()
@@ -42,8 +53,8 @@ const cond = computed(() => width.value < Number.POSITIVE_INFINITY && width.valu
           Stats
         </div>
       </NuxtLink>
-      <button v-if="session?.user" aria-label="sign out of account" type="button" class="outline-none focus-visible:border-blueGray linkRed" @click="signOut">
-        Logout
+      <button v-if="user" :disabled="isLoading" aria-label="sign out of account" type="button" class="outline-none transition-300 focus-visible:border-blueGray disabled:filter-brightness-60 linkRed" @click="signOut">
+        {{ isLoading ? 'Logging out...' : 'Logout' }}
       </button>
       <NuxtLink v-else v-slot="{ isActive }" to="/sign-in" class="group outline-none">
         <div :class="isActive && 'border-blueGray' " class="group-focus-visible:border-blueGray link">
