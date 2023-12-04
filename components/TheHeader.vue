@@ -32,7 +32,7 @@ const cond = computed(() => width.value < Number.POSITIVE_INFINITY && width.valu
           nequjp<span class="ml-2 font-size-50% tracking-tight">clone</span>
         </h1>
       </NuxtLink>
-      <button aria-label="menu" type="button" class="outline-none sm:hidden" @click="visible = !visible">
+      <button aria-label="menu" role="menu" type="button" class="outline-none sm:hidden" @click="visible = !visible">
         <div :class="visible ? 'i-tdesign:close' : 'i-tdesign:view-list'" />
       </button>
     </div>

@@ -12,7 +12,7 @@ const count = ref<undefined | number>()
 const hasMoreItems = ref(true)
 
 function search() {
-  if (!query.value.trim())
+  if (!query.value.trim() || currentSearch.value === query.value)
     return
   currentSearch.value = query.value
   router.push({

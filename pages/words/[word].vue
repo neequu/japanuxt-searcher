@@ -71,7 +71,7 @@ useHead({
   </template>
   <div v-else class="mt-10 text-center md:text-xl">
     No information found :( Please search for something else.
-    <button class="border-b border-transparent text-accent outline-none transition focus-visible:border-blueGray hover:border-blueGray" @click="$router.back">
+    <button aria-label="return" class="border-b border-transparent text-accent outline-none transition focus-visible:border-blueGray hover:border-blueGray" type="button" @click="$router.back">
       Go Back
     </button>
   </div>

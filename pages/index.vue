@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const query = ref('')
 function search() {
+  if (!query.value.trim())
+    return
   navigateTo(`/search?q=${query.value}`)
 }
 </script>
