@@ -1,13 +1,14 @@
 @import url(~/assets/fonts/nunito.css);
 :root {
   --toastify-color-light: #fff;
-  --toastify-color-dark: #181818;
-  --toastify-color-info: #3498db;
-  --toastify-color-success: #60ee90;
-  --toastify-color-warning: #f1c40f;
-  --toastify-color-error: #e74c3c;
-  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-color-dark: #181818 !important;
+  --toastify-color-info: #3498db !important;
+  --toastify-color-success: #60ee90 !important;
+  --toastify-color-warning: #f1c40f !important;
+  --toastify-color-error: #e74c3c !important;
 }
+
+
 
 ::-webkit-scrollbar {
   @apply bg-gray-200 w-5px h-5px;
@@ -28,6 +29,9 @@ html.dark {
 }
 ::-webkit-scrollbar-track {
   @apply rounded-xl bg-transparent;
+}
+.Toastify__toast {
+  border: 1px solid #555;
 }
 }
   
