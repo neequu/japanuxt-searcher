@@ -145,10 +145,10 @@ async function checkSubscription() {
       <div class="flex flex-1 flex-col justify-between justify-between gap-6 lg:flex-row">
         <div class="flex-1">
           <p class="mb-2 text-lg sm:text-2xl">
-            <button class="mr-1 translate-y-1/4 transition hover:text-white" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
+            <button class="mr-1 translate-y-1/4 text-neutral-700 transition dark:text-neutral-3 hover:filter-brightness-140" :aria-label="`play audio from ${example.deck_name}`" type="button" @click="playAudio(example.sound_url)">
               <div class="i-tdesign:play-circle-filled" />
             </button>
-            <span v-for="(example_word, id) in example.word_list" :key="id" class="transition hover:text-accent" :class="{ 'font-bold text-cyan': example.word_index.includes(id) }">
+            <span v-for="(example_word, id) in example.word_list" :key="id" class="transition hover:text-accent" :class="{ 'font-bold dark:text-cyan text-violet': example.word_index.includes(id) }">
               <NuxtLink :to="`/words/${example_word}`">{{ example_word }}</NuxtLink>
             </span>
           </p>
@@ -156,7 +156,7 @@ async function checkSubscription() {
             {{ example.translation }}
           </p>
         </div>
-        <p class="self-center text-right text-sm font-italic text-white sm:text-base">
+        <p class="self-center text-right text-sm font-italic sm:text-base dark:text-white">
           {{ example.deck_name }}
         </p>
       </div>
