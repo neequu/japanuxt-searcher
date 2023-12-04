@@ -23,7 +23,7 @@
 
 - [VueUse](https://vueuse.org) библиотека с большим количеством helper функций. В данном проекте используются функции для копирования и получения ширины экрана.
 
-- [Eslint](https://supabase.io) Позволил распределять классы в правильном порядке, а также предотвратить баги.
+- [Eslint](https://eslint.org) Позволил распределять классы в правильном порядке, а также предотвратить баги.
 
 - Деплой на [Netlify](https://www.netlify.com)
 
@@ -60,20 +60,23 @@
 - 🔔 **Оповещения:** При определенных действиях (сохранении слова, копировании слова) будет высвечено соответствующее оповещение с результатом этого действия.
 
 ## Скриншоты
-### [Домашняя страница](https://spotify-clone-next-six.vercel.app)
-![Home page](https://github.com/neequu/spotify-clone-next/assets/69749247/150a3365-e823-4064-a6c6-faf0a9bd7d86)
-### [Страница поиска](https://spotify-clone-next-six.vercel.app/search)
-![Search page](https://github.com/neequu/spotify-clone-next/assets/69749247/93050f9f-8c58-4371-99c8-cf03aee0dd5f)
-### [Страница песни](https://spotify-clone-next-six.vercel.app/songs/1)
-![Song page](https://github.com/neequu/spotify-clone-next/assets/69749247/05db822a-2bf6-46d7-b21b-6cbc7787b2fc)
-### [Страница лайкнутых песен](https://spotify-clone-next-six.vercel.app/liked-songs)
-![Liked page](https://github.com/neequu/spotify-clone-next/assets/69749247/ea22f697-155e-4a5d-95fd-65d99d1b7494)
-### Форма добавления песни (язык в файл-инпуте зависит от языка браузера 💢)
-![Upload](https://github.com/neequu/spotify-clone-next/assets/69749247/45e377e1-76f0-4784-ad05-99cbd99886d9)
+### [Страница поиска](http://localhost:3000/search?q=hello)
+![Search page](https://github.com/neequu/japanuxt-searcher/assets/69749247/06dac32d-cccb-455d-b840-a8d6f85684db)
+### [Страница слова](https://nequjp.netlify.app/words/%E3%82%82%E3%81%97%E3%82%82%E3%81%97)
+![Word page](https://github.com/neequu/japanuxt-searcher/assets/69749247/d47c0818-d9af-42c1-a4fc-faafcf467eed)
+### [Страница сохраненных слов с возможностью их ревьюить](https://nequjp.netlify.app/learn)
+![Saved word](https://github.com/neequu/japanuxt-searcher/assets/69749247/4d5cf4f7-c722-4276-aebe-3c3d36e1149a)
+### Страница ревью 
+![Review](https://github.com/neequu/japanuxt-searcher/assets/69749247/23688711-8e96-4b7a-8b72-ce1cb4f568a3)
+### [Страница со статистикой](https://nequjp.netlify.app/stats)
+![Stats](https://github.com/neequu/japanuxt-searcher/assets/69749247/5f55b9f0-5843-4e7b-bb42-aad08de65fc3)
+
+
 ### Вид с мобильного устройства
 <div align="center">
   
-  ![Mobile](https://github.com/neequu/spotify-clone-next/assets/69749247/3dd4f0c1-4594-4bbe-85bb-01dbab0ab1ec)
+  ![Mobile stats](https://github.com/neequu/japanuxt-searcher/assets/69749247/3fbbc000-297e-4717-a066-221737b64440)
+  ![Mobile search page](https://github.com/neequu/japanuxt-searcher/assets/69749247/0f672f69-fe65-4668-8ea9-eb101fe6624d)
 </div>
 
 Ссылка на сайт: https://nequjp.netlify.app
