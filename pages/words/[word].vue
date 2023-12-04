@@ -2,14 +2,10 @@
 const route = useRoute('words-word')
 const wordParam = decodeURIComponent(route.params.word)
 
-useHead({
-  title: computed(() => `${route.query.q} - japanese meaning · nequjp`),
-})
-
 const [{ data: word }, { data: savedWord }] = await Promise.all([searchDictionarySingle(wordParam), findWord(wordParam)])
 
 useHead({
-  title: `${wordParam} - details and examples · nequjp`,
+  title: `${wordParam} - details and examples`,
 })
 </script>
 

@@ -11,7 +11,7 @@ reviews.setActiveIndex(0)
 reviews.setReviewWords([])
 
 useHead({
-  title: `Review end · nequjp`,
+  title: `Review end`,
 })
 </script>
 

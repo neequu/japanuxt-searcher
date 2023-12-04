@@ -30,7 +30,7 @@ async function fetch(page: number) {
 }
 
 useHead({
-  title: computed(() => `${formatedDeckName} - JLPT Deck · nequjp`),
+  title: computed(() => `${formatedDeckName} - JLPT Deck`),
 })
 </script>
 

@@ -1,4 +1,4 @@
-import { appDescription } from './constants/index'
+import { appDescription, appName } from './constants/index'
 
 export default defineNuxtConfig({
   modules: [
@@ -16,6 +16,9 @@ export default defineNuxtConfig({
       callback: '/confirm',
       exclude: ['/search', '/', '/about', '/words/**'],
     },
+  },
+  piniaPersistedstate: {
+    storage: 'localStorage',
   },
   vite: {
     vue: {
@@ -58,6 +61,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      titleTemplate: `%s · ${appName}`,
       htmlAttrs: { lang: 'en' },
       viewport: 'width=device-width,initial-scale=1',
       link: [

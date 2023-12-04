@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: `JLPT Decks · nequjp`,
+  title: `JLPT Decks`,
 })
 </script>
 

@@ -43,7 +43,7 @@ async function fetch(page: number) {
 }
 
 useHead({
-  title: computed(() => `${route.query.q} - japanese meaning · nequjp`),
+  title: computed(() => `${route.query.q} - japanese meaning`),
 })
 </script>
 

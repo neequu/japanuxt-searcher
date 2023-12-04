@@ -5,6 +5,10 @@ function search() {
     return
   navigateTo(`/search?q=${query.value}`)
 }
+
+useHead({
+  title: `Home`,
+})
 </script>
 
 <template>

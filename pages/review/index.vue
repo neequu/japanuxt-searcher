@@ -14,7 +14,7 @@ onMounted(() => {
 })
 
 useHead({
-  title: `Review · nequjp`,
+  title: `Review`,
 })
 </script>
 

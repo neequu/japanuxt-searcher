@@ -53,6 +53,10 @@ const { barChartProps } = useBarChart({
   chartData,
   options,
 })
+
+useHead({
+  title: `Stats`,
+})
 </script>
 
 <template>

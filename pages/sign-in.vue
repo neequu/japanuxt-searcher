@@ -21,6 +21,10 @@ watchEffect(() => {
   if (user.value)
     navigateTo('/')
 })
+
+useHead({
+  title: `Sign In`,
+})
 </script>
 
 <template>

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useHead({
+  title: `About`,
+})
+</script>
+
 <template>
   <section class="mt-8">
     <h1 class="text-xl md:text-3xl">
