@@ -30,8 +30,9 @@ async function fetch(page: number) {
   if (!hasMoreItems.value)
     return
   const { data: dictWords } = await searchDictionary(query.value, page)
+  const expectedMinimumItems = 5
 
-  if (dictWords.value.length === 0)
+  if (dictWords.value.length < expectedMinimumItems)
     hasMoreItems.value = false
 
   if (page > 1)
