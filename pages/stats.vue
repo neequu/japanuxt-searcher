@@ -47,6 +47,14 @@ const options = computed<ChartOptions<'doughnut'>>(() => ({
     },
   },
   maintainAspectRatio: false,
+  scales: {
+    y: {
+      ticks: {
+        suggestedMin: 0,
+        stepSize: 1,
+      },
+    },
+  },
 }))
 
 const { barChartProps } = useBarChart({

@@ -7,6 +7,10 @@ watchEffect(() => {
   if (user.value)
     navigateTo('/')
 })
+
+useHead({
+  title: 'Redirecting',
+})
 </script>
 
 <template>
