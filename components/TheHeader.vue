@@ -21,7 +21,7 @@ async function signOut() {
 
 const { width } = useWindowSize()
 const visible = ref(false)
-const cond = computed(() => width.value < Number.POSITIVE_INFINITY && width.value >= 640 || visible.value)
+const cond = computed(() => (width.value < Number.POSITIVE_INFINITY && width.value >= 640) || visible.value)
 </script>
 
 <template>
