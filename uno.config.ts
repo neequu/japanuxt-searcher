@@ -6,6 +6,7 @@ import {
   presetUno,
   transformerDirectives,
   transformerVariantGroup,
+  presetWebFonts 
 } from 'unocss'
 
 export default defineConfig({
@@ -31,6 +32,12 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetWebFonts({
+      provider: 'google', 
+      fonts: {
+        mono: ['Nunito Sans', 'Nunito Sans:400,700'],
+      },
+    }),
     presetIcons({
       scale: 1.2,
     }),
