@@ -26,7 +26,7 @@ async function getData() {
     visibleExamples.value = data.value?.data[0].examples.slice(0, currentStep.value)
   }
   catch (e) {
-    showSuccessMessage(`Error fetching examples!`)
+    showErrorMessage(`Error fetching examples!`)
   }
   finally {
     isLoading.value = false
