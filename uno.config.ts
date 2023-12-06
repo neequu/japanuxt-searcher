@@ -4,9 +4,9 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
+  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
-  presetWebFonts 
 } from 'unocss'
 
 export default defineConfig({
@@ -33,7 +33,7 @@ export default defineConfig({
     presetUno(),
     presetAttributify(),
     presetWebFonts({
-      provider: 'google', 
+      provider: 'google',
       fonts: {
         mono: ['Nunito Sans', 'Nunito Sans:400,700'],
       },
