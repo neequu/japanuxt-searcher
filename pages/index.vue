@@ -38,7 +38,7 @@ useHead({
     <p class="md:text-2xl">
       Later stripe functionality will be added for buying a test subscription. Also leaderboards, quizes and examples in reviews will be added.
     </p>
-    <NuxtLink class="group mx-auto mt-2 w-fit border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/learn">
+    <NuxtLink class="group mx-auto mt-2 w-fit border border-accent rounded-xl px-5 py-2 text-accent outline-none transition-300 md:mx-0 md:mt-0 md:px-10 md:py-4 md:text-2xl hover:shadow-accent" to="/stats">
       <div class="flex gap-2 border-b border-transparent text-center group-focus-visible:border-blueGray">
         Your stats
       </div>
