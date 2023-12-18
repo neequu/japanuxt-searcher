@@ -4,20 +4,34 @@ import type { Example } from '~/types'
 const props = defineProps<{
   word: string
 }>()
-const user = useSupabaseUser()
 
+const user = useSupabaseUser()
+// amount of examples to load
 const STEP = 10
 const currentStep = ref(STEP)
+
 const isLoading = ref(false)
-
 const hasMoreItems = ref(true)
-
+// all results from api
 const results = ref<Example>()
+// paginated results
 const visibleExamples = ref<Example['examples']>([])
+// check what tab is set
+const activeTab = ref('All')
+// control blur of translations
+const blurredTranslations = ref(true)
+// audio element
+const audioUrl = ref('')
+const audio = computed(() => new Audio(audioUrl.value))
+
+const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a + b, 0))
+// element to load more items
+const tailEl = ref<HTMLDivElement>()
+
 async function getData() {
   isLoading.value = true
   try {
-    const { data }: { data: Ref<{ data: Example[] }> } = await useFetch(`https://api.immersionkit.com/look_up_dictionary?keywod=${props.word}`, {
+    const { data }: { data: Ref<{ data: Example[] }> } = await useFetch(`https://api.immersionkit.com/look_up_dictionary?keyword=${props.word}`, {
       getCachedData(key) {
         return useNuxtApp().payload.data[key] || useNuxtApp().static.data[key]
       },
@@ -33,16 +47,13 @@ async function getData() {
   }
 }
 
-const audioUrl = ref('')
-const audio = computed(() => new Audio(audioUrl.value))
+// play audio from example
 function playAudio(url: string) {
   audio.value.pause()
   audioUrl.value = url
   audio.value.play()
 }
-
-const activeTab = ref('All')
-
+// change examples by category
 const filteredExamples = computed(() => {
   if (!results.value)
     return
@@ -52,16 +63,7 @@ const filteredExamples = computed(() => {
   const filteredResultExamples = results.value.examples.filter(({ category }) => category === activeTab.value)
   return filteredResultExamples
 })
-watch(filteredExamples, () => {
-  if (!filteredExamples.value)
-    return
-  currentStep.value = STEP
-  visibleExamples.value = filteredExamples.value.slice(0, currentStep.value)
-  hasMoreItems.value = true
-})
-
-const blurredTranslations = ref(true)
-const tailEl = ref<HTMLDivElement>()
+// load more items if users scrolls to bottom
 if (process.client) {
   useIntervalFn(() => {
     if (!tailEl.value)
@@ -72,7 +74,7 @@ if (process.client) {
       loadMore()
   }, 500)
 }
-
+// load more examples
 function loadMore() {
   if (!filteredExamples.value || !hasMoreItems.value)
     return
@@ -84,14 +86,20 @@ function loadMore() {
   visibleExamples.value.push(...filteredExamples.value.slice(currentStep.value, newStep))
   currentStep.value = newStep
 }
-
-const allResultCount = computed(() => Object.values(results.value?.category_count ?? {}).reduce((a, b) => a + b, 0))
-
+// get data only if has auth
 async function checkSubscription() {
   if (!user.value)
     await navigateTo('/sign-in')
   getData()
 }
+// changed examples when user filters
+watch(filteredExamples, () => {
+  if (!filteredExamples.value)
+    return
+  currentStep.value = STEP
+  visibleExamples.value = filteredExamples.value.slice(0, currentStep.value)
+  hasMoreItems.value = true
+})
 </script>
 
 <template>
